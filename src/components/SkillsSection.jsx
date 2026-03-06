@@ -1,83 +1,249 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Monitor, Server, Wrench, Layers } from "lucide-react";
+
+const categoryMeta = {
+  all: {
+    icon: Layers,
+    label: "All Skills",
+    accent: "from-violet-500 to-blue-500",
+    hoverBorder: "hover:border-violet-500/40",
+    hoverShadow: "hover:shadow-violet-500/8",
+    bar: "from-violet-500 to-blue-500",
+    chip: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+  },
+  frontend: {
+    icon: Monitor,
+    label: "Frontend",
+    accent: "from-blue-500 to-cyan-400",
+    hoverBorder: "hover:border-blue-500/40",
+    hoverShadow: "hover:shadow-blue-500/8",
+    bar: "from-blue-500 to-cyan-400",
+    chip: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+  },
+  backend: {
+    icon: Server,
+    label: "Backend",
+    accent: "from-emerald-500 to-teal-400",
+    hoverBorder: "hover:border-emerald-500/40",
+    hoverShadow: "hover:shadow-emerald-500/8",
+    bar: "from-emerald-500 to-teal-400",
+    chip: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+  },
+  tools: {
+    icon: Wrench,
+    label: "Tools",
+    accent: "from-amber-500 to-orange-400",
+    hoverBorder: "hover:border-amber-500/40",
+    hoverShadow: "hover:shadow-amber-500/8",
+    bar: "from-amber-500 to-orange-400",
+    chip: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+  },
+};
 
 const skills = [
-  // Frontend
-  { name: "HTML/CSS", level: 95, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "React", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
+  // ───── Frontend ─────
+  { name: "React.js", level: 90, category: "frontend" },
   { name: "Next.js", level: 80, category: "frontend" },
+  { name: "JavaScript (ES6+)", level: 90, category: "frontend" },
+  { name: "TypeScript", level: 82, category: "frontend" },
+  { name: "HTML5", level: 95, category: "frontend" },
+  { name: "CSS3", level: 92, category: "frontend" },
+  { name: "Tailwind CSS", level: 90, category: "frontend" },
+  { name: "Redux Toolkit", level: 80, category: "frontend" },
+  { name: "React Query (TanStack Query)", level: 75, category: "frontend" },
 
-  // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "GraphQL", level: 80, category: "backend" },
+  // ───── Backend ─────
+  { name: "Node.js", level: 88, category: "backend" },
+  { name: "Express.js", level: 85, category: "backend" },
+  { name: "REST API Development", level: 90, category: "backend" },
+  { name: "GraphQL", level: 75, category: "backend" },
+  { name: "JWT Authentication", level: 85, category: "backend" },
+  { name: "Socket.io", level: 72, category: "backend" },
+  { name: "MongoDB", level: 84, category: "backend" },
+  { name: "Mongoose ODM", level: 82, category: "backend" },
+  { name: "PostgreSQL", level: 70, category: "backend" },
+  { name: "Redis (Caching)", level: 65, category: "backend" },
 
-  // Tools
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 70, category: "tools" },
+  // ───── Tools & DevOps ─────
+  { name: "Git", level: 90, category: "tools" },
+  { name: "GitHub", level: 90, category: "tools" },
+  { name: "Docker", level: 68, category: "tools" },
+  { name: "Postman", level: 88, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
+  { name: "Vercel", level: 85, category: "tools" },
+  { name: "Render", level: 80, category: "tools" },
+  { name: "Firebase", level: 72, category: "tools" },
+  { name: "GitHub Actions (CI/CD)", level: 70, category: "tools" },
+  { name: "AWS (Basics)", level: 65, category: "tools" },
+  { name: "Jest Testing", level: 70, category: "tools" },
 ];
 
 const categories = ["all", "frontend", "backend", "tools"];
 
+const levelBadge = (level) => {
+  if (level >= 90) return { text: "Expert",    bg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25" };
+  if (level >= 80) return { text: "Advanced",  bg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/25" };
+  if (level >= 70) return { text: "Proficient",bg: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25" };
+  return              { text: "Learning",   bg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25" };
+};
+
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory
+  const filtered = skills.filter(
+    (s) => activeCategory === "all" || s.category === activeCategory
   );
-  return (
-    <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary"> Skills</span>
-        </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
-            <button
-              key={key}
-              onClick={() => setActiveCategory(category)}
-              className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
-                activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-foreground hover:bg-secondary"
-              )}
-            >
-              {category}
-            </button>
-          ))}
+  const activeMeta = categoryMeta[activeCategory];
+
+  return (
+    <section id="skills" className="py-24 px-4 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/3 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-1/4 h-1/2 bg-gradient-to-tl from-primary/3 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl relative">
+
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-2">
+            What I Know
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold">
+            My <span className="text-primary">Skills</span>
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
+            Technologies and tools I use to build full-stack MERN applications —
+            from responsive frontends to scalable backend APIs.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, key) => (
-            <div
-              key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
-            >
-              <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
-              </div>
+        {/* Category filter tabs — styled as icon+label cards */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => {
+            const meta = categoryMeta[cat];
+            const Icon = meta.icon;
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  "flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-300",
+                  isActive
+                    ? `bg-gradient-to-r ${meta.accent} text-white border-transparent shadow-lg`
+                    : "bg-card text-muted-foreground border-border/50 hover:border-primary/40 hover:text-foreground"
+                )}
+              >
+                <Icon size={15} />
+                {meta.label}
+              </button>
+            );
+          })}
+        </div>
 
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
-              </div>
+        {/* Stats row */}
+        <div className="flex flex-wrap justify-center gap-6 mb-10">
+          {[
+            { label: "Total Skills",  value: skills.length },
+            { label: "Frontend",      value: skills.filter(s => s.category === "frontend").length },
+            { label: "Backend",       value: skills.filter(s => s.category === "backend").length },
+            { label: "Tools",         value: skills.filter(s => s.category === "tools").length },
+          ].map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="text-2xl font-black text-primary">{s.value}</div>
+              <div className="text-[11px] text-muted-foreground uppercase tracking-wider font-medium">{s.label}</div>
             </div>
           ))}
         </div>
+
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filtered.map((skill) => {
+            const badge = levelBadge(skill.level);
+            const meta = categoryMeta[skill.category];
+            return (
+              <div
+                key={skill.name}
+                className={cn(
+                  "group relative bg-card border border-border/50 rounded-2xl p-5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl",
+                  meta.hoverBorder,
+                  meta.hoverShadow
+                )}
+              >
+                {/* Gradient accent top bar */}
+                <div
+                  className={cn(
+                    "absolute top-0 left-5 right-5 h-0.5 rounded-b-full bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                    meta.accent
+                  )}
+                />
+
+                {/* Header row */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="space-y-1">
+                    <h3 className="font-bold text-sm group-hover:text-foreground transition-colors">
+                      {skill.name}
+                    </h3>
+                    <span
+                      className={cn(
+                        "inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wide",
+                        meta.chip
+                      )}
+                    >
+                      {meta.label}
+                    </span>
+                  </div>
+
+                  {/* Level badge */}
+                  <span
+                    className={cn(
+                      "text-[10px] font-bold px-2.5 py-1 rounded-lg border uppercase tracking-wide shrink-0",
+                      badge.bg
+                    )}
+                  >
+                    {badge.text}
+                  </span>
+                </div>
+
+                {/* Progress bar */}
+                <div className="space-y-1.5">
+                  <div className="w-full bg-secondary/80 h-2 rounded-full overflow-hidden">
+                    <div
+                      className={cn(
+                        "h-full rounded-full bg-gradient-to-r transition-all duration-1000",
+                        meta.bar
+                      )}
+                      style={{ width: skill.level + "%" }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-1">
+                      {[20, 40, 60, 80, 100].map((mark) => (
+                        <span
+                          key={mark}
+                          className={cn(
+                            "text-[9px] font-medium",
+                            skill.level >= mark
+                              ? "text-primary/60"
+                              : "text-muted-foreground/30"
+                          )}
+                        >
+                          ●
+                        </span>
+                      ))}
+                    </div>
+                    <span className={cn("text-sm font-black", `bg-gradient-to-r ${meta.bar} bg-clip-text text-transparent`)}>
+                      {skill.level}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

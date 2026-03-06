@@ -1,42 +1,297 @@
-import { ArrowDown } from "lucide-react";
+import {
+  ArrowDown,
+  Github,
+  Linkedin,
+  Mail,
+  Server,
+  Database,
+  Code2,
+  Cpu,
+  ChevronRight,
+} from "lucide-react";
+import { TypeAnimation } from "react-type-animation";
+
+const techStack = [
+  {
+    name: "React.js",
+    color: "text-sky-500",
+    bg: "bg-sky-500/10",
+    border: "border-sky-500/20",
+  },
+  {
+    name: "Node.js",
+    color: "text-emerald-500",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-500/20",
+  },
+  {
+    name: "MongoDB",
+    color: "text-green-500",
+    bg: "bg-green-500/10",
+    border: "border-green-500/20",
+  },
+  {
+    name: "Express.js",
+    color: "text-zinc-500 dark:text-zinc-400",
+    bg: "bg-zinc-500/10",
+    border: "border-zinc-500/20",
+  },
+  {
+    name: "TypeScript",
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
+  },
+  {
+    name: "Tailwind CSS",
+    color: "text-cyan-500",
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-500/20",
+  },
+  {
+    name: "GraphQL",
+    color: "text-pink-500",
+    bg: "bg-pink-500/10",
+    border: "border-pink-500/20",
+  },
+  {
+    name: "REST APIs",
+    color: "text-amber-500",
+    bg: "bg-amber-500/10",
+    border: "border-amber-500/20",
+  },
+  {
+    name: "Python",
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500/20",
+  },
+  {
+    name: "C++",
+    color: "text-violet-500",
+    bg: "bg-violet-500/10",
+    border: "border-violet-500/20",
+  },
+  {
+    name: "Docker",
+    color: "text-blue-400",
+    bg: "bg-blue-400/10",
+    border: "border-blue-400/20",
+  },
+  {
+    name: "JWT Auth",
+    color: "text-rose-500",
+    bg: "bg-rose-500/10",
+    border: "border-rose-500/20",
+  },
+];
+
+const socialLinks = [
+  {
+    icon: Github,
+    href: "https://github.com/Prynshumishra",
+    label: "GitHub",
+    hoverClass: "hover:bg-zinc-800 hover:text-white hover:border-zinc-600",
+  },
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/prynshumishr",
+    label: "LinkedIn",
+    hoverClass: "hover:bg-blue-600 hover:text-white hover:border-blue-500",
+  },
+  {
+    icon: Mail,
+    href: "mailto:prynshu09@gmail.com",
+    label: "Email",
+    hoverClass: "hover:bg-red-500 hover:text-white hover:border-red-400",
+  },
+];
+
+const roles = [
+  {
+    label: "MERN Stack Developer",
+    icon: Code2,
+    color: "from-violet-500 to-purple-500",
+    iconColor: "text-violet-500",
+    bgColor: "bg-violet-500/10",
+  },
+  {
+    label: "Backend API Developer",
+    icon: Server,
+    color: "from-emerald-500 to-teal-500",
+    iconColor: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+  },
+  {
+    label: "Database & System Design",
+    icon: Database,
+    color: "from-amber-500 to-orange-500",
+    iconColor: "text-amber-500",
+    bgColor: "bg-amber-500/10",
+  },
+  {
+    label: "Scalable Web Apps",
+    icon: Cpu,
+    color: "from-blue-500 to-cyan-500",
+    iconColor: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+  },
+];
 
 export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-12 mt-6 md:pt-28 overflow-hidden"
     >
-      <div className="container max-w-4xl mx-auto text-center z-10">
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
-              {" "}
-              Priyanshu
+      {/* Background decoration — matches CodingProfiles */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-primary/3 to-transparent pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
+
+      <div className="container mx-auto max-w-5xl relative z-10">
+        {/* Top section: Name + Typing + CTAs */}
+        <div className="text-center mb-10 space-y-5">
+          {/* Availability badge */}
+          <div className="opacity-0 animate-fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/8 text-emerald-600 dark:text-emerald-400 text-xs font-semibold shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            Available for hire
+          </div>
+
+          {/* Name */}
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-none opacity-0 animate-fade-in">
+            <span className="block text-foreground/70 text-2xl md:text-3xl font-semibold mb-3">
+              Hi, I&apos;m
             </span>
-            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
+            <span className="text-primary">Priyanshu</span>
+            <span className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
               {" "}
               Mishra
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I create stellar web experiences with modern technologies.
-            Specializing in front-end development, I build interfaces that are
-            both beautiful and functional.
+          {/* Typing animation */}
+          <div className="text-lg md:text-2xl font-semibold text-muted-foreground opacity-0 animate-fade-in-delay-1">
+            <TypeAnimation
+              sequence={[
+                "MERN Stack Developer",
+                2000,
+                "Backend API Developer",
+                2000,
+                "Full Stack Developer",
+                2000,
+                "Open Source Contributor",
+                2000,
+              ]}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+              className="text-primary"
+            />
+          </div>
+
+          {/* Description */}
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-2 leading-relaxed">
+            I am a{" "}
+            <span className="text-primary font-semibold">
+              MERN Stack Developer
+            </span>{" "}
+            passionate about building{" "}
+            <span className="text-foreground font-medium">
+              scalable, high-performance full-stack web applications
+            </span>
+            . I specialize in developing{" "}
+            <span className="text-foreground font-medium">
+              secure RESTful & GraphQL APIs
+            </span>
+            , integrating modern cloud services, and crafting{" "}
+            <span className="text-foreground font-medium">
+              responsive user interfaces
+            </span>{" "}
+            using <span className="text-primary font-semibold">React</span> and{" "}
+            <span className="text-primary font-semibold">Tailwind CSS</span>.
           </p>
 
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="cosmic-button">
-              View My Work
+          {/* CTA buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 opacity-0 animate-fade-in-delay-3">
+            <a
+              href="#projects"
+              className="cosmic-button inline-flex items-center gap-1.5"
+            >
+              View My Projects
+              <ChevronRight size={15} />
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-2.5 rounded-full border border-border hover:border-primary text-foreground/80 hover:text-primary transition-all duration-300 font-medium hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5 text-sm"
+            >
+              Let&apos;s Connect
             </a>
           </div>
-        </div>
-      </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-sm text-muted-foreground mb-2"> Scroll </span>
-        <ArrowDown className="h-5 w-5 text-primary" />
+          {/* Social links — CodingProfiles card style */}
+          <div className="flex justify-center gap-2.5 pt-1 opacity-0 animate-fade-in-delay-3">
+            {socialLinks.map(({ icon: Icon, href, label, hoverClass }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("mailto") ? undefined : "_blank"}
+                rel={
+                  href.startsWith("mailto") ? undefined : "noopener noreferrer"
+                }
+                className={`flex items-center gap-1.5 px-3.5 py-4 mb-12 rounded-xl bg-card border border-border/50 text-muted-foreground text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-transparent ${hoverClass}`}
+                aria-label={label}
+              >
+                <Icon size={14} />
+                <span>{label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Tech stack card — single card with accent bar matching CodingProfiles */}
+        <div className="group relative bg-card border border-border/50 rounded-2xl p-6 md:p-6 mb-8 transition-all duration-500 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5 opacity-0 animate-fade-in-delay-4">
+          {/* Gradient accent top bar */}
+          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 opacity-60" />
+
+          <p className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-4 text-center">
+            Tech Stack
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {techStack.map((tech) => (
+              <span
+                key={tech.name}
+                className={`inline-flex items-center px-2.5 py-1 text-[11px] font-medium rounded-lg ${tech.bg} ${tech.color} border ${tech.border} transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm cursor-default`}
+              >
+                {tech.name}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Role cards — same grid & card style as CodingProfiles */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 opacity-0 animate-fade-in-delay-4">
+          {roles.map(({ label, icon: Icon, color, iconColor, bgColor }) => (
+            <div
+              key={label}
+              className="group relative bg-card border border-border/50 rounded-2xl p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 hover:shadow-primary/5 text-center"
+            >
+              {/* Gradient accent top bar */}
+              <div
+                className={`absolute top-0 left-4 right-4 h-0.5 rounded-b-full bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
+              <div
+                className={`p-2 rounded-xl ${bgColor} group-hover:scale-110 transition-transform duration-300 w-fit mx-auto mb-2.5`}
+              >
+                <Icon className={`w-4 h-4 ${iconColor}`} />
+              </div>
+              <p className="text-xs font-semibold text-muted-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                {label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
