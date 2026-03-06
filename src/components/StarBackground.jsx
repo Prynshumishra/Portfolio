@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 
-// id, size, x, y, opacity, animationDuration
-// id, size, x, y, delay, animationDuration
-
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
@@ -16,45 +13,37 @@ export const StarBackground = () => {
     };
 
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const generateStars = () => {
+    // More stars, varied sizes for depth
     const numberOfStars = Math.floor(
-      (window.innerWidth * window.innerHeight) / 10000
+      (window.innerWidth * window.innerHeight) / 7000
     );
 
-    const newStars = [];
-
-    for (let i = 0; i < numberOfStars; i++) {
-      newStars.push({
-        id: i,
-        size: Math.random() * 3 + 1,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.5,
-        animationDuration: Math.random() * 4 + 2,
-      });
-    }
+    const newStars = Array.from({ length: numberOfStars }, (_, i) => ({
+      id: i,
+      size: Math.random() * 2.5 + 0.5,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      opacity: Math.random() * 0.6 + 0.2,
+      animationDuration: Math.random() * 5 + 3,
+      animationDelay: Math.random() * 4,
+    }));
 
     setStars(newStars);
   };
 
   const generateMeteors = () => {
-    const numberOfMeteors = 4;
-    const newMeteors = [];
-
-    for (let i = 0; i < numberOfMeteors; i++) {
-      newMeteors.push({
-        id: i,
-        size: Math.random() * 2 + 1,
-        x: Math.random() * 100,
-        y: Math.random() * 20,
-        delay: Math.random() * 15,
-        animationDuration: Math.random() * 3 + 3,
-      });
-    }
+    const newMeteors = Array.from({ length: 6 }, (_, i) => ({
+      id: i,
+      size: Math.random() * 1.5 + 0.5,
+      x: Math.random() * 100,
+      y: Math.random() * 30,
+      delay: Math.random() * 20,
+      animationDuration: Math.random() * 4 + 4,
+    }));
 
     setMeteors(newMeteors);
   };
@@ -72,6 +61,7 @@ export const StarBackground = () => {
             top: star.y + "%",
             opacity: star.opacity,
             animationDuration: star.animationDuration + "s",
+            animationDelay: star.animationDelay + "s",
           }}
         />
       ))}
@@ -81,11 +71,11 @@ export const StarBackground = () => {
           key={meteor.id}
           className="meteor animate-meteor"
           style={{
-            width: meteor.size * 50 + "px",
-            height: meteor.size * 2 + "px",
+            width: meteor.size * 60 + "px",
+            height: meteor.size * 1.5 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
-            animationDelay: meteor.delay,
+            animationDelay: meteor.delay + "s",
             animationDuration: meteor.animationDuration + "s",
           }}
         />

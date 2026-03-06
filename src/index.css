@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-border: hsl(var(--border));
   --color-background: hsl(var(--background));
@@ -8,7 +10,16 @@
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
   --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-input: hsl(var(--input));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -17,74 +28,106 @@
   --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
-  --animate-meteor: meteor 5s linear infinite;
+  --animate-meteor: meteor 6s linear infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
 
   @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
   }
+
   @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.8;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
+
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes meteor {
     0% {
       transform: rotate(215deg) translateX(0);
       opacity: 1;
     }
-    70% {
-      opacity: 1;
-    }
+    70% { opacity: 1; }
     100% {
-      transform: rotate(215deg) translateX(-500px);
+      transform: rotate(215deg) translateX(-600px);
       opacity: 0;
     }
+  }
+  --animate-gradient-x: gradient-x 5s ease infinite;
+
+  @keyframes gradient-x {
+    0%, 100% { background-size: 200% 200%; background-position: left center; }
+    50%       { background-size: 200% 200%; background-position: right center; }
+  }
+
+  @keyframes grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
 }
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* Light theme — soft off-white with violet accent */
+    --background: 220 20% 97%;       /* warm off-white / light gray */
+    --foreground: 228 24% 14%;       /* deep charcoal for sharp readability */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%;               /* pure white cards for separation */
+    --card-foreground: 228 24% 14%;
 
-    --primary: 250 47% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 252 56% 55%;          /* rich violet-indigo */
+    --primary-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
+    --secondary: 230 18% 93%;        /* cool light gray for chips/bg fills */
+    --secondary-foreground: 228 20% 28%;
+
+    --muted: 230 18% 93%;
+    --muted-foreground: 228 14% 45%;  /* darker than before for AA+ contrast */
+
+    --border: 230 16% 85%;           /* visible cool-gray border */
+    --input: 230 18% 92%;
   }
 
   .dark {
-    --background: 222 47% 4%;
-    --foreground: 213 31% 91%;
+    --background: 228 35% 5%;
+    --foreground: 215 25% 90%;
 
-    --card: 222 47% 8%;
+    --card: 228 30% 8%;
+    --card-foreground: 215 25% 90%;
 
-    --primary: 250 65% 65%;
-    --primary-foreground: 213 31% 91%;
+    --primary: 252 70% 68%;
+    --primary-foreground: 0 0% 100%;
 
-    --border: 217 33% 20%;
+    --secondary: 228 25% 13%;
+    --secondary-foreground: 215 20% 72%;
+
+    --muted: 228 25% 13%;
+    --muted-foreground: 215 18% 52%;
+
+    --border: 228 22% 20%;
+    --input: 228 25% 16%;
   }
 
   * {
@@ -98,15 +141,52 @@
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Light-mode card shadows for proper separation */
+  :root .bg-card,
+  :root [class*="bg-card"] {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  .dark .bg-card,
+  .dark [class*="bg-card"] {
+    box-shadow: none;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.7);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
   }
 }
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 2rem;
+  padding-inline: 1.5rem;
 
   @media (width >= 640px) {
     max-width: 640px;
+    padding-inline: 2rem;
   }
   @media (width >= 768px) {
     max-width: 768px;
@@ -123,35 +203,107 @@
 }
 
 @utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.6), 0 0 40px rgba(167, 139, 250, 0.2);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(250 100% 75%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @utility card-hover {
-  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
 }
 
 @utility gradient-border {
-  @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
-  background-clip: padding-box;
-  border: 1px solid transparent;
+  @apply relative rounded-xl;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border) / 0.7);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.08);
+  }
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
-         hover:scale-105 active:scale-95;
+  @apply px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-semibold
+         transition-all duration-300
+         hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]
+         hover:-translate-y-0.5
+         active:translate-y-0 active:shadow-none;
+}
+
+@utility section-badge {
+  @apply inline-block px-3 py-1 text-xs font-semibold tracking-widest uppercase
+         text-primary bg-primary/8 border border-primary/20 rounded-full mb-3;
 }
 
 @utility star {
   @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.35);
 }
 
 @utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  @apply absolute rounded-full;
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.4), transparent);
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Shimmer effect for buttons */
+.shimmer-overlay {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Smooth section transitions via scroll-margin */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Focus ring override for form inputs */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+/* Light mode footer & navbar shadows for separation */
+:root footer {
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.04);
+}
+.dark footer {
+  box-shadow: none;
+}
+
+/* Responsive typography fine-tuning */
+@media (max-width: 480px) {
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 1.75rem !important; }
+  section { padding-top: 4rem; padding-bottom: 4rem; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  section { padding-top: 5rem; padding-bottom: 5rem; }
+}
+
+/* Smooth card interactions */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
 }
 
 #root {
