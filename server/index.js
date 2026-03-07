@@ -2,7 +2,7 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
-
+import rateLimit from "express-rate-limit";
 dotenv.config();
 
 const app = express();
