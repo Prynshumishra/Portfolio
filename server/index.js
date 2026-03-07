@@ -9,9 +9,33 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ── Middleware ──────────────────────────────────────────────
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
-app.use(express.json());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://priyanshumishra.vercel.app"
+];
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 50,
+});
+
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST"],
+    credentials: true
+  })
+);
+
+app.use(express.json());
+app.use("/api/contact", limiter);
 
 app.get("/", (req, res) => {
   res.send("Portfolio Contact API is running 🚀");
@@ -47,6 +71,7 @@ app.post("/api/contact", async (req, res) => {
         pass: process.env.EMAIL_PASS, // Gmail App Password (not your main password)
       },
     });
+    await transporter.verify();
 
     // ── Email to you (portfolio owner) ──
     await transporter.sendMail({
@@ -126,7 +151,7 @@ app.post("/api/contact", async (req, res) => {
 
     return res.status(200).json({ success: true, message: "Email sent successfully." });
   } catch (err) {
-    console.error("Email error:", err);
+    console.error("Email error:", err.message);
     return res.status(500).json({ error: "Failed to send email. Please try again." });
   }
 });
