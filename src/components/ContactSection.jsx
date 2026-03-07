@@ -166,7 +166,9 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-  const response = await fetch("https://portfolio-kjc5.onrender.com/api/contact", {
+  const response = await fetch(
+  `${import.meta.env.VITE_API_URL}/api/contact`,
+  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
