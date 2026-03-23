@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import {
   ArrowDown,
   Github,
@@ -240,7 +241,7 @@ export const HeroSection = () => {
                 rel={
                   href.startsWith("mailto") ? undefined : "noopener noreferrer"
                 }
-                className={`flex items-center gap-1.5 px-3.5 py-4 mb-12 rounded-xl bg-card border border-border/50 text-muted-foreground text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-transparent ${hoverClass}`}
+                className={`flex items-center gap-1.5 px-3.5 py-4 mb-12 glass-card text-muted-foreground text-xs font-medium transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 ${hoverClass}` }
                 aria-label={label}
               >
                 <Icon size={14} />
@@ -251,7 +252,12 @@ export const HeroSection = () => {
         </div>
 
         {/* Tech stack card — single card with accent bar matching CodingProfiles */}
-        <div className="group relative bg-card border border-border/50 rounded-2xl p-6 md:p-6 mb-8 transition-all duration-500 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5 opacity-0 animate-fade-in-delay-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="group relative glass-card p-6 md:p-6 mb-8"
+        >
           {/* Gradient accent top bar */}
           <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 opacity-60" />
 
@@ -268,14 +274,17 @@ export const HeroSection = () => {
               </span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Role cards — same grid & card style as CodingProfiles */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 opacity-0 animate-fade-in-delay-4">
-          {roles.map(({ label, icon: Icon, color, iconColor, bgColor }) => (
-            <div
+          {roles.map(({ label, icon: Icon, color, iconColor, bgColor }, index) => (
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
               key={label}
-              className="group relative bg-card border border-border/50 rounded-2xl p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:border-primary/30 hover:shadow-primary/5 text-center"
+              className="group relative glass-card glass-card-hover p-4 text-center"
             >
               {/* Gradient accent top bar */}
               <div
@@ -289,7 +298,7 @@ export const HeroSection = () => {
               <p className="text-xs font-semibold text-muted-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
                 {label}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

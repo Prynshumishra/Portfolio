@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github, Star } from "lucide-react";
 
 const projects = [
@@ -57,12 +58,23 @@ export const ProjectsSection = () => {
       <div className="container mx-auto max-w-7xl relative">
         {/* Section header — same pattern as CodingProfiles */}
         <div className="text-center mb-14">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-2">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary text-sm font-semibold tracking-widest uppercase mb-2"
+          >
             What I&apos;ve Built
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold">
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl font-bold"
+          >
             Featured <span className="text-primary">Projects</span>
-          </h2>
+          </motion.h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
             Full-stack MERN applications built with attention to scalability,
             clean architecture, and modern UI/UX.
@@ -71,10 +83,15 @@ export const ProjectsSection = () => {
 
         {/* Project cards — same grid & card style as CodingProfiles */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <div
+          {projects.map((project, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
               key={project.id}
-              className={`group relative bg-card border border-border/50 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${project.hoverBorder} ${project.hoverShadow}`}
+              className={`group relative glass-card glass-card-hover overflow-hidden ${project.hoverBorder} ${project.hoverShadow}`}
             >
               {/* Gradient accent top bar */}
               <div
@@ -95,12 +112,13 @@ export const ProjectsSection = () => {
               )}
 
               {/* Project image */}
-              <div className="h-44 overflow-hidden">
+              <div className="h-44 overflow-hidden relative">
+                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
                 <img
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
 
@@ -155,7 +173,7 @@ export const ProjectsSection = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

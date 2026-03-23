@@ -167,7 +167,7 @@ export const SkillsSection = () => {
               <div
                 key={skill.name}
                 className={cn(
-                  "group relative bg-card border border-border/50 rounded-2xl p-5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl",
+                  "group relative glass-card glass-card-hover p-5",
                   meta.hoverBorder,
                   meta.hoverShadow
                 )}

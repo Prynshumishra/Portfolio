@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 
 const stats = [
-  { value: "1+", label: "Years Experience", color: "text-violet-500" },
+  { value: "<1", label: "Years Experience", color: "text-violet-500" },
   { value: "8+", label: "Projects Delivered", color: "text-blue-500" },
   { value: "15+", label: "Technologies", color: "text-emerald-500" },
   { value: "10+", label: "REST APIs Built", color: "text-amber-500" },
@@ -117,7 +117,7 @@ export const AboutSection = () => {
         </div>
 
         {/* ── Bio + Photo + Stats card ── */}
-        <div className="group relative bg-card border border-border/50 rounded-2xl p-6 md:p-8 transition-all duration-500 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5 mb-8">
+        <div className="group relative glass-card p-6 md:p-8 mb-8">
           {/* Gradient accent top bar */}
           <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 to-blue-500 opacity-60" />
 
@@ -178,44 +178,47 @@ export const AboutSection = () => {
                 <h3 className="text-xl md:text-2xl font-bold">
                   MERN Stack Developer | Problem Solver
                 </h3>
-                <p className="text-sm text-left text-muted-foreground leading-relaxed">
-                  I am a passionate MERN Stack Developer specializing in
-                  building scalable full-stack web applications using MongoDB,
-                  Express.js, React.js, and Node.js. With over{" "}
-                  <span className="text-foreground font-medium">
-                    10+ months of experience as a Software Development Intern
-                  </span>
-                  , I have successfully delivered{" "}
-                  <span className="text-foreground font-medium">
-                    three full-stack client websites
-                  </span>
-                  , transforming business requirements into reliable,
-                  production-ready digital solutions.
-                </p>
+               <p className="text-sm text-left text-muted-foreground leading-relaxed">
+  I am a passionate MERN Stack Developer specializing in
+  building scalable full-stack web applications using MongoDB,
+  Express.js, React.js, and Node.js. With over{" "}
+  <span className="text-foreground font-medium">
+    10+ months of experience as a Software Development Intern
+  </span>
+  , I have successfully delivered{" "}
+  <span className="text-foreground font-medium">
+    three full-stack client websites
+  </span>
+  , transforming business requirements into reliable,
+  production-ready digital solutions.
+</p>
 
-                <p className="text-sm text-left text-muted-foreground leading-relaxed">
-                  My experience includes developing high-performance  {" "}
-                  <span className="text-foreground font-medium ">
-                     RESTful and GraphQL APIs
-                  </span>
-                  , integrating third-party services, and building modern,
-                  responsive user interfaces using{" "}
-                  <span className="text-primary font-medium">React</span>,{" "} <span className="text-primary font-medium">NextJS</span>{" "} and {" "}
-                  <span className="text-primary font-medium">Tailwind CSS</span>
-                  . I focus on writing clean, maintainable code while ensuring
-                  scalability, security, and performance in every project.
-                </p>
+<p className="text-sm text-left text-muted-foreground leading-relaxed">
+  My experience includes developing high-performance{" "}
+  <span className="text-foreground font-medium ">
+    RESTful and GraphQL APIs
+  </span>
+  , integrating third-party services, and building modern,
+  responsive user interfaces using{" "}
+  <span className="text-primary font-medium">React</span>,{" "}
+  <span className="text-primary font-medium">NextJS</span>{" "}
+  and{" "}
+  <span className="text-primary font-medium">Tailwind CSS</span>.
+  I also leverage AI-powered tools like{" "}
+  <span className="text-foreground font-medium">Cursor</span>,{" "}
+  <span className="text-foreground font-medium">Claude</span>,{" "}
+  <span className="text-foreground font-medium">Antigravity</span>, and{" "}
+  <span className="text-foreground font-medium">GitHub Copilot</span>{" "}
+  to enhance UI/UX design, speed up development, and improve code quality.
+</p>
 
-                <p className="text-sm text-left text-muted-foreground leading-relaxed">
-                  In addition to the MERN stack, I am currently {" "}
-                  <span className="text-foreground font-medium ">
-                    learning PHP and working with WordPress
-                  </span> {" "}
-                  to expand my full-stack capabilities and understand modern
-                  CMS-based web development. From designing intuitive React
-                  frontends to architecting robust Node.js backends, I enjoy
-                  building end-to-end web solutions using modern technologies.
-                </p>
+<p className="text-sm text-left text-muted-foreground leading-relaxed">
+ I am expanding my full-stack expertise by learning{" "}
+  <span className="text-foreground font-medium ">
+    PHP and WordPress
+  </span>{" "}
+  , while building end-to-end solutions from intuitive React frontends to scalable Node.js backends.
+</p>
               </div>
 
               {/* Stats grid — same style as CodingProfiles stats */}
@@ -260,7 +263,7 @@ export const AboutSection = () => {
         </div>
 
         {/* ── Education card ── */}
-        <div className="group relative bg-card border border-border/50 rounded-2xl p-6 md:p-8 transition-all duration-500 hover:shadow-xl hover:border-primary/30 hover:shadow-primary/5 mb-8">
+        <div className="group relative glass-card p-6 md:p-8 mb-8">
           {/* Gradient accent top bar */}
           <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-emerald-500 to-blue-500 opacity-60" />
 
@@ -376,7 +379,7 @@ export const AboutSection = () => {
             }) => (
               <div
                 key={title}
-                className={`group relative bg-card border border-border/50 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl ${hoverBorder} ${hoverShadow}`}
+                className={`group relative glass-card glass-card-hover p-6 ${hoverBorder} ${hoverShadow}`}
               >
                 {/* Gradient accent top bar */}
                 <div

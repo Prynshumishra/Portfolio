@@ -1,13 +1,16 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About Me", href: "#about" },
-  { name: "Tech Stack", href: "#skills" },
   { name: "Coding Profiles", href: "#coding" },
+  { name: "Tech Stack", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  
   { name: "Contact", href: "#contact" },
 ];
 
@@ -49,15 +52,18 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-500",
+          "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500 rounded-2xl",
           isScrolled
-            ? "py-2.5 bg-background/95 backdrop-blur-xl shadow-md border-b border-border/60"
-            : "py-4"
+            ? "py-2.5 bg-background/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-border/60"
+            : "py-4 bg-transparent border border-transparent"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
+        <div className="mx-auto px-4 flex items-center justify-between gap-4">
 
           {/* Logo */}
           <a className="flex items-center gap-2 group shrink-0" href="#hero">
@@ -113,7 +119,7 @@ export const Navbar = () => {
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Backdrop */}
       <div
