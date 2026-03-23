@@ -34,17 +34,18 @@ const experiences = [
 
 const ExperienceCard = ({ exp }) => {
   return (
-    <div className="glass-card glass-card-hover p-6 md:p-8 relative group overflow-hidden w-full text-left">
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className="bg-card/40 backdrop-blur-3xl border border-white/5 hover:border-blue-500/30 shadow-2xl hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] p-6 md:p-8 rounded-3xl relative group overflow-hidden w-full text-left transition-all duration-500">
+      {/* Subtle Glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       {/* Header: Date on left, Role on right (left-aligned text) */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6 relative z-10">
         <div className="md:w-1/2 flex justify-start md:justify-end text-left">
-          <h4 className="text-xl md:text-2xl font-bold text-amber-500 mb-1 md:w-full md:max-w-[250px] leading-snug">
+          <h4 className="text-xl md:text-2xl font-bold text-foreground mb-1 md:w-full md:max-w-[250px] leading-snug">
             {exp.role}
           </h4>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-semibold text-amber-500 whitespace-nowrap shrink-0 mt-1">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-white/10 text-xs font-medium text-blue-400 whitespace-nowrap shrink-0 mt-1">
           <Calendar size={13} />
           {exp.duration}
         </div>
@@ -64,8 +65,8 @@ const ExperienceCard = ({ exp }) => {
       {/* Bullet points */}
       <ul className="space-y-3 mb-6">
         {exp.description.map((point, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed flex-row">
-            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0 shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
+          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed flex-row relative z-10">
+            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
             <span className="text-left text-[14px] flex-1">{point}</span>
           </li>
         ))}
@@ -73,11 +74,11 @@ const ExperienceCard = ({ exp }) => {
 
       {/* Skills */}
       {exp.skills && (
-        <div className="flex flex-wrap gap-2 pt-5 border-t border-border/50">
+        <div className="flex flex-wrap gap-2 pt-5 border-t border-white/5 relative z-10">
           {exp.skills.map((skill, i) => (
             <span 
               key={i} 
-              className="px-2.5 py-1 text-[11px] font-semibold text-primary bg-primary/10 border border-primary/20 rounded-full"
+              className="px-2.5 py-1 text-[11px] font-medium text-foreground/80 bg-secondary/50 border border-white/5 rounded-lg"
             >
               {skill}
             </span>
@@ -91,24 +92,32 @@ const ExperienceCard = ({ exp }) => {
 export const ExperienceSection = () => {
   return (
     <section id="experience" className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/3" />
+      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/3" />
+
+      {/* Grid Pattern */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03] z-0" 
+        className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.05] z-0" 
         style={{
-          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
           backgroundSize: `40px 40px`
         }} 
       />
       
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="container mx-auto max-w-6xl relative z-10">
         
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            My Experience
+          </div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
+            className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground"
           >
             Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Journey</span>
           </motion.h2>
@@ -117,9 +126,9 @@ export const ExperienceSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto"
+            className="text-muted-foreground text-base max-w-xl mx-auto leading-relaxed"
           >
-            Exploring the path of growth and learning
+            A timeline of my professional growth, delivering full-stack applications and scaling web experiences for real-world impact.
           </motion.p>
         </div>
 
@@ -131,8 +140,8 @@ export const ExperienceSection = () => {
           transition={{ delay: 0.2 }}
           className="flex items-center gap-3 mb-16 md:justify-center ml-2 md:ml-0"
         >
-          <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.15)] shrink-0">
-            <Briefcase className="text-amber-500 w-6 h-6" />
+          <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-orange-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.15)] shrink-0">
+            <Briefcase className="text-blue-500 w-6 h-6" />
           </div>
           <h3 className="text-2xl font-bold tracking-tight text-foreground">Work Experience</h3>
         </motion.div>
@@ -145,7 +154,7 @@ export const ExperienceSection = () => {
             whileInView={{ height: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-amber-400 via-amber-500 to-transparent shadow-[0_0_10px_rgba(245,158,11,0.5)] md:-translate-x-1/2 z-0" 
+            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-orange-400 via-orange-500 to-transparent shadow-[0_0_10px_rgba(249,115,22,0.3)] md:-translate-x-1/2 z-0" 
           />
 
           <div className="space-y-12">
@@ -156,7 +165,7 @@ export const ExperienceSection = () => {
                 <div key={exp.id} className="relative flex flex-col md:flex-row items-center w-full">
                   
                   {/* Timeline dot */}
-                  <div className="absolute left-[28px] md:left-1/2 w-5 h-5 rounded-full bg-background border-4 border-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.8)] z-10 transform -translate-x-1/2 top-6 md:top-1/2 md:-translate-y-1/2" />
+                  <div className="absolute left-[28px] md:left-1/2 w-4 h-4 rounded-full bg-background border-[3px] border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.5)] z-10 transform -translate-x-1/2 top-6 md:top-1/2 md:-translate-y-1/2" />
 
                   {/* Desktop Left Card */}
                   <motion.div 

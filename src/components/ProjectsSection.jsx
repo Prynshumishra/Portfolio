@@ -1,192 +1,147 @@
-import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink, Github, Star } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
     id: 1,
     title: "Prescripto Healthcare",
-    description:
-      "Healthcare management platform connecting doctors and patients with appointment booking, admin dashboard, and secure REST API backend with Cloudinary integration.",
     image: "/projects/prescipto.png",
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST API", "JWT Auth", "Cloudinary"],
-    demoUrl: "https://prescripto-hs.vercel.app/",
-    githubUrl: "https://github.com/Prynshumishra/HealthCare-System",
-    featured: false,
-    color: "from-emerald-500 to-teal-500",
-    hoverBorder: "hover:border-emerald-400/50",
-    hoverShadow: "hover:shadow-emerald-500/10",
-    
+    desc: "Prescripto is a modern healthcare platform designed to simplify the interaction between patients, doctors, and administrators.", 
+    tech: ["React.js", "Context API", "Node.js", "MongoDB", "Express", "TailwindCSS", "JWT Authentication", "REST APIs", "Multer", "Bcrypt"],
+    github: "https://github.com/Prynshumishra/HealthCare-System",
+    demo: "https://prescripto-hs.vercel.app/"
   },
   {
     id: 2,
-    title: "Work Sync",
-    description:
-      "Real-time collaboration platform for syncing repositories and project data across multiple services. Built with the MERN stack, GraphQL APIs, and secure authentication.",
-    image: "/projects/project3.png",
-    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "GraphQL", "JWT Auth", "Tailwind CSS"],
-    demoUrl: "https://work-sync.vercel.app/",
-    githubUrl: "https://github.com/Prynshumishra/WORK-SYNC/",
-    featured: true,
-    color: "from-violet-500 to-purple-600",
-    hoverBorder: "hover:border-violet-400/50",
-    hoverShadow: "hover:shadow-violet-500/10",
+    title: "Portfolio",
+    image: "/projects/Portfolio.png",
+    desc: " A modern Developer Portfolio Website built to showcase my projects, technical skills, coding profiles, and experience as a MERN Stack Developer.", 
+    tech: ["React.js", "Framer Motion", "TailwindCSS", "Lucide React", "Node.js", "Express.js"],
+    github: "https://github.com/Prynshumishra/Portfolio",
+    demo: "https://portfolio-priyanshumishra9.vercel.app/"
   },
-  
   {
     id: 3,
-    title: "Ride Share",
-    description:
-      "MERN-based ride-sharing application with RESTful APIs, JWT authentication, MongoDB integration, and features like ride matching, booking, and real-time communication.",
+    title: "Ride Share App",
     image: "/projects/RideShare.png",
-    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "JWT", "REST API", "ShadCN UI", "Cloudinary"],
-    demoUrl: "https://ride-share-pm.vercel.app/",
-    githubUrl: "https://github.com/Prynshumishra/RideShare",
-    featured: false,
-    color: "from-blue-500 to-cyan-500",
-    hoverBorder: "hover:border-blue-400/50",
-    hoverShadow: "hover:shadow-blue-500/10",
+    desc: " RideShare is a full-stack ride-sharing platform that intelligently connects people traveling in the same direction — making commuting affordable, efficient, and eco-friendly.", 
+    tech: ["MERN Stack", "Tailwind CSS", "ShadCN UI", "Lucide Icons", "JWT Authentication", "REST APIs", "Multer", "Cloudinary", "Bcrypt"],
+    github: "https://github.com/Prynshumishra/RideShare",
+    demo: "https://ride-share-pm.vercel.app/"
+  },
+  {
+    id: 4,
+    title: "Channel Flow",
+    image: "/projects/channelflow.png",
+    desc: "A modern, full-stack Hotel Channel Manager web application designed to streamline hotel operations including booking management, inventory tracking, and real-time availability visualization.", 
+    tech: ["Next.js 15", "React 19", "Node.js", "MongoDB", "TailwindCSS", "JWT Auth"],
+    github: "https://github.com/Prynshumishra/channelflow",
+    demo: "https://channelflow-delta.vercel.app/"
   },
 ];
 
 export const ProjectsSection = () => {
-  return (
-    <section id="projects" className="py-12 px-4 relative overflow-hidden">
-      {/* Background decoration — mirrors CodingProfilesSection */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-primary/3 to-transparent pointer-events-none" />
+  // No longer needed: Auto Slide and hooks for carousel
+  // The layout is now a standard responsive Grid
 
+  return (
+    <section id="projects" className="py-24 px-4 relative overflow-hidden">
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
+      
       <div className="container mx-auto max-w-7xl relative">
-        {/* Section header — same pattern as CodingProfiles */}
-        <div className="text-center mb-14">
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-primary text-sm font-semibold tracking-widest uppercase mb-2"
-          >
-            What I&apos;ve Built
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold"
-          >
-            Featured <span className="text-primary">Projects</span>
-          </motion.h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-            Full-stack MERN applications built with attention to scalability,
-            clean architecture, and modern UI/UX.
+        {/* Section header */}
+        <div className="text-center mb-16 md:mb-24">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            My Portfolio
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Projects</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base leading-relaxed">
+            A selection of my best work, showcasing full-stack capabilities, modern UI/UX design, and scalable architecture built for production.
           </p>
         </div>
 
-        {/* Project cards — same grid & card style as CodingProfiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid Layout instead of Carousel */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
           {projects.map((project, index) => (
             <motion.div
+              key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-              key={project.id}
-              className={`group relative glass-card glass-card-hover overflow-hidden ${project.hoverBorder} ${project.hoverShadow}`}
+              className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 flex flex-col"
             >
               {/* Gradient accent top bar */}
-              <div
-                className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10`}
-              />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
 
-              {/* Ambient glow behind card */}
-              <div
-                className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10 blur-sm`}
-              />
-
-              {/* Featured badge */}
-              {project.featured && (
-                <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold shadow-lg">
-                  <Star size={11} className="fill-current" />
-                  Featured
-                </div>
-              )}
-
-              {/* Project image */}
-              <div className="h-44 overflow-hidden relative">
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay" />
+              {/* Image Section */}
+              <div className="relative h-[200px] sm:h-[280px] w-full overflow-hidden bg-muted/30">
                 <img
                   src={project.image}
                   alt={project.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/600x400/1a1a2e/4d4dff?text=" + encodeURIComponent(project.title);
+                  }}
                 />
+                {/* Dark gradient fade over the bottom of the image for better text blending */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card to-transparent" />
               </div>
 
-              {/* Card body */}
-              <div className="p-6">
-                {/* Title */}
-                <h3 className="font-bold text-base mb-2 group-hover:text-primary transition-colors duration-300">
+              {/* Content Section */}
+              <div className="p-6 md:p-8 flex flex-col flex-1 relative z-10">
+                <h3 className="text-2xl md:text-3xl font-black mb-3 text-foreground tracking-tight group-hover:text-blue-400 transition-colors duration-300">
                   {project.title}
                 </h3>
+                
+                {project.desc && (
+                  <p className="text-sm md:text-base text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
+                    {project.desc}
+                  </p>
+                )}
 
-                {/* Description */}
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                  {project.description}
-                </p>
-
-                {/* Tech tags */}
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.tags.slice(0, 5).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-primary/8 text-primary border border-primary/15 transition-colors duration-200 group-hover:bg-primary/12 group-hover:border-primary/25"
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                  {project.tech.map((tech) => (
+                    <span 
+                      key={tech} 
+                      className="px-3 py-1.5 rounded-xl text-[11px] font-bold bg-blue-500/10 border border-white/5 text-blue-400"
                     >
-                      {tag}
+                      {tech}
                     </span>
                   ))}
-                  {project.tags.length > 5 && (
-                    <span className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-secondary text-muted-foreground border border-border/30">
-                      +{project.tags.length - 5}
-                    </span>
-                  )}
                 </div>
 
-                {/* Action links */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/30 group-hover:border-border/60 transition-colors duration-300">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-all duration-200 hover:gap-2"
+                {/* Action Links */}
+                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 flex-1 py-3 rounded-xl bg-secondary/50 hover:bg-secondary text-sm font-bold transition-all border border-white/5 hover:border-white/10"
                   >
-                    <Github size={13} />
-                    Source Code
+                    <Github className="w-4 h-4" />
+                    Code
                   </a>
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary/70 group-hover:text-primary transition-all duration-200 hover:gap-2"
+                  <a 
+                    href={project.demo} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 flex-1 py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-500 text-sm font-bold transition-all shadow-lg shadow-blue-500/20"
                   >
+                    <ExternalLink className="w-4 h-4" />
                     Live Demo
-                    <ExternalLink size={11} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Bottom CTA — consistent with rest of the site */}
-        <div className="text-center mt-14">
-          <a
-            className="cosmic-button inline-flex items-center gap-2"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/Prynshumishra"
-          >
-            More on GitHub <ArrowRight size={16} />
-          </a>
         </div>
       </div>
     </section>

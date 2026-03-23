@@ -13,6 +13,19 @@ import {
 import { TypeAnimation } from "react-type-animation";
 
 const techStack = [
+  
+  {
+    name: "C++",
+    color: "text-violet-500",
+    bg: "bg-violet-500/10",
+    border: "border-violet-500/20",
+  },
+  {
+    name: "Python",
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500/20",
+  },  
   {
     name: "React.js",
     color: "text-sky-500",
@@ -24,6 +37,12 @@ const techStack = [
     color: "text-emerald-500",
     bg: "bg-emerald-500/10",
     border: "border-emerald-500/20",
+  },
+  {
+    name: "NextJS",
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500/20",
   },
   {
     name: "MongoDB",
@@ -49,6 +68,7 @@ const techStack = [
     bg: "bg-cyan-500/10",
     border: "border-cyan-500/20",
   },
+  
   {
     name: "GraphQL",
     color: "text-pink-500",
@@ -61,18 +81,7 @@ const techStack = [
     bg: "bg-amber-500/10",
     border: "border-amber-500/20",
   },
-  {
-    name: "Python",
-    color: "text-yellow-500",
-    bg: "bg-yellow-500/10",
-    border: "border-yellow-500/20",
-  },
-  {
-    name: "C++",
-    color: "text-violet-500",
-    bg: "bg-violet-500/10",
-    border: "border-violet-500/20",
-  },
+  
   {
     name: "Docker",
     color: "text-blue-400",
@@ -112,30 +121,30 @@ const roles = [
   {
     label: "MERN Stack Developer",
     icon: Code2,
-    color: "from-violet-500 to-purple-500",
-    iconColor: "text-violet-500",
-    bgColor: "bg-violet-500/10",
+    color: "from-blue-400 to-indigo-500",
+    iconColor: "text-blue-400",
+    bgColor: "bg-blue-500/10",
   },
   {
     label: "Backend API Developer",
     icon: Server,
-    color: "from-emerald-500 to-teal-500",
-    iconColor: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
+    color: "from-indigo-400 to-violet-500",
+    iconColor: "text-indigo-400",
+    bgColor: "bg-indigo-500/10",
   },
   {
     label: "Database & System Design",
     icon: Database,
-    color: "from-amber-500 to-orange-500",
-    iconColor: "text-amber-500",
-    bgColor: "bg-amber-500/10",
+    color: "from-cyan-400 to-blue-500",
+    iconColor: "text-cyan-400",
+    bgColor: "bg-cyan-500/10",
   },
   {
     label: "Scalable Web Apps",
     icon: Cpu,
-    color: "from-blue-500 to-cyan-500",
-    iconColor: "text-blue-500",
-    bgColor: "bg-blue-500/10",
+    color: "from-sky-400 to-cyan-500",
+    iconColor: "text-sky-400",
+    bgColor: "bg-sky-500/10",
   },
 ];
 
@@ -145,28 +154,27 @@ export const HeroSection = () => {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-12 mt-6 md:pt-28 overflow-hidden"
     >
-      {/* Background decoration — matches CodingProfiles */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none animate-pulse-subtle" />
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/3 translate-y-1/3" />
+      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
       <div className="container mx-auto max-w-5xl relative z-10">
         {/* Top section: Name + Typing + CTAs */}
-        <div className="text-center mb-10 space-y-5">
+        <div className="text-center mb-10 space-y-5 mt-10">
           {/* Availability badge */}
-          <div className="opacity-0 animate-fade-in inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/8 text-emerald-600 dark:text-emerald-400 text-xs font-semibold shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="opacity-0 animate-fade-in inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             Available for hire
           </div>
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-none opacity-0 animate-fade-in">
-            <span className="block text-foreground/70 text-2xl md:text-3xl font-semibold mb-3">
+            <span className="block text-foreground/70 text-2xl md:text-3xl font-medium mb-3">
               Hi, I&apos;m
             </span>
-            <span className="text-primary">Priyanshu</span>
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
+            <span className="text-foreground">Priyanshu</span>
+            <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
               {" "}
               Mishra
             </span>
@@ -215,24 +223,24 @@ export const HeroSection = () => {
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 opacity-0 animate-fade-in-delay-3">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-6 opacity-0 animate-fade-in-delay-3">
             <a
               href="#projects"
-              className="cosmic-button inline-flex items-center gap-1.5"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-bold tracking-wide transition-all shadow-[0_0_30px_rgba(var(--primary),0.3)] hover:shadow-[0_0_40px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95"
             >
               View My Projects
-              <ChevronRight size={15} />
+              <ChevronRight size={18} />
             </a>
             <a
               href="#contact"
-              className="px-6 py-2.5 rounded-full border border-border hover:border-primary text-foreground/80 hover:text-primary transition-all duration-300 font-medium hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5 text-sm"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-card/80 backdrop-blur-xl border-2 border-border/50 text-foreground font-bold tracking-wide transition-all hover:bg-secondary/80 hover:border-primary/50 hover:scale-105 active:scale-95 shadow-xl"
             >
-              Let&apos;s Connect
+               Let&apos;s Connect
             </a>
           </div>
 
           {/* Social links — CodingProfiles card style */}
-          <div className="flex justify-center gap-2.5 pt-1 opacity-0 animate-fade-in-delay-3">
+          <div className="flex flex-wrap justify-center gap-3 pt-4 mb-12 opacity-0 animate-fade-in-delay-3">
             {socialLinks.map(({ icon: Icon, href, label, hoverClass }) => (
               <a
                 key={label}
@@ -241,10 +249,10 @@ export const HeroSection = () => {
                 rel={
                   href.startsWith("mailto") ? undefined : "noopener noreferrer"
                 }
-                className={`flex items-center gap-1.5 px-3.5 py-4 mb-12 glass-card text-muted-foreground text-xs font-medium transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 ${hoverClass}` }
+                className={`flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/20 shadow-xl text-muted-foreground text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-primary/10 ${hoverClass}`}
                 aria-label={label}
               >
-                <Icon size={14} />
+                <Icon size={16} />
                 <span>{label}</span>
               </a>
             ))}
@@ -256,10 +264,10 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="group relative glass-card p-6 md:p-6 mb-8"
+          className="group relative bg-card/60 backdrop-blur-3xl border border-white/10 shadow-2xl rounded-3xl p-6 md:p-8 mb-10 overflow-hidden"
         >
           {/* Gradient accent top bar */}
-          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 opacity-60" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-80" />
 
           <p className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-4 text-center">
             Tech Stack
@@ -284,11 +292,11 @@ export const HeroSection = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.8 + index * 0.1 }}
               key={label}
-              className="group relative glass-card glass-card-hover p-4 text-center"
+              className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 hover:border-blue-500/30 shadow-xl hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] rounded-3xl p-5 text-center transition-all duration-300 overflow-hidden"
             >
               {/* Gradient accent top bar */}
               <div
-                className={`absolute top-0 left-4 right-4 h-0.5 rounded-b-full bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
               />
               <div
                 className={`p-2 rounded-xl ${bgColor} group-hover:scale-110 transition-transform duration-300 w-fit mx-auto mb-2.5`}

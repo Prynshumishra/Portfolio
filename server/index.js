@@ -2,11 +2,28 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+
+// Define Contact Model
+const contactSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  subject: { type: String, required: true },
+  message: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+const Contact = mongoose.model("Contact", contactSchema);
 
 // ✅ Allowed Origins
 const allowedOrigins = [
@@ -51,11 +68,17 @@ app.post("/api/contact", async (req, res) => {
   }
 
   try {
+    // 1. Save Data to MongoDB
+    const newContact = new Contact({ name, email, subject, message });
+    await newContact.save();
+    console.log("✅ Contact form saved to MongoDB:", newContact._id);
+
+    // 2. Send notification to owner
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      to: process.env.EMAIL_TO || process.env.EMAIL_USER,
+      subject: `New Portfolio Message: ${subject}`,
+      text: `You have received a new contact submission.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
     });
 
     await transporter.sendMail({

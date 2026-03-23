@@ -2,11 +2,11 @@ import { ArrowUp, ArrowRight, Globe, Heart, Mail, MapPin, Phone } from "lucide-r
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const footerLinks = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Coding", href: "#coding" },
+  { name: "About Me", href: "#about" },
+   { name: "Coding Profiles", href: "#coding" },
+  { name: "Tech Stack", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -39,9 +39,13 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="relative border-t border-border/60 bg-card/50 backdrop-blur-sm overflow-hidden">
+    <footer className="relative border-t-2 border-border/20 bg-background/90 backdrop-blur-2xl overflow-hidden mt-12 z-10">
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2" />
+
       {/* Top accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
 
       <div className="container mx-auto max-w-7xl pt-14 pb-6">
         {/* ── Main grid ──
@@ -54,19 +58,19 @@ text-center lg:text-left items-start justify-items-center lg:justify-items-start
           {/* ── Brand ── */}
         <div className="md:col-span-3 lg:col-span-1 flex flex-col items-center lg:items-start gap-4">
             <a href="#hero" className="flex items-center gap-2 group">
-              <span className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-black group-hover:rotate-6 transition-transform duration-300 shadow-sm shadow-primary/30">
+              <span className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black group-hover:rotate-6 transition-transform duration-300 shadow-sm shadow-blue-500/30">
                 P
               </span>
               <span className="flex items-center text-lg font-bold tracking-tight">
   <span className="text-foreground">Priyanshu</span>
-  <span className="text-primary ml-1">Mishra</span>
+  <span className="text-blue-500 ml-1">Mishra</span>
 </span>
             </a>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
              MERN Stack Developer building scalable full-stack applications with modern technologies, delivering high-performance solutions and seamless user experiences.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-white/5 text-blue-400 text-xs font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               Open to opportunities
             </div>
           </div>
@@ -82,7 +86,7 @@ text-center lg:text-left items-start justify-items-center lg:justify-items-start
       <li key={link.name}>
         <a
           href={link.href}
-          className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+          className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-blue-400 transition-colors duration-200"
         >
           {link.name}
         </a>
@@ -110,14 +114,14 @@ text-center lg:text-left items-start justify-items-center lg:justify-items-start
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="inline-flex items-start gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group max-w-full"
+            className="inline-flex items-start gap-2 text-sm text-muted-foreground hover:text-blue-400 transition-colors duration-200 group max-w-full"
           >
-            <Icon size={13} className="mt-0.5 shrink-0 text-primary/60 group-hover:text-primary transition-colors" />
+            <Icon size={13} className="mt-0.5 shrink-0 text-blue-500/60 group-hover:text-blue-400 transition-colors" />
             <span className="break-all">{value}</span>
           </a>
         ) : (
           <span className="inline-flex items-start gap-2 text-sm text-muted-foreground">
-            <Icon size={13} className="mt-0.5 shrink-0 text-primary/60" />
+            <Icon size={13} className="mt-0.5 shrink-0 text-blue-500/60" />
             {value}
           </span>
         )}
@@ -160,7 +164,7 @@ text-center lg:text-left items-start justify-items-center lg:justify-items-start
           <a
             href="#hero"
             aria-label="Back to top"
-            className="p-2.5 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground border border-primary/20 hover:border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25 shrink-0"
+            className="p-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 shrink-0"
           >
             <ArrowUp size={15} />
           </a>

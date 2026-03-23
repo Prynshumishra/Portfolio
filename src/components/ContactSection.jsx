@@ -65,33 +65,33 @@ const contactInfo = [
     label: "Email",
     value: "prynshu09@gmail.com",
     href: "mailto:prynshu09@gmail.com",
-    accent: "from-violet-500 to-blue-500",
-    iconBg: "bg-violet-500/10",
-    iconColor: "text-violet-500",
-    hoverBorder: "hover:border-violet-500/40",
-    hoverShadow: "hover:shadow-violet-500/8",
+    accent: "from-blue-400 to-indigo-500",
+    iconBg: "bg-blue-500/10",
+    iconColor: "text-blue-400",
+    hoverBorder: "hover:border-blue-500/40",
+    hoverShadow: "hover:shadow-blue-500/8",
   },
   {
     icon: FaPhone,
     label: "Phone",
     value: "+91 82995 25726",
     href: "tel:+918299525726",
-    accent: "from-emerald-500 to-teal-400",
-    iconBg: "bg-emerald-500/10",
-    iconColor: "text-emerald-500",
-    hoverBorder: "hover:border-emerald-500/40",
-    hoverShadow: "hover:shadow-emerald-500/8",
+    accent: "from-indigo-400 to-violet-500",
+    iconBg: "bg-indigo-500/10",
+    iconColor: "text-indigo-400",
+    hoverBorder: "hover:border-indigo-500/40",
+    hoverShadow: "hover:shadow-indigo-500/8",
   },
   {
     icon: FaMapMarkerAlt,
     label: "Location",
     value: "Prayagraj, UP, India",
     href: null,
-    accent: "from-amber-500 to-orange-400",
-    iconBg: "bg-amber-500/10",
-    iconColor: "text-amber-500",
-    hoverBorder: "hover:border-amber-500/40",
-    hoverShadow: "hover:shadow-amber-500/8",
+    accent: "from-sky-400 to-blue-500",
+    iconBg: "bg-sky-500/10",
+    iconColor: "text-sky-400",
+    hoverBorder: "hover:border-sky-500/40",
+    hoverShadow: "hover:shadow-sky-500/8",
   },
 ];
 
@@ -235,26 +235,26 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-12 px-4 relative bg-secondary/20 overflow-hidden"
+      className="py-24 px-4 relative overflow-hidden"
     >
-      {/* Decorative background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/4 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -top-32 -right-32 w-80 h-80 bg-primary/4 rounded-full blur-3xl pointer-events-none" />
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3" />
 
-      <div className="container mx-auto max-w-7xl relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="text-primary text-xs font-bold tracking-widest uppercase mb-2">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             Let&apos;s Talk
-          </p>
-          <h2 className="text-3xl md:text-4xl font-black">
-            Get In <span className="text-primary">Touch</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
+            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Touch</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm leading-relaxed">
-            Have a MERN stack project in mind or need a full-stack developer?
-            I&apos;m always open to new opportunities and interesting
-            conversations.
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed">
+            Have a project in mind, need a developer, or just want to chat?
+            I&apos;m always open to new opportunities and interesting collaborations.
           </p>
         </div>
 
@@ -262,13 +262,13 @@ export const ContactSection = () => {
           {/* ───── Left Panel ───── */}
           <div className="lg:col-span-2 flex flex-col gap-6 w-full max-w-md mx-auto lg:mx-0">
             {/* Availability */}
-            <div className="flex items-center justify-start gap-4 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 backdrop-blur-sm">
-              <div className="p-3 rounded-xl bg-emerald-500/20 animate-pulse shrink-0">
-                <Clock size={16} className="text-emerald-500" />
+            <div className="flex items-center justify-start gap-4 p-4 rounded-2xl bg-blue-500/10 border border-white/5 backdrop-blur-sm">
+              <div className="p-3 rounded-xl bg-blue-500/20 animate-pulse shrink-0">
+                <Clock size={16} className="text-blue-400" />
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                <p className="text-sm font-semibold text-blue-400">
                   Usually responds within 24 hours
                 </p>
                 <p className="text-xs text-muted-foreground">
@@ -286,7 +286,7 @@ export const ContactSection = () => {
                   key={label}
                   href={href || undefined}
                   className={cn(
-                    "group flex items-center justify-start gap-4 p-4 glass-card glass-card-hover",
+                    "group flex items-center justify-start gap-4 p-5 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-2xl transition-all duration-300",
                     hoverBorder,
                     hoverShadow,
                   )}
@@ -319,9 +319,9 @@ export const ContactSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "group relative flex items-center gap-2.5 px-4 py-2.5 glass-card",
-                      "text-xs font-semibold text-muted-foreground overflow-hidden",
-                      "transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:text-white",
+                      "group relative flex items-center gap-2.5 px-5 py-3.5 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-2xl",
+                      "text-xs font-bold text-muted-foreground overflow-hidden",
+                      "transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:text-white",
                       hoverBorder,
                       hoverShadow,
                     )}
@@ -346,8 +346,8 @@ export const ContactSection = () => {
           </div>
 
           {/* ───── Contact Form ───── */}
-          <div className="lg:col-span-3 glass-card p-8">
-            <div className="flex flex-col items-center justify-center mb-6">
+          <div className="lg:col-span-3 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-2xl p-8 md:p-10 rounded-3xl">
+            <div className="flex flex-col items-center justify-center mb-8">
               <h3 className="text-xl font-bold">Send a Message</h3>
 
               {isSuccess && (
@@ -491,8 +491,8 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 transition-all duration-300",
-                  "hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:-translate-y-0.5",
+                  "w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300",
+                  "hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] hover:-translate-y-0.5",
                   "disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0",
                 )}
               >
