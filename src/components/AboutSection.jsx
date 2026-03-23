@@ -16,10 +16,10 @@ import {
 import { useState } from "react";
 
 const stats = [
-  { value: "<1", label: "Years Experience", color: "text-violet-500" },
-  { value: "8+", label: "Projects Delivered", color: "text-blue-500" },
-  { value: "15+", label: "Technologies", color: "text-emerald-500" },
-  { value: "10+", label: "REST APIs Built", color: "text-amber-500" },
+  { value: "<1", label: "Years Experience", color: "text-blue-400" },
+  { value: "8+", label: "Projects Delivered", color: "text-indigo-400" },
+  { value: "15+", label: "Technologies", color: "text-sky-400" },
+  { value: "10+", label: "REST APIs Built", color: "text-blue-500" },
 ];
 
 const services = [
@@ -28,10 +28,10 @@ const services = [
     title: "Frontend Development",
     description:
       "Creating modern, responsive, and high-performance user interfaces using React.js, Next.js, and Tailwind CSS with a strong focus on usability and clean UI.",
-    color: "from-blue-500 to-cyan-500",
+    color: "from-blue-400 to-indigo-500",
     hoverBorder: "hover:border-blue-400/50",
     hoverShadow: "hover:shadow-blue-500/10",
-    iconColor: "text-blue-500",
+    iconColor: "text-blue-400",
     bgColor: "bg-blue-500/10",
   },
   {
@@ -39,55 +39,55 @@ const services = [
     title: "Backend & API Development",
     description:
       "Building scalable backend systems using Node.js and Express.js with secure REST and GraphQL APIs, authentication, and optimized server-side logic.",
-    color: "from-emerald-500 to-teal-500",
-    hoverBorder: "hover:border-emerald-400/50",
-    hoverShadow: "hover:shadow-emerald-500/10",
-    iconColor: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
+    color: "from-indigo-400 to-violet-500",
+    hoverBorder: "hover:border-indigo-400/50",
+    hoverShadow: "hover:shadow-indigo-500/10",
+    iconColor: "text-indigo-400",
+    bgColor: "bg-indigo-500/10",
   },
   {
     icon: Database,
     title: "Database Design",
     description:
       "Designing efficient and scalable database architectures using MongoDB and Mongoose with optimized schemas, indexing, and secure data management.",
-    color: "from-violet-500 to-purple-600",
-    hoverBorder: "hover:border-violet-400/50",
-    hoverShadow: "hover:shadow-violet-500/10",
-    iconColor: "text-violet-500",
-    bgColor: "bg-violet-500/10",
+    color: "from-sky-400 to-blue-500",
+    hoverBorder: "hover:border-sky-400/50",
+    hoverShadow: "hover:shadow-sky-500/10",
+    iconColor: "text-sky-400",
+    bgColor: "bg-sky-500/10",
   },
   {
     icon: Globe,
     title: "Full Stack MERN Development",
     description:
       "Developing complete end-to-end web applications using the MERN stack with JWT auth, role-based access control, and seamless integration.",
-    color: "from-amber-500 to-orange-500",
-    hoverBorder: "hover:border-amber-400/50",
-    hoverShadow: "hover:shadow-amber-500/10",
-    iconColor: "text-amber-500",
-    bgColor: "bg-amber-500/10",
+    color: "from-blue-500 to-cyan-500",
+    hoverBorder: "hover:border-blue-500/50",
+    hoverShadow: "hover:shadow-blue-500/10",
+    iconColor: "text-blue-500",
+    bgColor: "bg-blue-500/10",
   },
   {
     icon: Link,
     title: "API Integration & Automation",
     description:
       "Integrating third-party APIs, payment gateways, chatbots, and automation tools to enhance application functionality and workflows.",
-    color: "from-pink-500 to-rose-500",
-    hoverBorder: "hover:border-pink-400/50",
-    hoverShadow: "hover:shadow-pink-500/10",
-    iconColor: "text-pink-500",
-    bgColor: "bg-pink-500/10",
+    color: "from-indigo-500 to-blue-400",
+    hoverBorder: "hover:border-indigo-500/50",
+    hoverShadow: "hover:shadow-indigo-500/10",
+    iconColor: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
   },
   {
     icon: Rocket,
     title: "Deployment & Optimization",
     description:
       "Deploying scalable applications on cloud platforms with CI/CD pipelines, Git workflows, and performance optimization for faster load times.",
-    color: "from-sky-500 to-indigo-500",
-    hoverBorder: "hover:border-sky-400/50",
-    hoverShadow: "hover:shadow-sky-500/10",
-    iconColor: "text-sky-500",
-    bgColor: "bg-sky-500/10",
+    color: "from-cyan-400 to-sky-500",
+    hoverBorder: "hover:border-cyan-400/50",
+    hoverShadow: "hover:shadow-cyan-500/10",
+    iconColor: "text-cyan-400",
+    bgColor: "bg-cyan-500/10",
   },
 ];
 
@@ -96,20 +96,21 @@ export const AboutSection = () => {
 
   return (
     <section id="about" className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration — mirrors CodingProfilesSection */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-primary/3 to-transparent pointer-events-none" />
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 translate-y-1/3" />
 
-      <div className="container mx-auto max-w-7xl relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
         {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-2">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             Who I Am
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            About <span className="text-primary">Me</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Me</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed">
             A passionate MERN Stack Developer focused on building scalable
             full-stack applications and transforming innovative ideas into
             high-performance, production-ready products.
@@ -117,9 +118,9 @@ export const AboutSection = () => {
         </div>
 
         {/* ── Bio + Photo + Stats card ── */}
-        <div className="group relative glass-card p-6 md:p-8 mb-8">
+        <div className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-2xl rounded-3xl p-6 md:p-10 mb-8 overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.05)]">
           {/* Gradient accent top bar */}
-          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 to-blue-500 opacity-60" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-80" />
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* ── Photo column (full width mobile / 2 cols desktop) ── */}
@@ -151,9 +152,9 @@ export const AboutSection = () => {
 
               {/* Quick info chips */}
               <div className="w-full space-y-2">
-                <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-emerald-500/8 border border-emerald-500/20">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-blue-500/10 border border-white/10">
+                  <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+                  <span className="text-xs font-medium text-blue-400">
                     Available for hire
                   </span>
                 </div>
@@ -263,30 +264,30 @@ export const AboutSection = () => {
         </div>
 
         {/* ── Education card ── */}
-        <div className="group relative glass-card p-6 md:p-8 mb-8">
+        <div className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.05)] rounded-3xl p-6 md:p-10 mb-10 overflow-hidden transition-all duration-300">
           {/* Gradient accent top bar */}
-          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-emerald-500 to-blue-500 opacity-60" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-80" />
 
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 rounded-xl bg-emerald-500/10">
-              <GraduationCap className="w-5 h-5 text-emerald-500" />
+            <div className="p-2.5 rounded-xl bg-blue-500/10 border border-white/5">
+              <GraduationCap className="w-5 h-5 text-blue-400" />
             </div>
             <h3 className="text-xl font-bold">Education</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {/* B.Tech */}
-            <div className="group/card relative col-span-1 md:col-span-1 bg-secondary/40 border border-border/40 rounded-2xl p-5 hover:border-emerald-400/50 hover:shadow-lg hover:shadow-emerald-500/8 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-5 right-5 h-0.5 rounded-b-full bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+            <div className="group/card relative col-span-1 md:col-span-1 bg-secondary/20 border border-white/5 rounded-2xl p-5 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/8 transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
               <div className="flex items-start gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-emerald-500/10 shrink-0 mt-0.5">
-                  <BookOpen size={14} className="text-emerald-500" />
+                <div className="p-2 rounded-lg bg-blue-500/10 shrink-0 mt-0.5">
+                  <BookOpen size={14} className="text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-0.5">
+                  <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-0.5">
                     Bachelor of Technology - Information Technology
                   </p>
-                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-emerald-600 dark:group-hover/card:text-emerald-400 transition-colors duration-300">
+                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-blue-400 transition-colors duration-300">
                     Madan Mohan Malaviya University of Technology
                   </h4>
                   <p className="text-xs text-muted-foreground mt-0.5">
@@ -294,28 +295,28 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center justify-between pt-3 border-t border-border/30">
+              <div className="flex items-center justify-between pt-3 border-t border-white/5">
                 <span className="text-[11px] text-muted-foreground font-medium">
                   Nov 2022 – May 2026
                 </span>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
                   Pursuing
                 </span>
               </div>
             </div>
 
             {/* 12th */}
-            <div className="group/card relative bg-secondary/40 border border-border/40 rounded-2xl p-5 hover:border-violet-400/50 hover:shadow-lg hover:shadow-violet-500/8 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-5 right-5 h-0.5 rounded-b-full bg-gradient-to-r from-violet-500 to-purple-500 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+            <div className="group/card relative bg-secondary/20 border border-white/5 rounded-2xl p-5 hover:border-indigo-400/50 hover:shadow-lg hover:shadow-indigo-500/8 transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
               <div className="flex items-start gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-violet-500/10 shrink-0 mt-0.5">
-                  <Award size={14} className="text-violet-500" />
+                <div className="p-2 rounded-lg bg-indigo-500/10 shrink-0 mt-0.5">
+                  <Award size={14} className="text-indigo-400" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest mb-0.5">
+                  <p className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mb-0.5">
                     Class XII — CBSE
                   </p>
-                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-violet-600 dark:group-hover/card:text-violet-400 transition-colors duration-300">
+                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-indigo-400 transition-colors duration-300">
                     Jagat Taran Golden Jubilee School
                   </h4>
                   <p className="text-xs text-muted-foreground mt-0.5">
@@ -323,28 +324,28 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center justify-between pt-3 border-t border-border/30">
+              <div className="flex items-center justify-between pt-3 border-t border-white/5">
                 <span className="text-[11px] text-muted-foreground font-medium">
                   Board Examination
                 </span>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                   89%
                 </span>
               </div>
             </div>
 
             {/* 10th */}
-            <div className="group/card relative bg-secondary/40 border border-border/40 rounded-2xl p-5 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/8 transition-all duration-300 hover:-translate-y-1">
-              <div className="absolute top-0 left-5 right-5 h-0.5 rounded-b-full bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+            <div className="group/card relative bg-secondary/20 border border-white/5 rounded-2xl p-5 hover:border-sky-400/50 hover:shadow-lg hover:shadow-sky-500/8 transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
               <div className="flex items-start gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-blue-500/10 shrink-0 mt-0.5">
-                  <Award size={14} className="text-blue-500" />
+                <div className="p-2 rounded-lg bg-sky-500/10 shrink-0 mt-0.5">
+                  <Award size={14} className="text-sky-400" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-0.5">
+                  <p className="text-[10px] font-bold text-sky-400 uppercase tracking-widest mb-0.5">
                     Class X — CBSE
                   </p>
-                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-blue-600 dark:group-hover/card:text-blue-400 transition-colors duration-300">
+                  <h4 className="font-bold text-sm leading-snug group-hover/card:text-sky-400 transition-colors duration-300">
                     Jagat Taran Golden Jubilee School
                   </h4>
                   <p className="text-xs text-muted-foreground mt-0.5">
@@ -352,11 +353,11 @@ export const AboutSection = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex items-center justify-between pt-3 border-t border-border/30">
+              <div className="flex items-center justify-between pt-3 border-t border-white/5">
                 <span className="text-[11px] text-muted-foreground font-medium">
                   Board Examination
                 </span>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">
                   85.8%
                 </span>
               </div>
@@ -379,11 +380,11 @@ export const AboutSection = () => {
             }) => (
               <div
                 key={title}
-                className={`group relative glass-card glass-card-hover p-6 ${hoverBorder} ${hoverShadow}`}
+                className={`group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] rounded-3xl p-7 transition-all duration-300 overflow-hidden ${hoverBorder} ${hoverShadow}`}
               >
                 {/* Gradient accent top bar */}
                 <div
-                  className={`absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                  className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
 
                 {/* Icon + title */}

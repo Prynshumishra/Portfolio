@@ -4,14 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const navItems = [
-  { name: "Home", href: "#hero" },
   { name: "About Me", href: "#about" },
   { name: "Coding Profiles", href: "#coding" },
   { name: "Tech Stack", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
-  
-  { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
@@ -57,10 +54,10 @@ export const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className={cn(
-          "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-500 rounded-2xl",
+          "fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 transition-all duration-500 rounded-full",
           isScrolled
-            ? "py-2.5 bg-background/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-border/60"
-            : "py-4 bg-transparent border border-transparent"
+            ? "py-3 bg-card/90 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] border-2 border-border/20"
+            : "py-4 bg-transparent border-2 border-transparent"
         )}
       >
         <div className="mx-auto px-4 flex items-center justify-between gap-4">

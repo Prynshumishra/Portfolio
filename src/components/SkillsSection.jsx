@@ -6,38 +6,38 @@ const categoryMeta = {
   all: {
     icon: Layers,
     label: "All Skills",
-    accent: "from-violet-500 to-blue-500",
-    hoverBorder: "hover:border-violet-500/40",
-    hoverShadow: "hover:shadow-violet-500/8",
-    bar: "from-violet-500 to-blue-500",
-    chip: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20",
+    accent: "from-blue-400 to-indigo-500",
+    hoverBorder: "hover:border-blue-500/40",
+    hoverShadow: "hover:shadow-blue-500/8",
+    bar: "from-blue-400 to-indigo-500",
+    chip: "bg-blue-500/10 text-blue-400 border-blue-500/20",
   },
   frontend: {
     icon: Monitor,
     label: "Frontend",
-    accent: "from-blue-500 to-cyan-400",
-    hoverBorder: "hover:border-blue-500/40",
-    hoverShadow: "hover:shadow-blue-500/8",
-    bar: "from-blue-500 to-cyan-400",
-    chip: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    accent: "from-indigo-400 to-violet-500",
+    hoverBorder: "hover:border-indigo-500/40",
+    hoverShadow: "hover:shadow-indigo-500/8",
+    bar: "from-indigo-400 to-violet-500",
+    chip: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
   },
   backend: {
     icon: Server,
     label: "Backend",
-    accent: "from-emerald-500 to-teal-400",
-    hoverBorder: "hover:border-emerald-500/40",
-    hoverShadow: "hover:shadow-emerald-500/8",
-    bar: "from-emerald-500 to-teal-400",
-    chip: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+    accent: "from-sky-400 to-blue-500",
+    hoverBorder: "hover:border-sky-500/40",
+    hoverShadow: "hover:shadow-sky-500/8",
+    bar: "from-sky-400 to-blue-500",
+    chip: "bg-sky-500/10 text-sky-400 border-sky-500/20",
   },
   tools: {
     icon: Wrench,
     label: "Tools",
-    accent: "from-amber-500 to-orange-400",
-    hoverBorder: "hover:border-amber-500/40",
-    hoverShadow: "hover:shadow-amber-500/8",
-    bar: "from-amber-500 to-orange-400",
-    chip: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+    accent: "from-blue-500 to-cyan-500",
+    hoverBorder: "hover:border-blue-500/40",
+    hoverShadow: "hover:shadow-blue-500/8",
+    bar: "from-blue-500 to-cyan-500",
+    chip: "bg-blue-500/10 text-blue-400 border-blue-500/20",
   },
 };
 
@@ -82,10 +82,10 @@ const skills = [
 const categories = ["all", "frontend", "backend", "tools"];
 
 const levelBadge = (level) => {
-  if (level >= 90) return { text: "Expert",    bg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25" };
-  if (level >= 80) return { text: "Advanced",  bg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/25" };
-  if (level >= 70) return { text: "Proficient",bg: "bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25" };
-  return              { text: "Learning",   bg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/25" };
+  if (level >= 90) return { text: "Expert",    bg: "bg-blue-500/10 text-blue-400 border-blue-500/25" };
+  if (level >= 80) return { text: "Advanced",  bg: "bg-indigo-500/10 text-indigo-400 border-indigo-500/25" };
+  if (level >= 70) return { text: "Proficient",bg: "bg-sky-500/10 text-sky-400 border-sky-500/25" };
+  return              { text: "Learning",   bg: "bg-blue-400/10 text-blue-300 border-blue-400/25" };
 };
 
 export const SkillsSection = () => {
@@ -99,23 +99,24 @@ export const SkillsSection = () => {
 
   return (
     <section id="skills" className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-1/4 h-1/2 bg-gradient-to-tl from-primary/3 to-transparent pointer-events-none" />
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
 
-      <div className="container mx-auto max-w-7xl relative">
+      <div className="container mx-auto max-w-7xl relative z-10">
 
         {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-2">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             What I Know
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            My <span className="text-primary">Skills</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Skills</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
-            Technologies and tools I use to build full-stack MERN applications —
-            from responsive frontends to scalable backend APIs.
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed">
+            Technologies and tools I use to build robust full-stack applications —
+            from responsive frontends to scalable backend architectures.
           </p>
         </div>
 
@@ -132,8 +133,8 @@ export const SkillsSection = () => {
                 className={cn(
                   "flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-300",
                   isActive
-                    ? `bg-gradient-to-r ${meta.accent} text-white border-transparent shadow-lg`
-                    : "bg-card text-muted-foreground border-border/50 hover:border-primary/40 hover:text-foreground"
+                    ? `bg-gradient-to-r ${meta.accent} text-white border-transparent shadow-lg shadow-blue-500/20`
+                    : "bg-card text-muted-foreground border-white/5 hover:border-blue-500/30 hover:text-foreground"
                 )}
               >
                 <Icon size={15} />
@@ -167,7 +168,7 @@ export const SkillsSection = () => {
               <div
                 key={skill.name}
                 className={cn(
-                  "group relative glass-card glass-card-hover p-5",
+                  "group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl p-6 rounded-3xl transition-all duration-300 overflow-hidden hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]",
                   meta.hoverBorder,
                   meta.hoverShadow
                 )}
@@ -175,7 +176,7 @@ export const SkillsSection = () => {
                 {/* Gradient accent top bar */}
                 <div
                   className={cn(
-                    "absolute top-0 left-5 right-5 h-0.5 rounded-b-full bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                    "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
                     meta.accent
                   )}
                 />

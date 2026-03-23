@@ -8,12 +8,12 @@ const profiles = [
     name: "LeetCode",
     icon: SiLeetcode,
     url: "https://leetcode.com/u/prynshu09/",
-    color: "from-fuchsia-500 to-purple-600",
-    hoverBorder: "hover:border-fuchsia-400/50",
-    hoverShadow: "hover:shadow-fuchsia-500/10",
-    iconColor: "text-fuchsia-500",
-    bgColor: "bg-fuchsia-500/10",
-    badge: { label: "Pupil", color: "bg-fuchsia-500/15 text-fuchsia-500 border-fuchsia-500/30" },
+    color: "from-indigo-400 to-blue-500",
+    hoverBorder: "hover:border-indigo-400/50",
+    hoverShadow: "hover:shadow-indigo-500/10",
+    iconColor: "text-indigo-400",
+    bgColor: "bg-indigo-500/10",
+    badge: { label: "Pupil", color: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30" },
     stats: [
       { label: "Problems Solved", value: "150+" },
       { label: "Contest Rating", value: "1500+" },
@@ -26,12 +26,12 @@ const profiles = [
     name: "GeeksforGeeks",
     icon: SiGeeksforgeeks,
     url: "https://www.geeksforgeeks.org/user/prynshumishra/",
-    color: "from-cyan-400 to-blue-500",
-    hoverBorder: "hover:border-cyan-400/50",
-    hoverShadow: "hover:shadow-cyan-400/10",
-    iconColor: "text-cyan-400",
-    bgColor: "bg-cyan-400/10",
-    badge: { label: "3 Star", color: "bg-cyan-400/15 text-cyan-400 border-cyan-400/30" },
+    color: "from-blue-400 to-sky-500",
+    hoverBorder: "hover:border-blue-400/50",
+    hoverShadow: "hover:shadow-blue-500/10",
+    iconColor: "text-blue-400",
+    bgColor: "bg-blue-500/10",
+    badge: { label: "3 Star", color: "bg-blue-500/15 text-blue-400 border-blue-500/30" },
     stats: [
       { label: "Problems Solved", value: "150+" },
       { label: "Coding Score", value: "500+" },
@@ -44,12 +44,12 @@ const profiles = [
     name: "GitHub",
     icon: FaGithub,
     url: "https://github.com/Prynshumishra",
-    color: "from-blue-500 to-indigo-500",
-    hoverBorder: "hover:border-blue-500/50",
-    hoverShadow: "hover:shadow-blue-500/10",
-    iconColor: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-    badge: { label: "Active", color: "bg-blue-500/15 text-blue-500 border-blue-500/30" },
+    color: "from-sky-400 to-blue-500",
+    hoverBorder: "hover:border-sky-400/50",
+    hoverShadow: "hover:shadow-sky-500/10",
+    iconColor: "text-sky-400",
+    bgColor: "bg-sky-500/10",
+    badge: { label: "Active", color: "bg-sky-500/15 text-sky-400 border-sky-500/30" },
     stats: [
       { label: "Repositories", value: "8+" },
       { label: "Contributions", value: "40+" },
@@ -61,58 +61,54 @@ const profiles = [
 ];
 
 const dsaTopics = [
-  { label: "Arrays & Strings", solved: 60, color: "bg-cyan-400" },
-  { label: "Trees & Graphs", solved: 45, color: "bg-blue-500" },
-  { label: "Dynamic Programming", solved: 30, color: "bg-indigo-500" },
-  { label: "Binary Search", solved: 20, color: "bg-violet-500" },
-  { label: "Sorting & Searching", solved: 35, color: "bg-purple-500" },
-  { label: "Backtracking", solved: 15, color: "bg-fuchsia-500" },
+  { label: "Arrays & Strings", solved: 60, color: "bg-blue-400" },
+  { label: "Trees & Graphs", solved: 45, color: "bg-indigo-400" },
+  { label: "Dynamic Programming", solved: 30, color: "bg-sky-400" },
+  { label: "Binary Search", solved: 20, color: "bg-blue-500" },
+  { label: "Sorting & Searching", solved: 35, color: "bg-indigo-500" },
+  { label: "Backtracking", solved: 15, color: "bg-sky-500" },
 ];
 
 const achievements = [
-  { icon: Flame, label: "30 Days Streak", color: "text-cyan-400", bg: "bg-cyan-400/10" },
-  { icon: Target, label: "150+ Solved", color: "text-blue-400", bg: "bg-blue-400/10" },
-  { icon: BookOpen, label: "200+ Articles", color: "text-indigo-400", bg: "bg-indigo-400/10" },
-  { icon: Code2, label: "8+ Projects", color: "text-fuchsia-400", bg: "bg-fuchsia-400/10" },
+  { icon: Flame, label: "30 Days Streak", color: "text-blue-400", bg: "bg-blue-500/10" },
+  { icon: Target, label: "150+ Solved", color: "text-indigo-400", bg: "bg-indigo-500/10" },
+  { icon: BookOpen, label: "200+ Articles", color: "text-sky-400", bg: "bg-sky-500/10" },
+  { icon: Code2, label: "8+ Projects", color: "text-blue-500", bg: "bg-blue-500/10" },
 ];
 
 export const CodingProfilesSection = () => {
   return (
     <section id="coding" className="py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-tr from-primary/3 to-transparent pointer-events-none" />
+      {/* SaaS Deep Background Orbs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3" />
 
-      <div className="container mx-auto max-w-5xl relative">
+      <div className="container mx-auto max-w-6xl relative z-10">
 
         {/* ── Section header ── */}
-        <div className="text-center mb-14">
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-primary text-sm font-semibold tracking-widest uppercase mb-2"
-          >
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
             Problem Solving
-          </motion.p>
+          </div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold"
+            className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground"
           >
-            Coding <span className="text-primary">Profiles</span>
+            Coding <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Profiles</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed"
+            className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed"
           >
             I actively practice Data Structures &amp; Algorithms and contribute to
-            open-source projects across multiple coding platforms.
+            open-source projects across multiple elite coding platforms.
           </motion.p>
         </div>
 
@@ -128,11 +124,11 @@ export const CodingProfilesSection = () => {
                 transition={{ delay: index * 0.15, duration: 0.5 }}
                 whileHover={{ scale: 1.02 }}
                 key={profile.name}
-                className={`group relative glass-card glass-card-hover p-6 ${profile.hoverBorder} flex flex-col`}
+                className={`group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl p-7 rounded-3xl ${profile.hoverBorder} hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 flex flex-col overflow-hidden`}
               >
                 {/* Gradient accent top bar */}
                 <div
-                  className={`absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r ${profile.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                  className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${profile.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
                 />
 
                 {/* Icon + name + badge */}
@@ -209,9 +205,9 @@ export const CodingProfilesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="group relative glass-card p-5 md:p-6 mb-6"
+          className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-3xl p-6 md:p-8 mb-8 overflow-hidden"
         >
-          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-blue-400 via-indigo-500 to-fuchsia-500 opacity-60" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-80" />
           <p className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-4 text-center">
             Achievements &amp; Milestones
           </p>
@@ -234,9 +230,9 @@ export const CodingProfilesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="group relative glass-card p-5 md:p-6"
+          className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-3xl p-6 md:p-8 overflow-hidden"
         >
-          <div className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full bg-gradient-to-r from-indigo-500 to-cyan-400 opacity-60" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-80" />
           <p className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-5 text-center">
             DSA Topics Progress
           </p>
