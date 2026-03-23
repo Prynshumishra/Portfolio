@@ -286,7 +286,7 @@ export const ContactSection = () => {
                   key={label}
                   href={href || undefined}
                   className={cn(
-                    "group flex items-center justify-start gap-4 p-4 rounded-2xl bg-card border border-border/50 hover:shadow-lg transition-all duration-300",
+                    "group flex items-center justify-start gap-4 p-4 glass-card glass-card-hover",
                     hoverBorder,
                     hoverShadow,
                   )}
@@ -319,7 +319,7 @@ export const ContactSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      "group relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-card border border-border/50",
+                      "group relative flex items-center gap-2.5 px-4 py-2.5 glass-card",
                       "text-xs font-semibold text-muted-foreground overflow-hidden",
                       "transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:text-white",
                       hoverBorder,
@@ -346,7 +346,7 @@ export const ContactSection = () => {
           </div>
 
           {/* ───── Contact Form ───── */}
-          <div className="lg:col-span-3 bg-card border border-border/50 p-8 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-primary/5 transition duration-500">
+          <div className="lg:col-span-3 glass-card p-8">
             <div className="flex flex-col items-center justify-center mb-6">
               <h3 className="text-xl font-bold">Send a Message</h3>
 
