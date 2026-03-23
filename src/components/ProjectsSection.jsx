@@ -34,13 +34,13 @@ const projects = [
   
   {
     id: 3,
-    title: "Sky Nova E-Commerce",
+    title: "Ride Share",
     description:
-      "Full-stack e-commerce platform for drone and IoT components with JWT auth, secure checkout, admin dashboard, and REST APIs for product & order management.",
-    image: "/projects/project1.png",
-    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "JWT", "REST API", "Redux", "Bootstrap"],
-    demoUrl: "#",
-    githubUrl: "#",
+      "MERN-based ride-sharing application with RESTful APIs, JWT authentication, MongoDB integration, and features like ride matching, booking, and real-time communication.",
+    image: "/projects/RideShare.png",
+    tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "JWT", "REST API", "ShadCN UI", "Cloudinary"],
+    demoUrl: "https://ride-share-pm.vercel.app/",
+    githubUrl: "https://github.com/Prynshumishra/RideShare",
     featured: false,
     color: "from-blue-500 to-cyan-500",
     hoverBorder: "hover:border-blue-400/50",
