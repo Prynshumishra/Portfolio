@@ -1,143 +1,104 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Monitor, Server, Wrench, Layers } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Monitor, Server, Wrench, Layers, Code2 } from "lucide-react";
+import { SectionHeader } from "./ui/SectionHeader";
 
-const categoryMeta = {
-  all: {
-    icon: Layers,
-    label: "All Skills",
-    accent: "from-blue-400 to-indigo-500",
-    hoverBorder: "hover:border-blue-500/40",
-    hoverShadow: "hover:shadow-blue-500/8",
-    bar: "from-blue-400 to-indigo-500",
-    chip: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  },
-  frontend: {
-    icon: Monitor,
-    label: "Frontend",
-    accent: "from-indigo-400 to-violet-500",
-    hoverBorder: "hover:border-indigo-500/40",
-    hoverShadow: "hover:shadow-indigo-500/8",
-    bar: "from-indigo-400 to-violet-500",
-    chip: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
-  },
-  backend: {
-    icon: Server,
-    label: "Backend",
-    accent: "from-sky-400 to-blue-500",
-    hoverBorder: "hover:border-sky-500/40",
-    hoverShadow: "hover:shadow-sky-500/8",
-    bar: "from-sky-400 to-blue-500",
-    chip: "bg-sky-500/10 text-sky-400 border-sky-500/20",
-  },
-  tools: {
-    icon: Wrench,
-    label: "Tools",
-    accent: "from-blue-500 to-cyan-500",
-    hoverBorder: "hover:border-blue-500/40",
-    hoverShadow: "hover:shadow-blue-500/8",
-    bar: "from-blue-500 to-cyan-500",
-    chip: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  },
+const categories = {
+  all:       { icon: Layers, label: "all()",    color: "oklch(0.78 0.15 195)" },
+  languages: { icon: Code2,  label: "languages", color: "oklch(0.75 0.17 280)" },
+  frontend:  { icon: Monitor, label: "frontend", color: "oklch(0.78 0.15 195)" },
+  backend:   { icon: Server,  label: "backend",  color: "oklch(0.72 0.18 165)" },
+  tools:     { icon: Wrench,  label: "tools",    color: "oklch(0.78 0.14 55)"  },
 };
 
 const skills = [
-  // ───── Frontend ─────
-  { name: "React.js", level: 90, category: "frontend" },
-  { name: "Next.js", level: 80, category: "frontend" },
-  { name: "JavaScript (ES6+)", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 82, category: "frontend" },
-  { name: "HTML5", level: 95, category: "frontend" },
-  { name: "CSS3", level: 92, category: "frontend" },
-  { name: "Tailwind CSS", level: 90, category: "frontend" },
-  { name: "Redux Toolkit", level: 80, category: "frontend" },
-  { name: "React Query (TanStack Query)", level: 75, category: "frontend" },
-
-  // ───── Backend ─────
-  { name: "Node.js", level: 88, category: "backend" },
-  { name: "Express.js", level: 85, category: "backend" },
-  { name: "REST API Development", level: 90, category: "backend" },
-  { name: "GraphQL", level: 75, category: "backend" },
-  { name: "JWT Authentication", level: 85, category: "backend" },
-  { name: "Socket.io", level: 72, category: "backend" },
-  { name: "MongoDB", level: 84, category: "backend" },
-  { name: "Mongoose ODM", level: 82, category: "backend" },
-  { name: "PostgreSQL", level: 70, category: "backend" },
-  { name: "Redis (Caching)", level: 65, category: "backend" },
-
-  // ───── Tools & DevOps ─────
-  { name: "Git", level: 90, category: "tools" },
-  { name: "GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 68, category: "tools" },
-  { name: "Postman", level: 88, category: "tools" },
-  { name: "VS Code", level: 95, category: "tools" },
-  { name: "Vercel", level: 85, category: "tools" },
-  { name: "Render", level: 80, category: "tools" },
-  { name: "Firebase", level: 72, category: "tools" },
-  { name: "GitHub Actions (CI/CD)", level: 70, category: "tools" },
-  { name: "AWS (Basics)", level: 65, category: "tools" },
-  { name: "Jest Testing", level: 70, category: "tools" },
+  // Languages
+  { name: "JavaScript",  level: 92, category: "languages" },
+  { name: "TypeScript",  level: 82, category: "languages" },
+  { name: "Python",      level: 78, category: "languages" },
+  { name: "Java",        level: 72, category: "languages" },
+  { name: "C++",         level: 75, category: "languages" },
+  { name: "C#",          level: 68, category: "languages" },
+  { name: "SQL",         level: 80, category: "languages" },
+  { name: "PHP",         level: 65, category: "languages" },
+  // Frontend
+  { name: "React.js",       level: 90, category: "frontend" },
+  { name: "Next.js",        level: 80, category: "frontend" },
+  { name: "Tailwind CSS",   level: 90, category: "frontend" },
+  { name: "Redux Toolkit",  level: 80, category: "frontend" },
+  { name: "React Query",    level: 75, category: "frontend" },
+  { name: "HTML5",          level: 95, category: "frontend" },
+  { name: "CSS3",           level: 92, category: "frontend" },
+  // Backend
+  { name: "Node.js",      level: 88, category: "backend" },
+  { name: "Express.js",   level: 85, category: "backend" },
+  { name: "Spring Boot",  level: 70, category: "backend" },
+  { name: ".NET",         level: 65, category: "backend" },
+  { name: "REST APIs",    level: 90, category: "backend" },
+  { name: "GraphQL",      level: 75, category: "backend" },
+  { name: "Socket.IO",    level: 72, category: "backend" },
+  { name: "JWT Auth",     level: 85, category: "backend" },
+  { name: "MongoDB",      level: 84, category: "backend" },
+  { name: "Mongoose",     level: 82, category: "backend" },
+  { name: "MySQL",        level: 78, category: "backend" },
+  { name: "PostgreSQL",   level: 70, category: "backend" },
+  { name: "Redis",        level: 65, category: "backend" },
+  // Tools
+  { name: "VS Code",         level: 95, category: "tools" },
+  { name: "Git",             level: 90, category: "tools" },
+  { name: "GitHub",          level: 90, category: "tools" },
+  { name: "Postman",         level: 88, category: "tools" },
+  { name: "AWS",             level: 65, category: "tools" },
+  { name: "Claude",          level: 85, category: "tools" },
+  { name: "Docker",          level: 68, category: "tools" },
+  { name: "Vercel",          level: 85, category: "tools" },
+  { name: "Firebase",        level: 72, category: "tools" },
+  { name: "GitHub Actions",  level: 70, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
-
-const levelBadge = (level) => {
-  if (level >= 90) return { text: "Expert",    bg: "bg-blue-500/10 text-blue-400 border-blue-500/25" };
-  if (level >= 80) return { text: "Advanced",  bg: "bg-indigo-500/10 text-indigo-400 border-indigo-500/25" };
-  if (level >= 70) return { text: "Proficient",bg: "bg-sky-500/10 text-sky-400 border-sky-500/25" };
-  return              { text: "Learning",   bg: "bg-blue-400/10 text-blue-300 border-blue-400/25" };
+const levelLabel = (level) => {
+  if (level >= 90) return { text: "expert", color: "oklch(0.78 0.15 195)" };
+  if (level >= 80) return { text: "advanced", color: "oklch(0.72 0.18 165)" };
+  if (level >= 70) return { text: "proficient", color: "oklch(0.78 0.15 195)" };
+  return { text: "learning", color: "oklch(0.65 0.08 240)" };
 };
 
 export const SkillsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filtered = skills.filter(
-    (s) => activeCategory === "all" || s.category === activeCategory
-  );
-
-  const activeMeta = categoryMeta[activeCategory];
+  const [active, setActive] = useState("all");
+  const filtered = skills.filter((s) => active === "all" || s.category === active);
+  const cat = categories[active];
 
   return (
     <section id="skills" className="py-24 px-4 relative overflow-hidden">
-      {/* SaaS Deep Background Orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.05) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <SectionHeader index="03" label="tech_stack" title="My" accent="Skills"
+          description="Technologies I use to build robust full-stack applications — from responsive frontends to scalable backends." />
 
-        {/* Section header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            What I Know
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Skills</span>
-          </h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed">
-            Technologies and tools I use to build robust full-stack applications —
-            from responsive frontends to scalable backend architectures.
-          </p>
-        </div>
-
-        {/* Category filter tabs — styled as icon+label cards */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => {
-            const meta = categoryMeta[cat];
-            const Icon = meta.icon;
-            const isActive = activeCategory === cat;
+        {/* Category tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {Object.entries(categories).map(([key, meta]) => {
+            const isActive = active === key;
             return (
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-300",
-                  isActive
-                    ? `bg-gradient-to-r ${meta.accent} text-white border-transparent shadow-lg shadow-blue-500/20`
-                    : "bg-card text-muted-foreground border-white/5 hover:border-blue-500/30 hover:text-foreground"
-                )}
+                key={key}
+                onClick={() => setActive(key)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xs font-medium border transition-all duration-300"
+                style={isActive ? {
+                  background: `${meta.color.replace(')', ' / 0.12)')}`,
+                  borderColor: `${meta.color.replace(')', ' / 0.35)')}`,
+                  color: meta.color,
+                  boxShadow: `0 0 20px ${meta.color.replace(')', ' / 0.1)')}`,
+                } : {
+                  background: "oklch(1 0 0 / 0.03)",
+                  borderColor: "oklch(1 0 0 / 0.08)",
+                  color: "oklch(0.55 0.02 240)",
+                }}
               >
-                <Icon size={15} />
+                <meta.icon size={13} />
                 {meta.label}
               </button>
             );
@@ -145,106 +106,89 @@ export const SkillsSection = () => {
         </div>
 
         {/* Stats row */}
-        <div className="flex flex-wrap justify-center gap-6 mb-10">
+        <div className="flex flex-wrap justify-center gap-8 mb-12">
           {[
-            { label: "Total Skills",  value: skills.length },
-            { label: "Frontend",      value: skills.filter(s => s.category === "frontend").length },
-            { label: "Backend",       value: skills.filter(s => s.category === "backend").length },
-            { label: "Tools",         value: skills.filter(s => s.category === "tools").length },
+            { label: "total_skills", value: skills.length },
+            { label: "languages", value: skills.filter(s => s.category === "languages").length },
+            { label: "frontend", value: skills.filter(s => s.category === "frontend").length },
+            { label: "backend", value: skills.filter(s => s.category === "backend").length },
+            { label: "tools", value: skills.filter(s => s.category === "tools").length },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-2xl font-black text-primary">{s.value}</div>
-              <div className="text-[11px] text-muted-foreground uppercase tracking-wider font-medium">{s.label}</div>
+              <div className="font-display text-3xl font-bold" style={{ color: "oklch(0.78 0.15 195)" }}>{s.value}</div>
+              <div className="font-mono text-[10px] uppercase tracking-wider mt-1" style={{ color: "oklch(0.55 0.02 240)" }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         {/* Skills grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map((skill) => {
-            const badge = levelBadge(skill.level);
-            const meta = categoryMeta[skill.category];
-            return (
-              <div
-                key={skill.name}
-                className={cn(
-                  "group relative bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl p-6 rounded-3xl transition-all duration-300 overflow-hidden hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]",
-                  meta.hoverBorder,
-                  meta.hoverShadow
-                )}
-              >
-                {/* Gradient accent top bar */}
-                <div
-                  className={cn(
-                    "absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-                    meta.accent
-                  )}
-                />
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {filtered.map((skill, i) => {
+              const lv = levelLabel(skill.level);
+              const catColor = categories[skill.category].color;
+              return (
+                <motion.div
+                  key={skill.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.03, duration: 0.3 }}
+                  className="group relative terminal-card p-5 transition-all duration-300 hover:-translate-y-0.5 glass-hover"
+                >
+                  <div className="absolute top-0 inset-x-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"
+                    style={{ background: `linear-gradient(90deg, transparent, ${catColor}, transparent)` }} />
 
-                {/* Header row */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-sm group-hover:text-foreground transition-colors">
-                      {skill.name}
-                    </h3>
-                    <span
-                      className={cn(
-                        "inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border uppercase tracking-wide",
-                        meta.chip
-                      )}
-                    >
-                      {meta.label}
-                    </span>
-                  </div>
-
-                  {/* Level badge */}
-                  <span
-                    className={cn(
-                      "text-[10px] font-bold px-2.5 py-1 rounded-lg border uppercase tracking-wide shrink-0",
-                      badge.bg
-                    )}
-                  >
-                    {badge.text}
-                  </span>
-                </div>
-
-                {/* Progress bar */}
-                <div className="space-y-1.5">
-                  <div className="w-full bg-secondary/80 h-2 rounded-full overflow-hidden">
-                    <div
-                      className={cn(
-                        "h-full rounded-full bg-gradient-to-r transition-all duration-1000",
-                        meta.bar
-                      )}
-                      style={{ width: skill.level + "%" }}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-1">
-                      {[20, 40, 60, 80, 100].map((mark) => (
-                        <span
-                          key={mark}
-                          className={cn(
-                            "text-[9px] font-medium",
-                            skill.level >= mark
-                              ? "text-primary/60"
-                              : "text-muted-foreground/30"
-                          )}
-                        >
-                          ●
-                        </span>
-                      ))}
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="font-medium text-sm" style={{ color: "oklch(0.85 0.01 240)" }}>{skill.name}</h3>
+                      <span className="font-mono text-[9px] uppercase tracking-widest mt-0.5 block" style={{ color: catColor + " / 0.7" ? catColor : "oklch(0.55 0.02 240)" }}>
+                        {categories[skill.category].label}
+                      </span>
                     </div>
-                    <span className={cn("text-sm font-black", `bg-gradient-to-r ${meta.bar} bg-clip-text text-transparent`)}>
-                      {skill.level}%
+                    <span className="font-mono text-[10px] px-2.5 py-1 rounded-lg border" style={{
+                      color: lv.color,
+                      background: `${lv.color.replace(')', ' / 0.08)')}`,
+                      borderColor: `${lv.color.replace(')', ' / 0.2)')}`,
+                    }}>
+                      {lv.text}
                     </span>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
+                  {/* Progress bar */}
+                  <div className="space-y-1.5">
+                    <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "oklch(1 0 0 / 0.06)" }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: i * 0.03 + 0.2, ease: "easeOut" }}
+                        className="h-full rounded-full"
+                        style={{ background: `linear-gradient(90deg, ${catColor}, ${catColor.replace('0.15 195', '0.18 165')})` }}
+                      />
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex gap-1">
+                        {[20, 40, 60, 80, 100].map((mark) => (
+                          <span key={mark} className="text-[8px]" style={{ color: skill.level >= mark ? catColor : "oklch(1 0 0 / 0.1)" }}>▪</span>
+                        ))}
+                      </div>
+                      <span className="font-mono text-xs font-bold" style={{ color: catColor }}>{skill.level}%</span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

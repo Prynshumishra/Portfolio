@@ -1,98 +1,23 @@
-import React, { useState } from "react";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaTwitter,
-  FaGithub,
-  FaTag,
-} from "react-icons/fa";
-import {
-  CheckCircle2,
-  Clock,
-  User,
-  Send,
-  AlertCircle,
-  Loader2,
-} from "lucide-react";
+import { useState } from "react";
+import { FaInstagram, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone, FaTwitter, FaGithub, FaTag } from "react-icons/fa";
+import { CheckCircle2, Clock, User, Send, AlertCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
+import { SectionHeader } from "./ui/SectionHeader";
+import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const socialLinks = [
-  {
-    icon: FaGithub,
-    href: "https://github.com/Prynshumishra",
-    label: "GitHub",
-    accent: "from-zinc-600 to-zinc-800",
-    hoverBorder: "hover:border-zinc-500/50",
-    hoverShadow: "hover:shadow-zinc-500/10",
-    chip: "bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20",
-  },
-  {
-    icon: FaLinkedin,
-    href: "https://linkedin.com/in/prynshumishr",
-    label: "LinkedIn",
-    accent: "from-blue-500 to-blue-700",
-    hoverBorder: "hover:border-blue-500/50",
-    hoverShadow: "hover:shadow-blue-500/10",
-    chip: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-  },
-  {
-    icon: FaTwitter,
-    href: "https://twitter.com/prynshu09",
-    label: "Twitter",
-    accent: "from-sky-400 to-sky-600",
-    hoverBorder: "hover:border-sky-500/50",
-    hoverShadow: "hover:shadow-sky-500/10",
-    chip: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
-  },
-  {
-    icon: FaInstagram,
-    href: "https://instagram.com/Prynshumishr",
-    label: "Instagram",
-    accent: "from-pink-500 to-orange-400",
-    hoverBorder: "hover:border-pink-500/50",
-    hoverShadow: "hover:shadow-pink-500/10",
-    chip: "bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20",
-  },
+  { icon: FaGithub, href: "https://github.com/Prynshumishra", label: "GitHub", color: "oklch(0.78 0.15 195)" },
+  { icon: FaLinkedin, href: "https://linkedin.com/in/prynshumishr", label: "LinkedIn", color: "oklch(0.6 0.15 220)" },
+  { icon: FaTwitter, href: "https://twitter.com/prynshu09", label: "Twitter", color: "oklch(0.72 0.12 215)" },
+  { icon: FaInstagram, href: "https://instagram.com/Prynshumishr", label: "Instagram", color: "oklch(0.7 0.18 10)" },
 ];
 
 const contactInfo = [
-  {
-    icon: FaEnvelope,
-    label: "Email",
-    value: "prynshu09@gmail.com",
-    href: "mailto:prynshu09@gmail.com",
-    accent: "from-blue-400 to-indigo-500",
-    iconBg: "bg-blue-500/10",
-    iconColor: "text-blue-400",
-    hoverBorder: "hover:border-blue-500/40",
-    hoverShadow: "hover:shadow-blue-500/8",
-  },
-  {
-    icon: FaPhone,
-    label: "Phone",
-    value: "+91 82995 25726",
-    href: "tel:+918299525726",
-    accent: "from-indigo-400 to-violet-500",
-    iconBg: "bg-indigo-500/10",
-    iconColor: "text-indigo-400",
-    hoverBorder: "hover:border-indigo-500/40",
-    hoverShadow: "hover:shadow-indigo-500/8",
-  },
-  {
-    icon: FaMapMarkerAlt,
-    label: "Location",
-    value: "Prayagraj, UP, India",
-    href: null,
-    accent: "from-sky-400 to-blue-500",
-    iconBg: "bg-sky-500/10",
-    iconColor: "text-sky-400",
-    hoverBorder: "hover:border-sky-500/40",
-    hoverShadow: "hover:shadow-sky-500/8",
-  },
+  { icon: FaEnvelope, label: "email", value: "prynshu09@gmail.com", href: "mailto:prynshu09@gmail.com", color: "oklch(0.78 0.15 195)" },
+  { icon: FaPhone, label: "phone", value: "+91 82995 25726", href: "tel:+918299525726", color: "oklch(0.72 0.18 165)" },
+  { icon: FaMapMarkerAlt, label: "location", value: "Prayagraj, UP, India", href: null, color: "oklch(0.78 0.15 195)" },
 ];
 
 const subjects = [
@@ -106,415 +31,290 @@ const subjects = [
   "General Inquiry",
 ];
 
-const INITIAL_FORM = { name: "", email: "", subject: "", message: "" };
-const MAX_MESSAGE = 500;
+const INITIAL = { name: "", email: "", subject: "", message: "" };
+const MAX_MSG = 500;
 
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState(INITIAL_FORM);
+  const [form, setForm] = useState(INITIAL);
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
 
-  const validate = (data) => {
+  const validate = (d) => {
     const e = {};
-    if (!data.name.trim() || data.name.trim().length < 2)
-      e.name = "Name must be at least 2 characters.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-      e.email = "Please enter a valid email address.";
-    if (!data.subject) e.subject = "Please select a subject.";
-    if (!data.message.trim() || data.message.trim().length < 10)
-      e.message = "Message must be at least 10 characters.";
+    if (!d.name.trim() || d.name.trim().length < 2) e.name = "Name must be at least 2 characters.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) e.email = "Please enter a valid email address.";
+    if (!d.subject) e.subject = "Please select a subject.";
+    if (!d.message.trim() || d.message.trim().length < 10) e.message = "Message must be at least 10 characters.";
     return e;
   };
 
   const handleChange = (e) => {
-    const updated = { ...formData, [e.target.name]: e.target.value };
-    setFormData(updated);
-    if (touched[e.target.name]) {
-      setErrors(validate(updated));
-    }
+    const updated = { ...form, [e.target.name]: e.target.value };
+    setForm(updated);
+    if (touched[e.target.name]) setErrors(validate(updated));
   };
 
   const handleBlur = (e) => {
-    const nowTouched = { ...touched, [e.target.name]: true };
-    setTouched(nowTouched);
-    setErrors(validate(formData));
+    setTouched(t => ({ ...t, [e.target.name]: true }));
+    setErrors(validate(form));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Mark all fields as touched
-    const allTouched = {
-      name: true,
-      email: true,
-      subject: true,
-      message: true,
-    };
-
+    const allTouched = { name: true, email: true, subject: true, message: true };
     setTouched(allTouched);
-
-    // Validate form
-    const validationErrors = validate(formData);
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) return;
-
-    if (isSubmitting) return; // prevent double submit
-
+    const errs = validate(form);
+    setErrors(errs);
+    if (Object.keys(errs).length > 0 || isSubmitting) return;
     setIsSubmitting(true);
-
     try {
-  const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/contact`,
-  {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
       });
-
-      let data;
-
-      try {
-        data = await response.json();
-      } catch {
-        data = {};
-      }
-
-      // Success case
-      if (response.ok && data?.success) {
-        toast.success(
-          "Message sent successfully! I'll reply within 24 hours. 🚀",
-          {
-            duration: 5000,
-          },
-        );
-
-        setFormData(INITIAL_FORM);
-        setTouched({});
-        setErrors({});
-        setIsSuccess(true);
-
-        setTimeout(() => {
-          setIsSuccess(false);
-        }, 5000);
+      let data = {};
+      try { data = await res.json(); } catch {}
+      if (res.ok && data?.success) {
+        toast.success("Message sent! I'll reply within 24h. 🚀", { duration: 5000 });
+        setForm(INITIAL); setTouched({}); setErrors({}); setIsSuccess(true);
+        setTimeout(() => setIsSuccess(false), 5000);
       } else {
-        toast.error(
-          data?.error || "Message failed to deliver. Please try again.",
-          { duration: 5000 },
-        );
+        toast.error(data?.error || "Message failed. Please try again.", { duration: 5000 });
       }
-    } catch (error) {
-      console.error("Contact form error:", error);
-      toast.error(
-        "Network error. Please check your connection and try again.",
-        {
-          duration: 5000,
-        },
-      );
+    } catch {
+      toast.error("Network error. Check your connection.", { duration: 5000 });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const fieldClass = (name) =>
-    cn(
-      "w-full pl-10 pr-4 py-2.5 rounded-xl border bg-background/60 text-sm transition-all duration-200 focus:outline-none focus:ring-2",
-      touched[name] && errors[name]
-        ? "border-red-400/70 focus:ring-red-400/30 focus:border-red-400"
-        : touched[name] && !errors[name]
-          ? "border-emerald-400/70 focus:ring-emerald-400/30 focus:border-emerald-400"
-          : "border-border/60 focus:ring-primary/40 focus:border-primary",
-    );
-
-  const charsLeft = MAX_MESSAGE - formData.message.length;
+  const inputBase = "w-full pl-10 pr-4 py-2.5 rounded-xl text-sm transition-all duration-200 focus:outline-none font-mono";
+  const inputStyle = (name) => ({
+    background: "oklch(1 0 0 / 0.03)",
+    border: `1px solid ${touched[name] && errors[name] ? "oklch(0.65 0.22 25 / 0.6)" : touched[name] && !errors[name] ? "oklch(0.72 0.18 165 / 0.5)" : "oklch(1 0 0 / 0.1)"}`,
+    color: "oklch(0.85 0.01 240)",
+  });
 
   return (
-    <section
-      id="contact"
-      className="py-24 px-4 relative overflow-hidden"
-    >
-      {/* SaaS Deep Background Orbs */}
-      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3" />
+    <section id="contact" className="py-24 px-4 relative overflow-hidden">
+      <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.06) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-white/10 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            Let&apos;s Talk
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground">
-            Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Touch</span>
-          </h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed">
-            Have a project in mind, need a developer, or just want to chat?
-            I&apos;m always open to new opportunities and interesting collaborations.
-          </p>
-        </div>
+        <SectionHeader index="06" label="get_in_touch" title="Let's" accent="Connect"
+          description="Have a project or opportunity? I'm always open to interesting collaborations and new challenges." />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
-          {/* ───── Left Panel ───── */}
-          <div className="lg:col-span-2 flex flex-col gap-6 w-full max-w-md mx-auto lg:mx-0">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+          {/* Left panel */}
+          <div className="lg:col-span-2 flex flex-col gap-5">
             {/* Availability */}
-            <div className="flex items-center justify-start gap-4 p-4 rounded-2xl bg-blue-500/10 border border-white/5 backdrop-blur-sm">
-              <div className="p-3 rounded-xl bg-blue-500/20 animate-pulse shrink-0">
-                <Clock size={16} className="text-blue-400" />
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 p-4 rounded-2xl border"
+              style={{ background: "oklch(0.78 0.15 195 / 0.05)", borderColor: "oklch(0.78 0.15 195 / 0.15)" }}
+            >
+              <div className="p-3 rounded-xl" style={{ background: "oklch(0.78 0.15 195 / 0.1)" }}>
+                <Clock size={15} style={{ color: "oklch(0.78 0.15 195)" }} />
               </div>
-
-              <div>
-                <p className="text-sm font-semibold text-blue-400">
-                  Usually responds within 24 hours
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Mon – Sat · 9 AM – 9 PM IST
-                </p>
+              <div className="text-left">
+                <p className="font-mono text-xs font-semibold" style={{ color: "oklch(0.78 0.15 195)" }}>// responds_within(24h)</p>
+                <p className="text-xs mt-0.5" style={{ color: "oklch(0.55 0.02 240)" }}>Mon – Sat · 9 AM – 9 PM IST</p>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Contact Cards */}
-            {contactInfo.map(({ icon: Icon, label, value, href, iconBg, iconColor, hoverBorder, hoverShadow }) => {
+            {/* Contact info */}
+            {contactInfo.map(({ icon: Icon, label, value, href, color }, i) => {
               const Wrapper = href ? "a" : "div";
-
               return (
-                <Wrapper
+                <motion.div
                   key={label}
-                  href={href || undefined}
-                  className={cn(
-                    "group flex items-center justify-start gap-4 p-5 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-2xl transition-all duration-300",
-                    hoverBorder,
-                    hoverShadow,
-                  )}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="group"
                 >
-                  <div className={cn("p-3 rounded-xl group-hover:scale-110 transition shrink-0", iconBg)}>
-                    <Icon className={iconColor} size={16} />
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-muted-foreground">{label}</p>
-                    <p className="text-sm font-semibold group-hover:text-foreground transition">
-                      {value}
-                    </p>
-                  </div>
-                </Wrapper>
+                  <Wrapper
+                    href={href || undefined}
+                    className="flex items-center gap-4 p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5"
+                    style={{ background: "oklch(0.1 0.025 250 / 0.7)", borderColor: "oklch(1 0 0 / 0.08)" }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = `${color.replace(')', ' / 0.25)')}`; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "oklch(1 0 0 / 0.08)"; }}
+                  >
+                    <div className="p-2.5 rounded-xl transition-transform duration-300 group-hover:scale-110"
+                      style={{ background: `${color.replace(')', ' / 0.08)')}`, border: `1px solid ${color.replace(')', ' / 0.2)')}` }}>
+                      <Icon size={13} style={{ color }} />
+                    </div>
+                    <div className="text-left">
+                      <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "oklch(0.55 0.02 240)" }}>{label}</p>
+                      <p className="text-sm font-medium mt-0.5" style={{ color: "oklch(0.85 0.01 240)" }}>{value}</p>
+                    </div>
+                  </Wrapper>
+                </motion.div>
               );
             })}
 
-            {/* Social Links */}
-            <div className="pt-2 text-center md:text-left">
-              <p className="text-xs font-bold text-foreground text-center uppercase tracking-widest mb-4">
-                Connect With Me
+            {/* Socials */}
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest mb-3 text-center" style={{ color: "oklch(0.55 0.02 240)" }}>
+                // social_links
               </p>
-
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                {socialLinks.map(({ icon: Icon, href, label, accent, hoverBorder, hoverShadow, chip }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      "group relative flex items-center gap-2.5 px-5 py-3.5 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-xl rounded-2xl",
-                      "text-xs font-bold text-muted-foreground overflow-hidden",
-                      "transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:text-white",
-                      hoverBorder,
-                      hoverShadow,
-                    )}
+              <div className="flex flex-wrap gap-2 justify-center">
+                {socialLinks.map(({ icon: Icon, href, label, color }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border font-mono text-xs font-medium transition-all duration-300 hover:-translate-y-0.5"
+                    style={{ background: "oklch(1 0 0 / 0.03)", borderColor: "oklch(1 0 0 / 0.09)", color: "oklch(0.65 0.02 240)" }}
+                    onMouseEnter={e => { e.currentTarget.style.color = color; e.currentTarget.style.borderColor = `${color.replace(')', ' / 0.3)')}`; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = "oklch(0.65 0.02 240)"; e.currentTarget.style.borderColor = "oklch(1 0 0 / 0.09)"; }}
                   >
-                    {/* Gradient fill on hover */}
-                    <span
-                      className={cn(
-                        "absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                        accent,
-                      )}
-                    />
-                    {/* Icon with scale */}
-                    <Icon
-                      size={14}
-                      className="relative z-10 transition-transform duration-300 group-hover:scale-125"
-                    />
-                    <span className="relative z-10">{label}</span>
+                    <Icon size={12} />
+                    {label}
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* ───── Contact Form ───── */}
-          <div className="lg:col-span-3 bg-card/40 backdrop-blur-2xl border border-white/5 shadow-2xl p-8 md:p-10 rounded-3xl">
-            <div className="flex flex-col items-center justify-center mb-8">
-              <h3 className="text-xl font-bold">Send a Message</h3>
+          {/* Contact form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 relative terminal-card p-8 md:p-10"
+          >
+            <SpotlightEffect />
+            <div className="absolute top-0 inset-x-0 h-px" style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.15 195 / 0.6), transparent)" }} />
 
+            <div className="flex items-center gap-3 mb-7">
+              <div className="w-2 h-2 rounded-full bg-[#ff5f57]" />
+              <div className="w-2 h-2 rounded-full bg-[#febc2e]" />
+              <div className="w-2 h-2 rounded-full bg-[#28c840]" />
+              <span className="font-mono text-xs ml-2" style={{ color: "oklch(0.55 0.02 240)" }}>send_message.js</span>
               {isSuccess && (
-                <span className="flex items-center gap-1.5 text-xs font-medium text-emerald-500 mt-2">
-                  <CheckCircle2 size={14} /> Sent successfully!
+                <span className="ml-auto flex items-center gap-1.5 font-mono text-xs" style={{ color: "oklch(0.72 0.18 165)" }}>
+                  <CheckCircle2 size={12} /> sent_successfully
                 </span>
               )}
             </div>
 
             <form className="space-y-5" onSubmit={handleSubmit} noValidate>
-              {/* Name + Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div>
-                  <label className="block text-xs text-left font-semibold mb-1.5">
-                    Full Name *
+                  <label className="block font-mono text-[10px] uppercase tracking-widest mb-2" style={{ color: "oklch(0.78 0.15 195)" }}>
+                    // name *
                   </label>
                   <div className="relative">
-                    <User
-                      size={14}
-                      className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-                    />
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={fieldClass("name")}
-                      placeholder="Enter your full name"
+                    <User size={12} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "oklch(0.55 0.02 240)" }} />
+                    <input type="text" name="name" value={form.name} onChange={handleChange} onBlur={handleBlur}
+                      placeholder="Your full name"
+                      className={inputBase}
+                      style={inputStyle("name")}
                     />
                   </div>
                   {touched.name && errors.name && (
-                    <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1">
-                      <AlertCircle size={11} /> {errors.name}
+                    <p className="font-mono text-[10px] mt-1 flex items-center gap-1" style={{ color: "oklch(0.65 0.22 25)" }}>
+                      <AlertCircle size={10} /> {errors.name}
                     </p>
                   )}
                 </div>
-
                 {/* Email */}
                 <div>
-                  <label className="block text-xs text-left font-semibold mb-1.5">
-                    Email Address *
+                  <label className="block font-mono text-[10px] uppercase tracking-widest mb-2" style={{ color: "oklch(0.78 0.15 195)" }}>
+                    // email *
                   </label>
                   <div className="relative">
-                    <FaEnvelope
-                      size={12}
-                      className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={fieldClass("email")}
-                      placeholder="Enter your email address"
+                    <FaEnvelope size={11} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: "oklch(0.55 0.02 240)" }} />
+                    <input type="email" name="email" value={form.email} onChange={handleChange} onBlur={handleBlur}
+                      placeholder="your@email.com"
+                      className={inputBase}
+                      style={inputStyle("email")}
                     />
                   </div>
                   {touched.email && errors.email && (
-                    <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1">
-                      <AlertCircle size={11} /> {errors.email}
+                    <p className="font-mono text-[10px] mt-1 flex items-center gap-1" style={{ color: "oklch(0.65 0.22 25)" }}>
+                      <AlertCircle size={10} /> {errors.email}
                     </p>
                   )}
                 </div>
               </div>
 
-            {/* Subject */}
+              {/* Subject */}
               <div>
-                <label className="block text-xs text-left font-semibold mb-1.5">
-                  Subject *
+                <label className="block font-mono text-[10px] uppercase tracking-widest mb-2" style={{ color: "oklch(0.78 0.15 195)" }}>
+                  // subject *
                 </label>
                 <div className="relative">
-                  <FaTag
-                    size={12}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none z-10"
-                  />
-                  <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={cn(fieldClass("subject"), "appearance-none pr-10")}
+                  <FaTag size={10} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none z-10" style={{ color: "oklch(0.55 0.02 240)" }} />
+                  <select name="subject" value={form.subject} onChange={handleChange} onBlur={handleBlur}
+                    className={cn(inputBase, "appearance-none pr-10")}
+                    style={{ ...inputStyle("subject"), background: "oklch(0.09 0.025 250)" }}
                   >
-                    <option value="">Select Inquiry Type</option>
-                    {subjects.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
+                    <option value="">Select inquiry type</option>
+                    {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-muted-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center" style={{ color: "oklch(0.55 0.02 240)" }}>
+                    <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
                     </svg>
                   </div>
                 </div>
                 {touched.subject && errors.subject && (
-                  <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1">
-                    <AlertCircle size={11} /> {errors.subject}
+                  <p className="font-mono text-[10px] mt-1 flex items-center gap-1" style={{ color: "oklch(0.65 0.22 25)" }}>
+                    <AlertCircle size={10} /> {errors.subject}
                   </p>
                 )}
               </div>
 
               {/* Message */}
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-semibold">
-                    Message *
+                <div className="flex justify-between mb-2">
+                  <label className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "oklch(0.78 0.15 195)" }}>
+                    // message *
                   </label>
-                  <span
-                    className={cn(
-                      "text-[11px]",
-                      charsLeft < 50
-                        ? "text-amber-500"
-                        : "text-muted-foreground/60",
-                    )}
-                  >
-                    {charsLeft} / {MAX_MESSAGE}
+                  <span className="font-mono text-[10px]" style={{ color: MAX_MSG - form.message.length < 50 ? "oklch(0.75 0.15 55)" : "oklch(0.55 0.02 240)" }}>
+                    {MAX_MSG - form.message.length}/{MAX_MSG}
                   </span>
                 </div>
-                <textarea
-                  rows={5}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  maxLength={MAX_MESSAGE}
-                  className={cn(fieldClass("message"), "resize-none")}
-                  placeholder="Hi Priyanshu, I'd like to discuss..."
+                <textarea rows={5} name="message" value={form.message} onChange={handleChange} onBlur={handleBlur}
+                  maxLength={MAX_MSG} placeholder="Hi Priyanshu, I'd like to discuss..."
+                  className={cn(inputBase, "resize-none")}
+                  style={inputStyle("message")}
                 />
                 {touched.message && errors.message && (
-                  <p className="text-[11px] text-red-400 mt-1 flex items-center gap-1">
-                    <AlertCircle size={11} /> {errors.message}
+                  <p className="font-mono text-[10px] mt-1 flex items-center gap-1" style={{ color: "oklch(0.65 0.22 25)" }}>
+                    <AlertCircle size={10} /> {errors.message}
                   </p>
                 )}
               </div>
 
-              {/* Submit */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn(
-                  "w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300",
-                  "hover:shadow-[0_0_25px_rgba(59,130,246,0.3)] hover:-translate-y-0.5",
-                  "disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0",
-                )}
+              <button type="submit" disabled={isSubmitting}
+                className="w-full py-3.5 rounded-xl font-mono text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  background: "oklch(0.78 0.15 195)",
+                  color: "oklch(0.1 0.02 240)",
+                  boxShadow: "0 0 20px oklch(0.78 0.15 195 / 0.25)",
+                }}
+                onMouseEnter={e => { if (!isSubmitting) e.currentTarget.style.boxShadow = "0 0 35px oklch(0.78 0.15 195 / 0.45)"; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 0 20px oklch(0.78 0.15 195 / 0.25)"; }}
               >
                 {isSubmitting ? (
-                  <>
-                    <Loader2 size={14} className="animate-spin" />
-                    Sending…
-                  </>
+                  <><Loader2 size={14} className="animate-spin" /> sending_message...</>
                 ) : (
-                  <>
-                    Send Message
-                    <Send size={14} />
-                  </>
+                  <><Send size={14} /> send_message()</>
                 )}
               </button>
 
-              <p className="text-center text-xs text-muted-foreground">
-                I typically respond within{" "}
-                <span className="font-semibold">24 hours</span>.
+              <p className="text-center font-mono text-[10px]" style={{ color: "oklch(0.55 0.02 240)" }}>
+                // typically_responds_within(24h)
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

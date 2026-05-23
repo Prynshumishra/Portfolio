@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Screenshots / temp files
+*.png
+*.jpg
+*.jpeg
+!public/**
+.playwright-mcp/

@@ -25,26 +25,36 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model("Contact", contactSchema);
 
-// ✅ Allowed Origins
+// ✅ Allowed Origins — never use wildcard (*)
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://priyanshumishra.vercel.app"
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "https://priyanshumishra.vercel.app",
+  "https://portfolio-priyanshumishra9.vercel.app",
 ];
 
 // Middleware
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+    credentials: false,
   })
 );
 
 app.use(express.json());
+
+// Security headers
+app.use((req, res, next) => {
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'");
+  next();
+});
 
 // Transporter
 const transporter = nodemailer.createTransport({

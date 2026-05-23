@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { SectionHeader } from "./ui/SectionHeader";
+import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const experiences = [
   {
@@ -8,205 +10,152 @@ const experiences = [
     company: "MarTech Union",
     duration: "Aug 2025 – Feb 2026",
     location: "Remote",
+    current: true,
+    color: "oklch(0.78 0.15 195)",
     description: [
-      "Collaborated with a team to deliver 3+ full-stack projects from Figma to production, including two MERN stack applications and one WordPress website, user-friendly interfaces with i18n support.",
-      "Built full-stack features across frontend and backend, including a secure admin impersonation system for debugging and support.",
-      "Improved application performance and SEO scores from below 50 to above 90 by applying optimization techniques such as image compression, asset minification, and efficient database handling.",
-      "Built and customized WordPress websites/plugins using HTML, CSS, JavaScript, and MySQL, integrating CF7, Amelia, ChatBot, and GTM4WP for automation, scheduling, and analytics."
+      "Delivered 3+ full-stack projects from Figma to production including two MERN apps and one WordPress site with i18n support.",
+      "Built secure admin impersonation system for debugging and support across backend and frontend.",
+      "Improved application SEO scores from below 50 to above 90 via image compression, asset minification, and DB optimization.",
+      "Built and customized WordPress plugins using HTML, CSS, JS, and MySQL — integrated CF7, Amelia, ChatBot, and GTM4WP.",
     ],
-    skills: ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "MySQL", "CF7", "Amelia", "ChatBot", "GTM4WP"]
+    skills: ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "MySQL"],
   },
   {
     id: 2,
     role: "Software Developer Intern",
     company: "Unifindss Innovations Pvt. Ltd.",
-    duration: "May 2025 – July 2025",
+    duration: "May 2025 – Jul 2025",
     location: "Remote",
+    current: false,
+    color: "oklch(0.72 0.18 165)",
     description: [
-      "Designed and developed high-performance, responsive user interfaces using React, Framer Motion, Tailwind CSS, and MongoDB.",
-      "Built a full-stack counseling platform serving 100+ users, reducing load time by 25% through performance optimization.",
-      "Developed responsive UI and scalable backend systems with secure authentication, payment integration, and analytics features.",
-      "Resolved critical UI/UX issues and optimized API performance to enhance user experience."
+      "Designed responsive UIs using React, Framer Motion, Tailwind CSS, and MongoDB.",
+      "Built a full-stack counseling platform for 100+ users — reduced load time by 25% through perf optimization.",
+      "Developed scalable backend systems with secure authentication, payment integration, and analytics.",
+      "Resolved critical UI/UX bugs and optimized API performance for better user experience.",
     ],
-    skills: ["React", "MongoDB", "Node.js", "Express.js", "TypeScript", "REST APIs", "JWT", "Tailwind CSS", "Framer Motion"]
-  }
+    skills: ["React", "MongoDB", "Node.js", "Express.js", "TypeScript", "REST APIs", "JWT", "Tailwind CSS", "Framer Motion"],
+  },
 ];
-
-const ExperienceCard = ({ exp }) => {
-  return (
-    <div className="bg-card/40 backdrop-blur-3xl border border-white/5 hover:border-blue-500/30 shadow-2xl hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] p-6 md:p-8 rounded-3xl relative group overflow-hidden w-full text-left transition-all duration-500">
-      {/* Subtle Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-      {/* Header: Date on left, Role on right (left-aligned text) */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6 relative z-10">
-        <div className="md:w-1/2 flex justify-start md:justify-end text-left">
-          <h4 className="text-xl md:text-2xl font-bold text-foreground mb-1 md:w-full md:max-w-[250px] leading-snug">
-            {exp.role}
-          </h4>
-        </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-500/10 border border-white/10 text-xs font-medium text-blue-400 whitespace-nowrap shrink-0 mt-1">
-          <Calendar size={13} />
-          {exp.duration}
-        </div>
-        
-        
-      </div>
-
-      {/* Company Details */}
-      <div className="text-sm font-medium text-foreground/80 flex flex-col gap-1.5 mb-6 items-start">
-         <div className="flex items-center gap-2">
-            <span className="text-base">{exp.company}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-border" />
-         </div>
-         <span className="flex items-center gap-1 text-muted-foreground"><MapPin size={14}/> {exp.location}</span>
-      </div>
-
-      {/* Bullet points */}
-      <ul className="space-y-3 mb-6">
-        {exp.description.map((point, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed flex-row relative z-10">
-            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />
-            <span className="text-left text-[14px] flex-1">{point}</span>
-          </li>
-        ))}
-      </ul>
-
-      {/* Skills */}
-      {exp.skills && (
-        <div className="flex flex-wrap gap-2 pt-5 border-t border-white/5 relative z-10">
-          {exp.skills.map((skill, i) => (
-            <span 
-              key={i} 
-              className="px-2.5 py-1 text-[11px] font-medium text-foreground/80 bg-secondary/50 border border-white/5 rounded-lg"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
 
 export const ExperienceSection = () => {
   return (
     <section id="experience" className="py-24 px-4 relative overflow-hidden">
-      {/* SaaS Deep Background Orbs */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/3" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/3" />
+      <div className="absolute right-0 top-1/4 w-[500px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.05) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
-      {/* Grid Pattern */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.05] z-0" 
-        style={{
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: `40px 40px`
-        }} 
-      />
-      
       <div className="container mx-auto max-w-6xl relative z-10">
-        
-        {/* Section header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            My Experience
-          </div>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-foreground"
-          >
-            Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Journey</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-muted-foreground text-base max-w-xl mx-auto leading-relaxed"
-          >
-            A timeline of my professional growth, delivering full-stack applications and scaling web experiences for real-world impact.
-          </motion.p>
-        </div>
+        <SectionHeader index="05" label="work_history" title="Professional" accent="Journey"
+          description="A timeline of my professional growth delivering full-stack applications for real-world impact." />
 
-        {/* Work Experience Header centered on desktop, left on mobile */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex items-center gap-3 mb-16 md:justify-center ml-2 md:ml-0"
-        >
-          <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-orange-500/20 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.15)] shrink-0">
-            <Briefcase className="text-blue-500 w-6 h-6" />
-          </div>
-          <h3 className="text-2xl font-bold tracking-tight text-foreground">Work Experience</h3>
-        </motion.div>
-
-        {/* Alternating Timeline Layout */}
-        <div className="relative mx-auto mt-12 pb-8">
-          {/* Glowing central line */}
-          <motion.div 
-            initial={{ height: 0 }}
-            whileInView={{ height: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-orange-400 via-orange-500 to-transparent shadow-[0_0_10px_rgba(249,115,22,0.3)] md:-translate-x-1/2 z-0" 
-          />
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
+            style={{ background: "linear-gradient(to bottom, oklch(0.78 0.15 195 / 0.5), oklch(0.72 0.18 165 / 0.2), transparent)" }} />
 
           <div className="space-y-12">
-            {experiences.map((exp, index) => {
-              const isLeft = index % 2 === 0;
-
+            {experiences.map((exp, i) => {
+              const isLeft = i % 2 === 0;
               return (
-                <div key={exp.id} className="relative flex flex-col md:flex-row items-center w-full">
-                  
+                <div key={exp.id} className="relative">
                   {/* Timeline dot */}
-                  <div className="absolute left-[28px] md:left-1/2 w-4 h-4 rounded-full bg-background border-[3px] border-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.5)] z-10 transform -translate-x-1/2 top-6 md:top-1/2 md:-translate-y-1/2" />
-
-                  {/* Desktop Left Card */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className={`hidden md:flex w-1/2 pr-12 justify-end ${!isLeft ? 'md:invisible' : ''}`}
+                  <div
+                    className="absolute left-5 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-7 z-10 shadow-[0_0_12px_currentColor]"
+                    style={{ background: exp.color, color: exp.color }}
                   >
-                     <ExperienceCard exp={exp} />
-                  </motion.div>
+                    {exp.current && (
+                      <span className="absolute inset-0 rounded-full animate-ping opacity-40" style={{ background: exp.color }} />
+                    )}
+                  </div>
 
-                  {/* Desktop Right Card */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className={`hidden md:flex w-1/2 pl-12 justify-start ${isLeft ? 'md:invisible' : ''}`}
-                  >
-                     <ExperienceCard exp={exp} />
-                  </motion.div>
-
-                  {/* Mobile Card */}
+                  {/* Mobile card */}
                   <motion.div
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="md:hidden w-full pl-16 pr-2 relative top-0"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="md:hidden pl-14"
                   >
                     <ExperienceCard exp={exp} />
                   </motion.div>
 
+                  {/* Desktop alternating layout */}
+                  <div className="hidden md:flex items-start">
+                    <motion.div
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.15 }}
+                      className={`w-1/2 pr-12 flex justify-end ${!isLeft ? "invisible" : ""}`}
+                    >
+                      {isLeft && <ExperienceCard exp={exp} />}
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.15 }}
+                      className={`w-1/2 pl-12 flex justify-start ${isLeft ? "invisible" : ""}`}
+                    >
+                      {!isLeft && <ExperienceCard exp={exp} />}
+                    </motion.div>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
-
       </div>
     </section>
   );
 };
+
+const ExperienceCard = ({ exp }) => (
+  <div
+    className="group relative terminal-card p-6 md:p-8 w-full text-left glass-hover transition-all duration-300 hover:-translate-y-1"
+  >
+    <SpotlightEffect />
+    <div className="absolute top-0 inset-x-0 h-px opacity-80"
+      style={{ background: `linear-gradient(90deg, transparent, ${exp.color}, transparent)` }} />
+
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+      <div>
+        <h4 className="text-lg font-bold font-display" style={{ color: "oklch(0.93 0.01 240)" }}>{exp.role}</h4>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-1">
+          <span className="text-sm font-medium" style={{ color: "oklch(0.75 0.01 240)" }}>{exp.company}</span>
+          <span className="hidden sm:block w-1 h-1 rounded-full" style={{ background: "oklch(1 0 0 / 0.2)" }} />
+          <span className="flex items-center gap-1 text-xs font-mono" style={{ color: "oklch(0.55 0.02 240)" }}>
+            <MapPin size={10} /> {exp.location}
+          </span>
+        </div>
+      </div>
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-xs shrink-0"
+        style={{ background: `${exp.color.replace(')', ' / 0.08)')}`, border: `1px solid ${exp.color.replace(')', ' / 0.2)')}`, color: exp.color }}>
+        <Calendar size={11} />
+        {exp.duration}
+      </div>
+    </div>
+
+    {/* Bullet points */}
+    <ul className="space-y-2.5 mb-5">
+      {exp.description.map((point, i) => (
+        <li key={i} className="flex items-start gap-3 text-sm leading-relaxed">
+          <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: exp.color }} />
+          <span style={{ color: "oklch(0.55 0.02 240)" }}>{point}</span>
+        </li>
+      ))}
+    </ul>
+
+    {/* Skills */}
+    <div className="flex flex-wrap gap-1.5 pt-4" style={{ borderTop: "1px solid oklch(1 0 0 / 0.07)" }}>
+      {exp.skills.map((s) => (
+        <span key={s} className="font-mono text-[10px] px-2.5 py-1 rounded-lg border"
+          style={{ color: "oklch(0.75 0.01 240)", background: "oklch(1 0 0 / 0.03)", borderColor: "oklch(1 0 0 / 0.09)" }}>
+          {s}
+        </span>
+      ))}
+    </div>
+  </div>
+);

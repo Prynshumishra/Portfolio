@@ -1,180 +1,145 @@
-import { ArrowUp, ArrowRight, Globe, Heart, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUp, Heart, Mail, MapPin, Phone, Globe } from "lucide-react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-const footerLinks = [
-  { name: "About Me", href: "#about" },
-   { name: "Coding Profiles", href: "#coding" },
-  { name: "Tech Stack", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+const navLinks = [
+  { name: "about", href: "#about" },
+  { name: "profiles", href: "#coding" },
+  { name: "skills", href: "#skills" },
+  { name: "projects", href: "#projects" },
+  { name: "experience", href: "#experience" },
+  { name: "contact", href: "#contact" },
 ];
 
-const socialLinks = [
-  {
-    icon: FaGithub,
-    href: "https://github.com/Prynshumishra",
-    label: "GitHub",
-    hoverClass: "hover:bg-zinc-800 hover:text-white hover:border-zinc-700",
-  },
-  {
-    icon: FaLinkedin,
-    href: "https://linkedin.com/in/prynshumishr",
-    label: "LinkedIn",
-    hoverClass: "hover:bg-blue-600 hover:text-white hover:border-blue-500",
-  },
-  {
-    icon: FaTwitter,
-    href: "https://twitter.com/prynshu09",
-    label: "Twitter / X",
-    hoverClass: "hover:bg-sky-500 hover:text-white hover:border-sky-400",
-  },
-  {
-    icon: FaInstagram,
-    href: "https://instagram.com/Prynshumishr",
-    label: "Instagram",
-    hoverClass: "hover:bg-pink-500 hover:text-white hover:border-pink-400",
-  },
+const socials = [
+  { icon: FaGithub, href: "https://github.com/Prynshumishra", label: "GitHub" },
+  { icon: FaLinkedin, href: "https://linkedin.com/in/prynshumishr", label: "LinkedIn" },
+  { icon: FaTwitter, href: "https://twitter.com/prynshu09", label: "Twitter" },
+  { icon: FaInstagram, href: "https://instagram.com/Prynshumishr", label: "Instagram" },
 ];
 
-export const Footer = () => {
-  return (
-    <footer className="relative border-t-2 border-border/20 bg-background/90 backdrop-blur-2xl overflow-hidden mt-12 z-10">
-      {/* SaaS Deep Background Orbs */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2" />
+const contacts = [
+  { icon: Mail, value: "prynshu09@gmail.com", href: "mailto:prynshu09@gmail.com" },
+  { icon: Phone, value: "+91 82995 25726", href: "tel:+918299525726" },
+  { icon: MapPin, value: "Prayagraj, India", href: null },
+  { icon: Globe, value: "github.com/Prynshumishra", href: "https://github.com/Prynshumishra" },
+];
 
-      {/* Top accent line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+export const Footer = () => (
+  <footer className="relative mt-12 overflow-hidden" style={{ borderTop: "1px solid oklch(1 0 0 / 0.07)", background: "oklch(0.08 0.02 245)" }}>
+    {/* Top accent */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px"
+      style={{ background: "linear-gradient(90deg, transparent, oklch(0.78 0.15 195 / 0.4), transparent)" }} />
 
-      <div className="container mx-auto max-w-7xl pt-14 pb-6">
-        {/* ── Main grid ──
-             Desktop (lg): 4 equal columns, left-aligned
-             Tablet (md):  2 columns, left-aligned
-             Mobile:       1 column, center-aligned
-        */}
-       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-12
-text-center lg:text-left items-start justify-items-center lg:justify-items-start">
-          {/* ── Brand ── */}
-        <div className="md:col-span-3 lg:col-span-1 flex flex-col items-center lg:items-start gap-4">
-            <a href="#hero" className="flex items-center gap-2 group">
-              <span className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black group-hover:rotate-6 transition-transform duration-300 shadow-sm shadow-blue-500/30">
-                P
-              </span>
-              <span className="flex items-center text-lg font-bold tracking-tight">
-  <span className="text-foreground">Priyanshu</span>
-  <span className="text-blue-500 ml-1">Mishra</span>
-</span>
-            </a>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-             MERN Stack Developer building scalable full-stack applications with modern technologies, delivering high-performance solutions and seamless user experiences.
-            </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-white/5 text-blue-400 text-xs font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              Open to opportunities
+    <div className="container mx-auto max-w-7xl pt-14 pb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 text-center lg:text-left items-start justify-items-center lg:justify-items-start">
+
+        {/* Brand */}
+        <div className="md:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start gap-4">
+          <a href="#hero" className="group flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-sm"
+              style={{ background: "oklch(0.78 0.15 195 / 0.1)", border: "1px solid oklch(0.78 0.15 195 / 0.25)", color: "oklch(0.78 0.15 195)" }}>
+              PM
             </div>
-          </div>
-
-          {/* ── Quick Links ── */}
-<div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-  <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-5">
-    Quick Links
-  </p>
-
-  <ul className="space-y-3">
-    {footerLinks.map((link) => (
-      <li key={link.name}>
-        <a
-          href={link.href}
-          className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-blue-400 transition-colors duration-200"
-        >
-          {link.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
-
-{/* ── Contact ── */}
-<div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-  <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-5">
-    Contact
-  </p>
-
-  <ul className="space-y-3 w-full">
-    {[
-      { icon: Mail, value: "prynshu09@gmail.com", href: "mailto:prynshu09@gmail.com" },
-      { icon: Phone, value: "+91 82995 25726", href: "tel:+918299525726" },
-      { icon: MapPin, value: "Prayagraj, India", href: null },
-      { icon: Globe, value: "github.com/Prynshumishra", href: "https://github.com/Prynshumishra" },
-    ].map(({ icon: Icon, value, href }) => (
-     <li key={value} className="flex justify-center lg:justify-start w-full">
-        {href ? (
-          <a
-            href={href}
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="inline-flex items-start gap-2 text-sm text-muted-foreground hover:text-blue-400 transition-colors duration-200 group max-w-full"
-          >
-            <Icon size={13} className="mt-0.5 shrink-0 text-blue-500/60 group-hover:text-blue-400 transition-colors" />
-            <span className="break-all">{value}</span>
+            <span className="font-mono text-sm">
+              <span style={{ color: "oklch(0.78 0.15 195)" }}>&lt;</span>
+              <span style={{ color: "oklch(0.85 0.01 240)" }}>Priyanshu Mishra</span>
+              <span style={{ color: "oklch(0.78 0.15 195)" }}>/&gt;</span>
+            </span>
           </a>
-        ) : (
-          <span className="inline-flex items-start gap-2 text-sm text-muted-foreground">
-            <Icon size={13} className="mt-0.5 shrink-0 text-blue-500/60" />
-            {value}
-          </span>
-        )}
-      </li>
-    ))}
-  </ul>
-</div>
-
-{/* ── Social ── */}
-<div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-  <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-5">
-    Follow Me
-  </p>
-
-  <div className="grid grid-cols-2 gap-2.5 w-full max-w-[180px] lg:max-w-none justify-items-center lg:justify-items-start">
-    {socialLinks.map(({ icon: Icon, href, label, hoverClass }) => (
-      <a
-        key={label}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-        className={`flex items-center justify-center lg:justify-start gap-2 px-3 py-2.5 rounded-xl bg-secondary/60 text-muted-foreground border border-border/50 text-xs font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${hoverClass}`}
-      >
-        <Icon size={13} />
-        <span>{label.split(" ")[0]}</span>
-      </a>
-    ))}
-  </div>
-</div>
+          <p className="text-xs leading-relaxed max-w-xs" style={{ color: "oklch(0.55 0.02 240)" }}>
+            MERN Stack Developer building scalable full-stack applications with modern technologies and performance-first approaches.
+          </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full font-mono text-[10px]"
+            style={{ background: "oklch(0.72 0.18 165 / 0.08)", border: "1px solid oklch(0.72 0.18 165 / 0.2)", color: "oklch(0.72 0.18 165)" }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "oklch(0.72 0.18 165)" }} />
+            open_to_opportunities
+          </div>
         </div>
 
-        {/* ── Bottom bar ── */}
-        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-6 border-t border-border/40">
-          <p className="text-xs text-muted-foreground text-center sm:text-left">
-            &copy; {new Date().getFullYear()}{" "}
-            <span className="font-semibold text-foreground/70">Priyanshu Mishra</span>
-            {" "}&mdash; All rights reserved.
-          </p>
-          <a
-            href="#hero"
-            aria-label="Back to top"
-            className="p-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/20 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/25 shrink-0"
-          >
-            <ArrowUp size={15} />
-          </a>
-          <p className="text-xs text-muted-foreground flex items-center gap-1">
-            Made with{" "}
-            <Heart size={10} className="text-red-500 fill-red-500 mx-0.5" />{" "}
-            using MERN Stack &amp; Tailwind
-          </p>
+        {/* Quick Links */}
+        <div className="flex flex-col items-center lg:items-start">
+          <p className="font-mono text-[10px] uppercase tracking-widest mb-5" style={{ color: "oklch(0.78 0.15 195)" }}>// nav</p>
+          <ul className="space-y-2.5">
+            {navLinks.map((l) => (
+              <li key={l.name}>
+                <a href={l.href}
+                  className="font-mono text-xs transition-colors duration-200"
+                  style={{ color: "oklch(0.55 0.02 240)" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "oklch(0.78 0.15 195)"}
+                  onMouseLeave={e => e.currentTarget.style.color = "oklch(0.55 0.02 240)"}
+                >
+                  <span style={{ color: "oklch(0.78 0.15 195 / 0.4)" }}>./</span>{l.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className="flex flex-col items-center lg:items-start">
+          <p className="font-mono text-[10px] uppercase tracking-widest mb-5" style={{ color: "oklch(0.78 0.15 195)" }}>// contact</p>
+          <ul className="space-y-2.5">
+            {contacts.map(({ icon: Icon, value, href }) => (
+              <li key={value} className="flex justify-center lg:justify-start">
+                {href ? (
+                  <a href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-start gap-2 font-mono text-xs transition-colors duration-200"
+                    style={{ color: "oklch(0.55 0.02 240)" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "oklch(0.78 0.15 195)"}
+                    onMouseLeave={e => e.currentTarget.style.color = "oklch(0.55 0.02 240)"}
+                  >
+                    <Icon size={12} className="mt-0.5 shrink-0" style={{ color: "oklch(0.78 0.15 195 / 0.5)" }} />
+                    <span className="break-all">{value}</span>
+                  </a>
+                ) : (
+                  <span className="inline-flex items-start gap-2 font-mono text-xs" style={{ color: "oklch(0.55 0.02 240)" }}>
+                    <Icon size={12} className="mt-0.5 shrink-0" style={{ color: "oklch(0.78 0.15 195 / 0.5)" }} />
+                    {value}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Social */}
+        <div className="flex flex-col items-center lg:items-start">
+          <p className="font-mono text-[10px] uppercase tracking-widest mb-5" style={{ color: "oklch(0.78 0.15 195)" }}>// follow_me</p>
+          <div className="grid grid-cols-2 gap-2">
+            {socials.map(({ icon: Icon, href, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-2 rounded-xl font-mono text-xs border transition-all duration-300 hover:-translate-y-0.5"
+                style={{ background: "oklch(1 0 0 / 0.03)", borderColor: "oklch(1 0 0 / 0.08)", color: "oklch(0.55 0.02 240)" }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = "oklch(0.78 0.15 195 / 0.3)"; e.currentTarget.style.color = "oklch(0.78 0.15 195)"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = "oklch(1 0 0 / 0.08)"; e.currentTarget.style.color = "oklch(0.55 0.02 240)"; }}
+              >
+                <Icon size={12} />
+                {label.split(" ")[0]}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </footer>
-  );
-};
+
+      {/* Bottom bar */}
+      <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-6" style={{ borderTop: "1px solid oklch(1 0 0 / 0.07)" }}>
+        <p className="font-mono text-[10px]" style={{ color: "oklch(0.45 0.01 240)" }}>
+          &copy; {new Date().getFullYear()} Priyanshu Mishra — all_rights_reserved
+        </p>
+        <a href="#hero" aria-label="Back to top"
+          className="p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-1"
+          style={{ background: "oklch(0.78 0.15 195 / 0.08)", borderColor: "oklch(0.78 0.15 195 / 0.2)", color: "oklch(0.78 0.15 195)" }}
+          onMouseEnter={e => e.currentTarget.style.boxShadow = "0 0 20px oklch(0.78 0.15 195 / 0.3)"}
+          onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}
+        >
+          <ArrowUp size={14} />
+        </a>
+        <p className="font-mono text-[10px] flex items-center gap-1" style={{ color: "oklch(0.45 0.01 240)" }}>
+          built_with <Heart size={9} className="fill-current" style={{ color: "oklch(0.65 0.22 25)" }} /> using MERN + Tailwind
+        </p>
+      </div>
+    </div>
+  </footer>
+);

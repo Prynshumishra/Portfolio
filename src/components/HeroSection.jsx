@@ -1,99 +1,21 @@
 import { motion } from "framer-motion";
-import {
-  ArrowDown,
-  Github,
-  Linkedin,
-  Mail,
-  Server,
-  Database,
-  Code2,
-  Cpu,
-  ChevronRight,
-} from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
+import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
 const techStack = [
-  
-  {
-    name: "C++",
-    color: "text-violet-500",
-    bg: "bg-violet-500/10",
-    border: "border-violet-500/20",
-  },
-  {
-    name: "Python",
-    color: "text-yellow-500",
-    bg: "bg-yellow-500/10",
-    border: "border-yellow-500/20",
-  },  
-  {
-    name: "React.js",
-    color: "text-sky-500",
-    bg: "bg-sky-500/10",
-    border: "border-sky-500/20",
-  },
-  {
-    name: "Node.js",
-    color: "text-emerald-500",
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/20",
-  },
-  {
-    name: "NextJS",
-    color: "text-yellow-500",
-    bg: "bg-yellow-500/10",
-    border: "border-yellow-500/20",
-  },
-  {
-    name: "MongoDB",
-    color: "text-green-500",
-    bg: "bg-green-500/10",
-    border: "border-green-500/20",
-  },
-  {
-    name: "Express.js",
-    color: "text-zinc-500 dark:text-zinc-400",
-    bg: "bg-zinc-500/10",
-    border: "border-zinc-500/20",
-  },
-  {
-    name: "TypeScript",
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
-  },
-  {
-    name: "Tailwind CSS",
-    color: "text-cyan-500",
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/20",
-  },
-  
-  {
-    name: "GraphQL",
-    color: "text-pink-500",
-    bg: "bg-pink-500/10",
-    border: "border-pink-500/20",
-  },
-  {
-    name: "REST APIs",
-    color: "text-amber-500",
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/20",
-  },
-  
-  {
-    name: "Docker",
-    color: "text-blue-400",
-    bg: "bg-blue-400/10",
-    border: "border-blue-400/20",
-  },
-  {
-    name: "JWT Auth",
-    color: "text-rose-500",
-    bg: "bg-rose-500/10",
-    border: "border-rose-500/20",
-  },
+  { name: "C++", color: "#a78bfa" },
+  { name: "Python", color: "#fbbf24" },
+  { name: "React.js", color: "#38bdf8" },
+  { name: "Node.js", color: "#4ade80" },
+  { name: "Next.js", color: "#e2e8f0" },
+  { name: "MongoDB", color: "#4ade80" },
+  { name: "Express.js", color: "#94a3b8" },
+  { name: "TypeScript", color: "#60a5fa" },
+  { name: "Tailwind CSS", color: "#22d3ee" },
+  { name: "GraphQL", color: "#f472b6" },
+  { name: "REST APIs", color: "#fb923c" },
+  { name: "Docker", color: "#38bdf8" },
+  { name: "JWT Auth", color: "#f87171" },
 ];
 
 const socialLinks = [
@@ -101,182 +23,316 @@ const socialLinks = [
     icon: Github,
     href: "https://github.com/Prynshumishra",
     label: "GitHub",
-    hoverClass: "hover:bg-zinc-800 hover:text-white hover:border-zinc-600",
   },
   {
     icon: Linkedin,
     href: "https://linkedin.com/in/prynshumishr",
     label: "LinkedIn",
-    hoverClass: "hover:bg-blue-600 hover:text-white hover:border-blue-500",
   },
   {
     icon: Mail,
     href: "mailto:prynshu09@gmail.com",
     label: "Email",
-    hoverClass: "hover:bg-red-500 hover:text-white hover:border-red-400",
   },
 ];
 
-const roles = [
-  {
-    label: "MERN Stack Developer",
-    icon: Code2,
-    color: "from-blue-400 to-indigo-500",
-    iconColor: "text-blue-400",
-    bgColor: "bg-blue-500/10",
-  },
-  {
-    label: "Backend API Developer",
-    icon: Server,
-    color: "from-indigo-400 to-violet-500",
-    iconColor: "text-indigo-400",
-    bgColor: "bg-indigo-500/10",
-  },
-  {
-    label: "Database & System Design",
-    icon: Database,
-    color: "from-cyan-400 to-blue-500",
-    iconColor: "text-cyan-400",
-    bgColor: "bg-cyan-500/10",
-  },
-  {
-    label: "Scalable Web Apps",
-    icon: Cpu,
-    color: "from-sky-400 to-cyan-500",
-    iconColor: "text-sky-400",
-    bgColor: "bg-sky-500/10",
-  },
-];
+const codeSnippet = `const developer = {
+  name: "Priyanshu Mishra",
+  role: "MERN Stack Developer",
+  stack: ["React", "Node", "MongoDB"],
+  available: true,
+};`;
 
 export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-12 mt-6 md:pt-28 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 overflow-hidden"
     >
-      {/* SaaS Deep Background Orbs */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none translate-x-1/3 translate-y-1/3" />
-      <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      {/* Ambient orbs */}
+      <div
+        className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.08) 0%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, oklch(0.72 0.18 165 / 0.06) 0%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
 
-      <div className="container mx-auto max-w-5xl relative z-10">
-        {/* Top section: Name + Typing + CTAs */}
-        <div className="text-center mb-10 space-y-5 mt-10">
-          {/* Availability badge */}
-          <div className="opacity-0 animate-fade-in inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            Available for hire
-          </div>
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Name */}
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-none opacity-0 animate-fade-in">
-            <span className="block text-foreground/70 text-2xl md:text-3xl font-medium mb-3">
-              Hi, I&apos;m
-            </span>
-            <span className="text-foreground">Priyanshu</span>
-            <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
-              {" "}
-              Mishra
-            </span>
-          </h1>
-
-          {/* Typing animation */}
-          <div className="text-lg md:text-2xl font-semibold text-muted-foreground opacity-0 animate-fade-in-delay-1">
-            <TypeAnimation
-              sequence={[
-                "MERN Stack Developer",
-                2000,
-                "Backend API Developer",
-                2000,
-                "Full Stack Developer",
-                2000,
-                "Open Source Contributor",
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              className="text-primary"
-            />
-          </div>
-
-          {/* Description */}
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-2 leading-relaxed">
-            I am a{" "}
-            <span className="text-primary font-semibold">
-              MERN Stack Developer
-            </span>{" "}
-            passionate about building{" "}
-            <span className="text-foreground font-medium">
-              scalable, high-performance full-stack web applications
-            </span>
-            . I specialize in developing{" "}
-            <span className="text-foreground font-medium">
-              secure RESTful & GraphQL APIs
-            </span>
-            , integrating modern cloud services, and crafting{" "}
-            <span className="text-foreground font-medium">
-              responsive user interfaces
-            </span>{" "}
-            using <span className="text-primary font-semibold">React</span> and{" "}
-            <span className="text-primary font-semibold">Tailwind CSS</span>.
-          </p>
-
-          {/* CTA buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-6 opacity-0 animate-fade-in-delay-3">
-            <a
-              href="#projects"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-bold tracking-wide transition-all shadow-[0_0_30px_rgba(var(--primary),0.3)] hover:shadow-[0_0_40px_rgba(var(--primary),0.5)] hover:scale-105 active:scale-95"
+          {/* ── Left Column ── */}
+          <div className="text-left space-y-6">
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border font-mono text-xs tracking-wider"
+              style={{
+                background: "oklch(0.78 0.15 195 / 0.06)",
+                borderColor: "oklch(0.78 0.15 195 / 0.2)",
+                color: "oklch(0.78 0.15 195)",
+              }}
             >
-              View My Projects
-              <ChevronRight size={18} />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-card/80 backdrop-blur-xl border-2 border-border/50 text-foreground font-bold tracking-wide transition-all hover:bg-secondary/80 hover:border-primary/50 hover:scale-105 active:scale-95 shadow-xl"
-            >
-               Let&apos;s Connect
-            </a>
-          </div>
+              <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.72_0.18_165)] animate-pulse" />
+              available_for_hire
+            </motion.div>
 
-          {/* Social links — CodingProfiles card style */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4 mb-12 opacity-0 animate-fade-in-delay-3">
-            {socialLinks.map(({ icon: Icon, href, label, hoverClass }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto") ? undefined : "_blank"}
-                rel={
-                  href.startsWith("mailto") ? undefined : "noopener noreferrer"
-                }
-                className={`flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/20 shadow-xl text-muted-foreground text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-primary/10 ${hoverClass}`}
-                aria-label={label}
+            {/* Name */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="font-mono text-sm text-[oklch(0.78_0.15_195/0.6)] mb-2">
+                ~/dev/portfolio $
+              </p>
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+                style={{ fontFamily: "var(--font-display)" }}
               >
-                <Icon size={16} />
-                <span>{label}</span>
+                <span className="text-[oklch(0.93_0.01_240)]">Priyanshu</span>
+                <br />
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, oklch(0.78 0.15 195), oklch(0.72 0.18 165))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Mishra
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Typing role */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="flex items-center gap-2 font-mono text-sm"
+            >
+              <span className="text-[oklch(0.78_0.15_195/0.5)]">//</span>
+              <span className="text-[oklch(0.93_0.01_240/0.7)]">
+                <TypeAnimation
+                  sequence={[
+                    "MERN Stack Developer",
+                    2000,
+                    "Backend API Developer",
+                    2000,
+                    "Full Stack Developer",
+                    2000,
+                    "Open Source Contributor",
+                    2000,
+                  ]}
+                  speed={55}
+                  repeat={Infinity}
+                  wrapper="span"
+                  className="text-[oklch(0.78_0.15_195)]"
+                />
+              </span>
+              <span className="terminal-cursor" />
+            </motion.div>
+
+            {/* Bio */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+              className="text-sm leading-relaxed max-w-md text-[oklch(0.55_0.02_240)]"
+            >
+              Building{" "}
+              <span className="text-[oklch(0.93_0.01_240)]">scalable full-stack web applications</span>{" "}
+              with the MERN stack. Passionate about{" "}
+              <span className="text-[oklch(0.78_0.15_195)]">clean APIs</span>,{" "}
+              <span className="text-[oklch(0.72_0.18_165)]">performant UIs</span>, and
+              shipping production-ready code.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+              className="flex flex-wrap gap-3"
+            >
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-mono text-sm font-semibold transition-all duration-300 bg-[oklch(0.78_0.15_195)] text-[oklch(0.1_0.02_240)] hover:shadow-[0_0_30px_oklch(0.78_0.15_195/0.4)] hover:-translate-y-0.5"
+              >
+                <ExternalLink size={14} />
+                view_projects()
               </a>
-            ))}
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-mono text-sm font-medium transition-all duration-300 border border-[oklch(1_0_0/0.1)] text-[oklch(0.93_0.01_240/0.7)] hover:border-[oklch(0.78_0.15_195/0.4)] hover:text-[oklch(0.78_0.15_195)] hover:bg-[oklch(0.78_0.15_195/0.05)]"
+              >
+                contact_me()
+              </a>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.65 }}
+              className="flex items-center gap-3"
+            >
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg border border-[oklch(1_0_0/0.08)] flex items-center justify-center text-[oklch(0.55_0.02_240)] hover:text-[oklch(0.78_0.15_195)] hover:border-[oklch(0.78_0.15_195/0.3)] hover:bg-[oklch(0.78_0.15_195/0.06)] transition-all duration-300"
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
+              <span className="text-[oklch(0.55_0.02_240/0.4)] font-mono text-xs ml-1">
+                — find me here
+              </span>
+            </motion.div>
           </div>
+
+          {/* ── Right Column: Code card ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="relative hidden lg:block"
+          >
+            {/* Terminal window */}
+            <div
+              className="relative rounded-2xl overflow-hidden border"
+              style={{
+                background: "oklch(0.09 0.025 250)",
+                borderColor: "oklch(1 0 0 / 0.1)",
+                boxShadow: "0 0 0 1px oklch(0.78 0.15 195 / 0.08), 0 40px 80px oklch(0 0 0 / 0.6)",
+              }}
+            >
+              {/* Window chrome */}
+              <div
+                className="flex items-center gap-2 px-4 py-3 border-b"
+                style={{ borderColor: "oklch(1 0 0 / 0.07)", background: "oklch(0.11 0.025 250)" }}
+              >
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 font-mono text-xs text-[oklch(0.55_0.02_240)]">
+                  developer.js
+                </span>
+              </div>
+
+              {/* Code body */}
+              <pre
+                className="p-6 font-mono text-sm leading-relaxed overflow-x-auto"
+                style={{ color: "oklch(0.75 0.01 240)" }}
+              >
+                <code>
+                  <span style={{ color: "oklch(0.72 0.18 165)" }}>const </span>
+                  <span style={{ color: "oklch(0.78 0.15 195)" }}>developer</span>
+                  <span> = {"{"}</span>{"\n"}
+                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>name</span>
+                  <span>: </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Priyanshu Mishra&quot;</span>
+                  <span>,</span>{"\n"}
+                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>role</span>
+                  <span>: </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;MERN Stack Developer&quot;</span>
+                  <span>,</span>{"\n"}
+                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>stack</span>
+                  <span>: [</span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;React&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Node&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;MongoDB&quot;</span>
+                  <span>],</span>{"\n"}
+                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>location</span>
+                  <span>: </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Prayagraj, India&quot;</span>
+                  <span>,</span>{"\n"}
+                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>available</span>
+                  <span>: </span>
+                  <span style={{ color: "oklch(0.72 0.18 165)" }}>true</span>
+                  <span>,</span>{"\n"}
+                  {"}"}<span>;</span>{"\n"}{"\n"}
+                  <span style={{ color: "oklch(0.55 0.02 240)" }}>// ✓ open to full-time &amp; freelance</span>
+                </code>
+              </pre>
+
+              {/* Scan line effect */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(transparent 40%, oklch(0.78 0.15 195 / 0.02) 50%, transparent 60%)",
+                  animation: "scan 4s ease-in-out infinite",
+                }}
+              />
+            </div>
+
+            {/* Floating stat badges */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl border font-mono text-xs"
+              style={{
+                background: "oklch(0.1 0.025 250)",
+                borderColor: "oklch(0.72 0.18 165 / 0.3)",
+                boxShadow: "0 0 20px oklch(0.72 0.18 165 / 0.1)",
+              }}
+            >
+              <div className="text-[oklch(0.72_0.18_165)] font-bold text-lg leading-none">10+</div>
+              <div className="text-[oklch(0.55_0.02_240)] mt-0.5">REST APIs</div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -top-4 -right-4 px-4 py-3 rounded-xl border font-mono text-xs"
+              style={{
+                background: "oklch(0.1 0.025 250)",
+                borderColor: "oklch(0.78 0.15 195 / 0.3)",
+                boxShadow: "0 0 20px oklch(0.78 0.15 195 / 0.1)",
+              }}
+            >
+              <div className="text-[oklch(0.78_0.15_195)] font-bold text-lg leading-none">8+</div>
+              <div className="text-[oklch(0.55_0.02_240)] mt-0.5">Projects</div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Tech stack card — single card with accent bar matching CodingProfiles */}
-        <motion.div 
+        {/* Tech Stack row */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="group relative bg-card/60 backdrop-blur-3xl border border-white/10 shadow-2xl rounded-3xl p-6 md:p-8 mb-10 overflow-hidden"
+          transition={{ delay: 0.8 }}
+          className="mt-16 md:mt-20"
         >
-          {/* Gradient accent top bar */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-80" />
-
-          <p className="text-[10px] font-bold text-foreground uppercase tracking-widest mb-4 text-center">
-            Tech Stack
+          <p className="font-mono text-[10px] tracking-widest text-[oklch(0.55_0.02_240)] mb-4 uppercase">
+            // tech_stack
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap gap-2">
             {techStack.map((tech) => (
               <span
                 key={tech.name}
-                className={`inline-flex items-center px-2.5 py-1 text-[11px] font-medium rounded-lg ${tech.bg} ${tech.color} border ${tech.border} transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm cursor-default`}
+                className="inline-flex items-center px-3 py-1.5 rounded-lg font-mono text-xs border transition-all duration-300 hover:-translate-y-0.5 cursor-default"
+                style={{
+                  color: tech.color,
+                  background: `${tech.color}12`,
+                  borderColor: `${tech.color}25`,
+                }}
               >
                 {tech.name}
               </span>
@@ -284,31 +340,22 @@ export const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Role cards — same grid & card style as CodingProfiles */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 opacity-0 animate-fade-in-delay-4">
-          {roles.map(({ label, icon: Icon, color, iconColor, bgColor }, index) => (
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
-              key={label}
-              className="group relative bg-card/40 backdrop-blur-2xl border border-white/5 hover:border-blue-500/30 shadow-xl hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] rounded-3xl p-5 text-center transition-all duration-300 overflow-hidden"
-            >
-              {/* Gradient accent top bar */}
-              <div
-                className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-              />
-              <div
-                className={`p-2 rounded-xl ${bgColor} group-hover:scale-110 transition-transform duration-300 w-fit mx-auto mb-2.5`}
-              >
-                <Icon className={`w-4 h-4 ${iconColor}`} />
-              </div>
-              <p className="text-xs font-semibold text-muted-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
-                {label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="flex flex-col items-center gap-2 mt-16"
+        >
+          <span className="font-mono text-[10px] tracking-widest text-[oklch(0.55_0.02_240/0.5)]">scroll_down</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="text-[oklch(0.78_0.15_195/0.4)]"
+          >
+            <ArrowDown size={16} />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
