@@ -7,23 +7,24 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 const projects = [
   {
     id: 1,
-    title: "Prescripto Healthcare",
-    image: "/projects/prescipto.png",
-    desc: "A modern healthcare platform connecting patients, doctors, and administrators. Appointment booking, admin dashboard, JWT auth.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express", "TailwindCSS", "JWT Auth", "REST APIs", "Multer"],
-    github: "https://github.com/Prynshumishra/HealthCare-System",
-    demo: "https://prescripto-hs.vercel.app/",
-    accent: "oklch(0.78 0.15 195)",
+    title: "Tata Capital",
+    image: "https://ik.imagekit.io/zvwwmpviq/tata.png?updatedAt=1779820952625",
+    desc: "A full-stack financial application for managing investment portfolios and tracking market trends.",
+    tech: ["React.js", "Node.js", "MongoDB", "Express", "TypeScript", "TailwindCSS"],
+    github: "https://github.com/Prynshumishra/Tata-Capital",
+    accent: "oklch(0.72 0.18 165)",
+    
   },
   {
     id: 2,
-    title: "Portfolio",
-    image: "/projects/Portfolio.png",
-    desc: "Developer portfolio showcasing projects, skills, and experience — built with React, Framer Motion, and a custom Node.js contact API.",
-    tech: ["React.js", "Framer Motion", "TailwindCSS", "Node.js", "Express.js"],
-    github: "https://github.com/Prynshumishra/Portfolio",
-    demo: "https://portfolio-priyanshumishra9.vercel.app/",
+    title: "Adaptive Chat",
+    image: "/projects/adaptive-chat.png",
+    desc: "Adaptive Chat is an intelligent, end-to-end Retrieval-Augmented Generation (RAG) system powered by agentic AI architecture.",
+    tech: ["LangChain, LangGraph, FastAPI, Uvicorn, Streamlit, MongoDB, Qdrant, OpenAI, Motor, Python"],
+    github: "https://github.com/Prynshumishra/Adaptive-Chat",
+    
     accent: "oklch(0.72 0.18 165)",
+    
   },
   {
     id: 3,
@@ -44,6 +45,35 @@ const projects = [
     github: "https://github.com/Prynshumishra/channelflow",
     demo: "https://channelflow-delta.vercel.app/",
     accent: "oklch(0.72 0.18 165)",
+  },
+  {
+    id: 5,
+    title: "Grove Vista Properties",
+    image: "https://ik.imagekit.io/zvwwmpviq/image.png",
+    desc: "Next.JS real estate listing platform with dynamic property pages, advanced search, and user authentication. Built with MongoDB, TailwindCSS, and JWT.",
+    tech: ["Next.js 15", "React 19", "Node.js", "MongoDB", "TailwindCSS", "JWT Auth"],
+    demo: "https://grove-vista-properties-ten.vercel.app/",
+    accent: "oklch(0.72 0.18 165)",
+  },
+  {
+    id: 6,
+    title: "Portfolio",
+    image: "/projects/Portfolio.png",
+    desc: "Developer portfolio showcasing projects, skills, and experience — built with React, Framer Motion, and a custom Node.js contact API.",
+    tech: ["React.js", "Framer Motion", "TailwindCSS", "Node.js", "Express.js"],
+    github: "https://github.com/Prynshumishra/Portfolio",
+    demo: "https://portfolio-priyanshumishra9.vercel.app/",
+    accent: "oklch(0.72 0.18 165)",
+  },
+  {
+    id: 7,
+   title: "Prescripto Healthcare",
+    image: "/projects/prescipto.png",
+    desc: "A modern healthcare platform connecting patients, doctors, and administrators. Appointment booking, admin dashboard, JWT auth.",
+    tech: ["React.js", "Node.js", "MongoDB", "Express", "TailwindCSS", "JWT Auth", "REST APIs", "Multer"],
+    github: "https://github.com/Prynshumishra/HealthCare-System",
+    demo: "https://prescripto-hs.vercel.app/",
+    accent: "oklch(0.78 0.15 195)",
   },
 ];
 
@@ -99,7 +129,7 @@ export const ProjectsSection = () => {
                     </span>
                   </div>
 
-                  {/* Screenshot */}
+                 
                   <div className="relative h-[180px] sm:h-[220px] lg:h-[175px] xl:h-[200px] overflow-hidden shrink-0">
                     <img
                       src={project.image}

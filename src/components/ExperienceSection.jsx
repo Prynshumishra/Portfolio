@@ -6,19 +6,19 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 const experiences = [
   {
     id: 1,
-    role: "Backend Developer Intern",
+    role: "Full Stack Developer Intern",
     company: "MarTech Union",
-    duration: "Aug 2025 – Feb 2026",
+    duration: "Aug 2025 – May 2026",
     location: "Remote",
     current: true,
     color: "oklch(0.78 0.15 195)",
     description: [
-      "Delivered 3+ full-stack projects from Figma to production including two MERN apps and one WordPress site with i18n support.",
-      "Built secure admin impersonation system for debugging and support across backend and frontend.",
-      "Improved application SEO scores from below 50 to above 90 via image compression, asset minification, and DB optimization.",
+      "Collaborated on 5+ full-stack projects using Next.js, React, Node.js, and MySQL, delivering production-ready applications with user-focused UI and improved accessibility.",
+      "Boosted performance and SEO scores from 50 to 90+ through advanced optimizations.",
+      "Pioneered the integration of a chatbot solution into 3 WordPress sites, slashing customer wait times by 20% and directly improving user satisfaction scores.",
       "Built and customized WordPress plugins using HTML, CSS, JS, and MySQL — integrated CF7, Amelia, ChatBot, and GTM4WP.",
     ],
-    skills: ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "MySQL"],
+    skills: ["React", "Node.js", "Next.JS", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "TypeScript", "MySQL"],
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const experiences = [
       "Developed scalable backend systems with secure authentication, payment integration, and analytics.",
       "Resolved critical UI/UX bugs and optimized API performance for better user experience.",
     ],
-    skills: ["React", "MongoDB", "Node.js", "Express.js", "TypeScript", "REST APIs", "JWT", "Tailwind CSS", "Framer Motion"],
+    skills: ["React", "MongoDB", "Node.js", "REST APIs", "JWT", "Tailwind CSS", "Framer Motion"],
   },
 ];
 
