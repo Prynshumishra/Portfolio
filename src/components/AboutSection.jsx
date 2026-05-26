@@ -5,7 +5,7 @@ import { SectionHeader } from "./ui/SectionHeader";
 import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const stats = [
-  { value: "10+", label: "months exp", color: "oklch(0.78 0.15 195)" },
+  { value: "12", label: "months exp", color: "oklch(0.78 0.15 195)" },
   { value: "8+", label: "projects", color: "oklch(0.72 0.18 165)" },
   { value: "15+", label: "technologies", color: "oklch(0.78 0.15 195)" },
   { value: "10+", label: "REST APIs", color: "oklch(0.72 0.18 165)" },
