@@ -125,7 +125,7 @@ export const ProjectsSection = () => {
                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
                     <span className="ml-2 font-mono text-[10px]" style={{ color: "oklch(0.55 0.02 240)" }}>
-                      {project.demo.replace("https://", "")}
+                      {(project.demo ?? project.github ?? "").replace("https://", "")}
                     </span>
                   </div>
 
@@ -172,30 +172,34 @@ export const ProjectsSection = () => {
 
                     {/* Action buttons */}
                     <div className="flex gap-3 mt-auto pt-4" style={{ borderTop: "1px solid oklch(1 0 0 / 0.07)" }}>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-mono text-xs font-medium border transition-all duration-300 hover:border-white/20 hover:text-white"
-                        style={{ background: "oklch(1 0 0 / 0.04)", borderColor: "oklch(1 0 0 / 0.09)", color: "oklch(0.65 0.02 240)" }}
-                      >
-                        <Github size={13} />
-                        source_code
-                      </a>
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                        style={{
-                          background: project.accent,
-                          color: "oklch(0.1 0.02 240)",
-                          boxShadow: `0 0 20px ${project.accent.replace(')', ' / 0.2)')}`,
-                        }}
-                      >
-                        <ExternalLink size={13} />
-                        live_demo
-                      </a>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-mono text-xs font-medium border transition-all duration-300 hover:border-white/20 hover:text-white"
+                          style={{ background: "oklch(1 0 0 / 0.04)", borderColor: "oklch(1 0 0 / 0.09)", color: "oklch(0.65 0.02 240)" }}
+                        >
+                          <Github size={13} />
+                          source_code
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                          style={{
+                            background: project.accent,
+                            color: "oklch(0.1 0.02 240)",
+                            boxShadow: `0 0 20px ${project.accent.replace(')', ' / 0.2)')}`,
+                          }}
+                        >
+                          <ExternalLink size={13} />
+                          live_demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
