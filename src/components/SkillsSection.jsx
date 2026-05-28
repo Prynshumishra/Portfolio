@@ -1,60 +1,59 @@
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Server, Wrench, Layers, Code2 } from "lucide-react";
+import { Monitor, Server, Wrench, Layers, Code2, Database } from "lucide-react";
 import { SectionHeader } from "./ui/SectionHeader";
 
 const categories = {
-  all:       { icon: Layers, label: "all()",    color: "oklch(0.78 0.15 195)" },
-  languages: { icon: Code2,  label: "languages", color: "oklch(0.75 0.17 280)" },
-  frontend:  { icon: Monitor, label: "frontend", color: "oklch(0.78 0.15 195)" },
-  backend:   { icon: Server,  label: "backend",  color: "oklch(0.72 0.18 165)" },
-  tools:     { icon: Wrench,  label: "tools",    color: "oklch(0.78 0.14 55)"  },
+  all:       { icon: Layers,   label: "all()",    color: "oklch(0.78 0.15 195)" },
+  languages: { icon: Code2,    label: "languages", color: "oklch(0.75 0.17 280)" },
+  frontend:  { icon: Monitor,  label: "frontend",  color: "oklch(0.78 0.15 195)" },
+  backend:   { icon: Server,   label: "backend",   color: "oklch(0.72 0.18 165)" },
+  database:  { icon: Database, label: "database",  color: "oklch(0.76 0.14 140)" },
+  tools:     { icon: Wrench,   label: "tools",     color: "oklch(0.78 0.14 55)"  },
 };
 
 const skills = [
   // Languages
-  { name: "JavaScript",  level: 92, category: "languages" },
-  { name: "TypeScript",  level: 82, category: "languages" },
-  { name: "Python",      level: 78, category: "languages" },
-  { name: "Java",        level: 72, category: "languages" },
-  { name: "C++",         level: 75, category: "languages" },
-  { name: "C#",          level: 68, category: "languages" },
-  { name: "SQL",         level: 80, category: "languages" },
-  { name: "PHP",         level: 65, category: "languages" },
+  { name: "JavaScript", level: 92, category: "languages" },
+  { name: "TypeScript", level: 82, category: "languages" },
+  { name: "PHP",        level: 80, category: "languages" },
+  { name: "Java",       level: 72, category: "languages" },
+  { name: "Python",     level: 70, category: "languages" },
+  { name: "SQL",        level: 82, category: "languages" },
+  { name: "C++",        level: 68, category: "languages" },
   // Frontend
-  { name: "React.js",       level: 90, category: "frontend" },
-  { name: "Next.js",        level: 80, category: "frontend" },
-  { name: "Tailwind CSS",   level: 90, category: "frontend" },
-  { name: "Redux Toolkit",  level: 80, category: "frontend" },
-  { name: "React Query",    level: 75, category: "frontend" },
-  { name: "HTML5",          level: 95, category: "frontend" },
-  { name: "CSS3",           level: 92, category: "frontend" },
+  { name: "React.js",      level: 90, category: "frontend" },
+  { name: "Next.js",       level: 82, category: "frontend" },
+  { name: "Tailwind CSS",  level: 90, category: "frontend" },
+  { name: "Redux Toolkit", level: 80, category: "frontend" },
+  { name: "React Query",   level: 75, category: "frontend" },
+  { name: "HTML5",         level: 95, category: "frontend" },
+  { name: "CSS3",          level: 92, category: "frontend" },
   // Backend
-  { name: "Node.js",      level: 88, category: "backend" },
-  { name: "Express.js",   level: 85, category: "backend" },
-  { name: "Spring Boot",  level: 70, category: "backend" },
-  { name: ".NET",         level: 65, category: "backend" },
-  { name: "REST APIs",    level: 90, category: "backend" },
-  { name: "GraphQL",      level: 75, category: "backend" },
-  { name: "Socket.IO",    level: 72, category: "backend" },
-  { name: "JWT Auth",     level: 85, category: "backend" },
-  { name: "MongoDB",      level: 84, category: "backend" },
-  { name: "Mongoose",     level: 82, category: "backend" },
-  { name: "MySQL",        level: 78, category: "backend" },
-  { name: "PostgreSQL",   level: 70, category: "backend" },
-  { name: "Redis",        level: 65, category: "backend" },
+  { name: "Node.js",     level: 88, category: "backend" },
+  { name: "Express.js",  level: 85, category: "backend" },
+  { name: "Spring Boot", level: 72, category: "backend" },
+  { name: "REST APIs",   level: 92, category: "backend" },
+  { name: "GraphQL",     level: 78, category: "backend" },
+  { name: "Socket.IO",   level: 72, category: "backend" },
+  { name: "JWT Auth",    level: 85, category: "backend" },
+  // Database
+  { name: "MongoDB",    level: 85, category: "database" },
+  { name: "Mongoose",   level: 82, category: "database" },
+  { name: "MySQL",      level: 80, category: "database" },
+  { name: "PostgreSQL", level: 74, category: "database" },
+  { name: "Redis",      level: 68, category: "database" },
   // Tools
-  { name: "VS Code",         level: 95, category: "tools" },
-  { name: "Git",             level: 90, category: "tools" },
-  { name: "GitHub",          level: 90, category: "tools" },
-  { name: "Postman",         level: 88, category: "tools" },
-  { name: "AWS",             level: 65, category: "tools" },
-  { name: "Claude",          level: 85, category: "tools" },
-  { name: "Docker",          level: 68, category: "tools" },
-  { name: "Vercel",          level: 85, category: "tools" },
-  { name: "Firebase",        level: 72, category: "tools" },
-  { name: "GitHub Actions",  level: 70, category: "tools" },
+  { name: "Git",            level: 90, category: "tools" },
+  { name: "GitHub",         level: 90, category: "tools" },
+  { name: "Postman",        level: 88, category: "tools" },
+  { name: "VS Code",        level: 95, category: "tools" },
+  { name: "Docker",         level: 68, category: "tools" },
+  { name: "Vercel",         level: 85, category: "tools" },
+  { name: "AWS",            level: 65, category: "tools" },
+  { name: "Firebase",       level: 72, category: "tools" },
+  { name: "GitHub Actions", level: 70, category: "tools" },
+  { name: "Claude / AI",    level: 88, category: "tools" },
 ];
 
 const levelLabel = (level) => {
@@ -112,6 +111,7 @@ export const SkillsSection = () => {
             { label: "languages", value: skills.filter(s => s.category === "languages").length },
             { label: "frontend", value: skills.filter(s => s.category === "frontend").length },
             { label: "backend", value: skills.filter(s => s.category === "backend").length },
+            { label: "database", value: skills.filter(s => s.category === "database").length },
             { label: "tools", value: skills.filter(s => s.category === "tools").length },
           ].map((s) => (
             <div key={s.label} className="text-center">
@@ -150,7 +150,7 @@ export const SkillsSection = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div>
                       <h3 className="font-medium text-sm" style={{ color: "oklch(0.85 0.01 240)" }}>{skill.name}</h3>
-                      <span className="font-mono text-[9px] uppercase tracking-widest mt-0.5 block" style={{ color: catColor + " / 0.7" ? catColor : "oklch(0.55 0.02 240)" }}>
+                      <span className="font-mono text-[9px] uppercase tracking-widest mt-0.5 block" style={{ color: catColor.replace(')', ' / 0.7)') }}>
                         {categories[skill.category].label}
                       </span>
                     </div>

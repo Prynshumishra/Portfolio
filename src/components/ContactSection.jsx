@@ -21,7 +21,7 @@ const contactInfo = [
 ];
 
 const subjects = [
-  "MERN Stack Development Project",
+  "Full Stack Development Project",
   "Backend / API Development",
   "Full-Time Job Opportunity",
   "Freelance or Contract Work",

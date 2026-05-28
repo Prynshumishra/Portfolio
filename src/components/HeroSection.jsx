@@ -2,21 +2,6 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
-const techStack = [
-  { name: "C++", color: "#a78bfa" },
-  { name: "Python", color: "#fbbf24" },
-  { name: "React.js", color: "#38bdf8" },
-  { name: "Node.js", color: "#4ade80" },
-  { name: "Next.js", color: "#e2e8f0" },
-  { name: "MongoDB", color: "#4ade80" },
-  { name: "Express.js", color: "#94a3b8" },
-  { name: "TypeScript", color: "#60a5fa" },
-  { name: "Tailwind CSS", color: "#22d3ee" },
-  { name: "GraphQL", color: "#f472b6" },
-  { name: "REST APIs", color: "#fb923c" },
-  { name: "Docker", color: "#38bdf8" },
-  { name: "JWT Auth", color: "#f87171" },
-];
 
 const socialLinks = [
   {
@@ -38,8 +23,8 @@ const socialLinks = [
 
 const codeSnippet = `const developer = {
   name: "Priyanshu Mishra",
-  role: "MERN Stack Developer",
-  stack: ["React", "Node", "MongoDB"],
+  role: "Full Stack Developer",
+  stack: ["React", "Next.js", "Node", "PostgreSQL", "Redis"],
   available: true,
 };`;
 
@@ -150,12 +135,11 @@ export const HeroSection = () => {
               transition={{ delay: 0.45 }}
               className="text-sm leading-relaxed max-w-md text-[oklch(0.55_0.02_240)]"
             >
-              Building{" "}
-              <span className="text-[oklch(0.93_0.01_240)]">scalable full-stack web applications</span>{" "}
-              with the MERN stack. Passionate about{" "}
-              <span className="text-[oklch(0.78_0.15_195)]">clean APIs</span>,{" "}
-              <span className="text-[oklch(0.72_0.18_165)]">performant UIs</span>, and
-              shipping production-ready code.
+              Shipped{" "}
+              <span className="text-[oklch(0.93_0.01_240)]">5 production websites</span>{" "}
+              and{" "}
+              <span className="text-[oklch(0.78_0.15_195)]">10+ REST & GraphQL APIs</span>{" "}
+              across MERN, Next.js, PHP, PostgreSQL & Redis — from schema to deploy.
             </motion.p>
 
             {/* CTAs */}
@@ -249,15 +233,17 @@ export const HeroSection = () => {
                   <span>,</span>{"\n"}
                   {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>role</span>
                   <span>: </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;MERN Stack Developer&quot;</span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Full Stack Developer&quot;</span>
                   <span>,</span>{"\n"}
                   {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>stack</span>
                   <span>: [</span>
                   <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;React&quot;</span>
                   <span>, </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Next.js&quot;</span>
+                  <span>, </span>
                   <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Node&quot;</span>
                   <span>, </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;MongoDB&quot;</span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;PostgreSQL&quot;</span>
                   <span>],</span>{"\n"}
                   {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>location</span>
                   <span>: </span>
@@ -313,32 +299,7 @@ export const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Tech Stack row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="mt-16 md:mt-20"
-        >
-          <p className="font-mono text-[10px] tracking-widest text-[oklch(0.55_0.02_240)] mb-4 uppercase">
-            // tech_stack
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {techStack.map((tech) => (
-              <span
-                key={tech.name}
-                className="inline-flex items-center px-3 py-1.5 rounded-lg font-mono text-xs border transition-all duration-300 hover:-translate-y-0.5 cursor-default"
-                style={{
-                  color: tech.color,
-                  background: `${tech.color}12`,
-                  borderColor: `${tech.color}25`,
-                }}
-              >
-                {tech.name}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+       
 
         {/* Scroll indicator */}
         <motion.div

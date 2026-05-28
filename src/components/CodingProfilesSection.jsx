@@ -12,7 +12,7 @@ const profiles = [
     url: "https://leetcode.com/u/prynshu09/",
     color: "oklch(0.78 0.15 195)",
     badge: "1500+ rating",
-    stats: [{ label: "problems_solved", value: "150+" }, { label: "contest_rating", value: "1500+" }],
+    stats: [{ label: "problems_solved", value: "200+" }, { label: "contest_rating", value: "1500+" }],
     topics: ["Arrays", "Trees", "DP", "Graphs", "Binary Search", "Backtracking"],
     desc: "Daily DSA practice — arrays, sorting, binary search. Weekly contests for timed problem-solving.",
   },
@@ -32,8 +32,8 @@ const profiles = [
     url: "https://github.com/Prynshumishra",
     color: "oklch(0.78 0.15 195)",
     badge: "Active",
-    stats: [{ label: "repositories", value: "8+" }, { label: "contributions", value: "40+" }],
-    topics: ["MERN Stack", "REST APIs", "GraphQL", "JWT Auth", "Cloudinary", "CI/CD"],
+    stats: [{ label: "repositories", value: "20+" }, { label: "contributions", value: "150+" }],
+    topics: ["MERN Stack", "Next.JS", "REST APIs", "PHP", "GraphQL", "JWT Auth", "Cloudinary", "CI/CD"],
     desc: "Building MERN projects, REST & GraphQL integrations, and collaborative development workflows.",
   },
 ];
@@ -49,7 +49,7 @@ const dsaTopics = [
 
 const achievements = [
   { icon: Flame, label: "30 Days Streak" },
-  { icon: Target, label: "150+ Solved" },
+  { icon: Target, label: "200+ Solved" },
   { icon: BookOpen, label: "200+ Articles" },
   { icon: Code2, label: "8+ Projects" },
 ];

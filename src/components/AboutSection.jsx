@@ -7,16 +7,16 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 const stats = [
   { value: "12", label: "months exp", color: "oklch(0.78 0.15 195)" },
   { value: "8+", label: "projects", color: "oklch(0.72 0.18 165)" },
-  { value: "15+", label: "technologies", color: "oklch(0.78 0.15 195)" },
+  { value: "20+", label: "technologies", color: "oklch(0.78 0.15 195)" },
   { value: "10+", label: "REST APIs", color: "oklch(0.72 0.18 165)" },
 ];
 
 const services = [
-  { icon: Layout, title: "Frontend Dev", desc: "React, Next.js, Tailwind — fast, responsive UIs.", color: "oklch(0.78 0.15 195)" },
-  { icon: Server, title: "Backend & APIs", desc: "Node.js, Express, REST & GraphQL APIs with JWT auth.", color: "oklch(0.72 0.18 165)" },
-  { icon: Database, title: "Database Design", desc: "MongoDB schemas, indexing, and data optimization.", color: "oklch(0.78 0.15 195)" },
-  { icon: Globe, title: "MERN Full Stack", desc: "End-to-end apps with role-based access and state management.", color: "oklch(0.72 0.18 165)" },
-  { icon: Link, title: "API Integration", desc: "Third-party APIs, payments, chatbots, and automation.", color: "oklch(0.78 0.15 195)" },
+  { icon: Layout, title: "Frontend Dev", desc: "React, Next.js, TypeScript, Tailwind — pixel-perfect, accessible UIs.", color: "oklch(0.78 0.15 195)" },
+  { icon: Server, title: "Backend & APIs", desc: "Node.js, Express, Spring Boot — REST & GraphQL APIs with JWT auth.", color: "oklch(0.72 0.18 165)" },
+  { icon: Database, title: "Database Design", desc: "PostgreSQL, MySQL, MongoDB, Redis — schemas, indexing, caching.", color: "oklch(0.78 0.15 195)" },
+  { icon: Globe, title: "Full Stack Apps", desc: "MERN, Next.js, PHP — end-to-end apps with role-based access.", color: "oklch(0.72 0.18 165)" },
+  { icon: Link, title: "API Integration", desc: "Third-party APIs, payments, chatbots, and automation pipelines.", color: "oklch(0.78 0.15 195)" },
   { icon: Rocket, title: "Deployment", desc: "CI/CD, Vercel, cloud deployment and performance tuning.", color: "oklch(0.72 0.18 165)" },
 ];
 
@@ -34,7 +34,7 @@ const education = [
     degree: "Class XII — CBSE",
     school: "Jagat Taran Golden Jubilee School",
     place: "Prayagraj, UP",
-    period: "Board Examination",
+    period: "2020 - 2021",
     badge: "89%",
     color: "oklch(0.72 0.18 165)",
     icon: Award,
@@ -43,7 +43,7 @@ const education = [
     degree: "Class X — CBSE",
     school: "Jagat Taran Golden Jubilee School",
     place: "Prayagraj, UP",
-    period: "Board Examination",
+    period: "2018 - 2019",
     badge: "85.8%",
     color: "oklch(0.78 0.15 195)",
     icon: Award,
@@ -65,7 +65,7 @@ export const AboutSection = () => {
         style={{ background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.05) 0%, transparent 70%)", filter: "blur(60px)" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <SectionHeader index="01" label="who_i_am" title="About" accent="Me" description="A passionate MERN Stack Developer building scalable full-stack applications and shipping production-ready digital products." />
+        <SectionHeader index="01" label="who_i_am" title="About" accent="Me" description="A Full Stack Developer skilled in MERN, Next.js, PHP, PostgreSQL, MySQL, Redis, Spring Boot, TypeScript, GraphQL — building production-ready applications end-to-end." />
 
         {/* Bio + Photo */}
         <motion.div
@@ -105,7 +105,7 @@ export const AboutSection = () => {
                   {[
                     { icon: "◉", text: "Available for hire", color: "oklch(0.72 0.18 165)" },
                     { icon: null, component: <MapPin size={12} />, text: "Prayagraj, UP, India", color: "oklch(0.55 0.02 240)" },
-                    { icon: null, component: <Code2 size={12} />, text: "MERN Stack Developer", color: "oklch(0.55 0.02 240)" },
+                    { icon: null, component: <Code2 size={12} />, text: "Full Stack Developer", color: "oklch(0.55 0.02 240)" },
                   ].map((chip, i) => (
                     <div key={i} className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl font-mono text-xs"
                       style={{ background: "oklch(1 0 0 / 0.03)", border: "1px solid oklch(1 0 0 / 0.07)", color: chip.color }}>
@@ -118,31 +118,27 @@ export const AboutSection = () => {
 
               {/* Bio */}
               <div className="lg:col-span-3 space-y-5">
-                <h3 className="text-xl font-bold font-display">MERN Stack Developer <span style={{ color: "oklch(0.78 0.15 195 / 0.5)" }}>|</span> Problem Solver</h3>
+                <h3 className="text-xl font-bold font-display">Full Stack Developer <span style={{ color: "oklch(0.78 0.15 195 / 0.5)" }}>|</span> Problem Solver</h3>
 
                 <div className="space-y-3 text-sm leading-relaxed text-left" style={{ color: "oklch(0.55 0.02 240)" }}>
                   <p>
-                    Passionate MERN Stack Developer with{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>10+ months of internship experience</span>{" "}
-                    delivering{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>three full-stack client websites</span>{" "}
-                    from business requirements to production.
+                    Full Stack Developer with{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>12 months of internship experience</span>{" "}
+                    shipped{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>5 production client websites</span>{" "}
+                    from zero to live — each delivered on time, within scope, and used by real users.
                   </p>
                   <p>
-                    I specialize in{" "}
-                    <span style={{ color: "oklch(0.78 0.15 195)" }}>RESTful & GraphQL APIs</span>,
-                    third-party integrations, and building modern UIs with{" "}
-                    <span style={{ color: "oklch(0.78 0.15 195)" }}>React</span>,{" "}
-                    <span style={{ color: "oklch(0.78 0.15 195)" }}>Next.js</span>, and{" "}
-                    <span style={{ color: "oklch(0.78 0.15 195)" }}>Tailwind CSS</span>.
+                    Built{" "}
+                    <span style={{ color: "oklch(0.78 0.15 195)" }}>10+ REST & GraphQL APIs</span>{" "}
+                    powering authentication, payments, and third-party integrations — reducing manual workflows by over{" "}
+                    <span style={{ color: "oklch(0.78 0.15 195)" }}>60%</span>{" "}
+                    across client projects.
                   </p>
                   <p>
-                    I leverage AI tools like{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>Cursor</span>,{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>Claude</span>, and{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>GitHub Copilot</span>{" "}
-                    to ship faster and expanding into{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>PHP & WordPress</span>.
+                    Skilled across the full stack:{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>MERN · Next.js · PHP · PostgreSQL · MySQL · Redis · Spring Boot · TypeScript · GraphQL · Tailwind</span>{" "}
+                    — from database schema design to pixel-perfect UIs.
                   </p>
                 </div>
 
