@@ -144,7 +144,7 @@ export const AboutSection = () => {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                  {stats.map((stat, i) => (
+                  {stats.map((stat) => (
                     <div key={stat.label} className="text-center py-4 rounded-xl border font-mono"
                       style={{ background: "oklch(1 0 0 / 0.03)", borderColor: "oklch(1 0 0 / 0.07)" }}>
                       <div className="text-2xl font-bold" style={{ color: stat.color }}>{stat.value}</div>

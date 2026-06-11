@@ -8,7 +8,7 @@ const experiences = [
     id: 1,
     role: "Full Stack Developer Intern",
     company: "MarTech Union",
-    duration: "Aug 2025 – May 2026",
+    duration: "Aug 2025 – April 2026",
     location: "Remote",
     current: true,
     color: "oklch(0.78 0.15 195)",
