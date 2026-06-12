@@ -18,7 +18,7 @@ const projects = [
   {
     id: 2,
     title: "Adaptive Chat",
-    image: "/projects/adaptive-chat.png",
+    image: "",
     desc: "Adaptive Chat is an intelligent, end-to-end Retrieval-Augmented Generation (RAG) system powered by agentic AI architecture.",
     tech: ["LangChain, LangGraph, FastAPI, Uvicorn, Streamlit, MongoDB, Qdrant, OpenAI, Motor, Python"],
     github: "https://github.com/Prynshumishra/Adaptive-Chat",
