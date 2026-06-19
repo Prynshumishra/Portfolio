@@ -27,7 +27,6 @@ The project is built using **modern web technologies with a scalable structure a
 ✅ Fully responsive (Mobile + Tablet + Desktop)
 ✅ Projects showcase section
 ✅ Coding profiles integration
-✅ Contact form with backend email API
 ✅ Form validation and error handling
 ✅ Smooth user experience
 ✅ Clean and maintainable code structure
