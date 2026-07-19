@@ -136,6 +136,12 @@ http://localhost:5000
 
 Create a `.env` file inside the **server folder**.
 
+```
+EMAIL_USER=yourgmail@gmail.com
+EMAIL_PASS=your_app_password
+CLIENT_ORIGIN=http://localhost:5173
+```
+
 For production:
 
 ```
