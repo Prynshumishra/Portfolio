@@ -47,7 +47,7 @@ The project is built using **modern web technologies with a scalable structure a
 
 * Node.js
 * Express.js
-* Nodemailer
+
 
 ## Deployment
 
