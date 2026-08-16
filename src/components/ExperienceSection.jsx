@@ -6,11 +6,30 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 const experiences = [
   {
     id: 1,
-    role: "Full Stack Developer Intern",
-    company: "MarTech Union",
-    duration: "Aug 2025 – April 2026",
+    role: "Web Developer Intern",
+    company: "Techbaba Compare Ltd.",
+    duration: "Jun 2026 – Aug 2026",
     location: "Remote",
     current: true,
+    color: "oklch(0.70 0.18 220)",
+    description: [
+      "Engineered a multi-tenant airport parking SaaS platform using Node.js, Next.js, and React.",
+      "Implemented secure data isolation and an RBAC system for hierarchical user permissions.",
+      "Integrated Stripe webhooks for secure payment processing and recurring SaaS subscriptions.",
+      "Designed automated background systems with node-cron for slot inventory and booking sync.",
+      "Set up automated email queues via Nodemailer for confirmations and marketing campaigns.",
+      "Built interactive dashboards using Tailwind CSS, Shadcn UI, and FullCalendar.",
+      "Engineered data pipelines for ApexCharts analytics and downloadable financial reports (CSV/PDF).",
+    ],
+    skills: ["React", "Next.js", "Node.js", "Express", "Vite", "Stripe", "Tailwind CSS", "Shadcn UI", "RBAC", "node-cron", "ApexCharts"],
+  },
+  {
+    id: 2,
+    role: "Full Stack Developer Intern",
+    company: "MarTech Union",
+    duration: "Aug 2025 – June 2026",
+    location: "Remote",
+    current: false,
     color: "oklch(0.78 0.15 195)",
     description: [
       "Collaborated on 5+ full-stack projects using Next.js, React, Node.js, and MySQL, delivering production-ready applications with user-focused UI and improved accessibility.",
@@ -20,22 +39,7 @@ const experiences = [
     ],
     skills: ["React", "Node.js", "Next.JS", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "TypeScript", "MySQL"],
   },
-  {
-    id: 2,
-    role: "Software Developer Intern",
-    company: "Unifindss Innovations Pvt. Ltd.",
-    duration: "May 2025 – Jul 2025",
-    location: "Remote",
-    current: false,
-    color: "oklch(0.72 0.18 165)",
-    description: [
-      "Designed responsive UIs using React, Framer Motion, Tailwind CSS, and MongoDB.",
-      "Built a full-stack counseling platform for 100+ users — reduced load time by 25% through perf optimization.",
-      "Developed scalable backend systems with secure authentication, payment integration, and analytics.",
-      "Resolved critical UI/UX bugs and optimized API performance for better user experience.",
-    ],
-    skills: ["React", "MongoDB", "Node.js", "REST APIs", "JWT", "Tailwind CSS", "Framer Motion"],
-  },
+  
 ];
 
 export const ExperienceSection = () => {

@@ -6,12 +6,22 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const projects = [
   {
+    id: 0,
+    title: "AI Enterprise Chatbot",
+    image: "/projects/chatbot.png",
+    desc: "Full-Stack enterprise AI platform with LLM Tool Calling to securely query live MongoDB data. Production-ready with IP rate limiting, session capping, optimistic UI updates, and a glassmorphic dashboard featuring a global floating chat widget and Scrollspy docs.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Clerk", "MongoDB", "LLM Function Calling"],
+    github: "https://github.com/Prynshumishra/Chatbot",
+    demo: "https://chatbot-zanstack5.vercel.app/",
+    accent: "oklch(0.70 0.18 220)",
+  },
+  {
     id: 1,
-    title: "Tata Capital",
-    image: "https://ik.imagekit.io/zvwwmpviq/tata.png",
-    desc: "A full-stack financial application for managing investment portfolios and tracking market trends.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express", "TypeScript", "TailwindCSS"],
-    github: "https://github.com/Prynshumishra/Tata-Capital",
+    title: "Grove Vista Properties",
+    image: "https://ik.imagekit.io/zvwwmpviq/gvp.png",
+    desc: "Next.JS real estate listing platform with dynamic property pages, advanced search, and user authentication. Built with MongoDB, TailwindCSS, and JWT.",
+    tech: ["Next.js 15", "React 19", "Node.js", "MongoDB", "TailwindCSS", "JWT Auth"],
+    demo: "https://grovevistaproperties.com/",
     accent: "oklch(0.72 0.18 165)",
     
   },
@@ -28,12 +38,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "Grove Vista Properties",
-    image: "https://ik.imagekit.io/zvwwmpviq/gvp.png",
-    desc: "Next.JS real estate listing platform with dynamic property pages, advanced search, and user authentication. Built with MongoDB, TailwindCSS, and JWT.",
-    tech: ["Next.js 15", "React 19", "Node.js", "MongoDB", "TailwindCSS", "JWT Auth"],
-    demo: "https://grove-vista-properties-ten.vercel.app/",
+    title: "Tata Capital",
+    image: "https://ik.imagekit.io/zvwwmpviq/tata.png",
+    desc: "A full-stack financial application for managing investment portfolios and tracking market trends.",
+    tech: ["React.js", "Node.js", "MongoDB", "Express", "TypeScript", "TailwindCSS"],
+    github: "https://github.com/Prynshumishra/Tata-Capital",
     accent: "oklch(0.72 0.18 165)",
+    
     
   },
   {

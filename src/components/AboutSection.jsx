@@ -5,7 +5,7 @@ import { SectionHeader } from "./ui/SectionHeader";
 import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const stats = [
-  { value: "12", label: "months exp", color: "oklch(0.78 0.15 195)" },
+  { value: "15+", label: "months exp", color: "oklch(0.78 0.15 195)" },
   { value: "8+", label: "projects", color: "oklch(0.72 0.18 165)" },
   { value: "20+", label: "technologies", color: "oklch(0.78 0.15 195)" },
   { value: "10+", label: "REST APIs", color: "oklch(0.72 0.18 165)" },
@@ -25,8 +25,8 @@ const education = [
     degree: "B.Tech — Information Technology",
     school: "Madan Mohan Malaviya University of Technology",
     place: "Gorakhpur, UP",
-    period: "Nov 2022 – May 2026",
-    badge: "Pursuing",
+    period: "Nov 2022 – June 2026",
+    badge: "7.11 CGPA",
     color: "oklch(0.78 0.15 195)",
     icon: BookOpen,
   },
@@ -123,9 +123,9 @@ export const AboutSection = () => {
                 <div className="space-y-3 text-sm leading-relaxed text-left" style={{ color: "oklch(0.55 0.02 240)" }}>
                   <p>
                     Full Stack Developer with{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>12 months of internship experience</span>{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>15+ months of internship experience</span>{" "}
                     shipped{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>5 production client websites</span>{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>multiple production client websites & SaaS platforms</span>{" "}
                     from zero to live — each delivered on time, within scope, and used by real users.
                   </p>
                   <p>
@@ -137,7 +137,7 @@ export const AboutSection = () => {
                   </p>
                   <p>
                     Skilled across the full stack:{" "}
-                    <span style={{ color: "oklch(0.93 0.01 240)" }}>MERN · Next.js · PHP · PostgreSQL · MySQL · Redis · Spring Boot · TypeScript · GraphQL · Tailwind</span>{" "}
+                    <span style={{ color: "oklch(0.93 0.01 240)" }}>MERN · Next.js · TypeScript · PostgreSQL · MySQL · Redis · Spring Boot · GraphQL · Tailwind · AI Integration</span>{" "}
                     — from database schema design to pixel-perfect UIs.
                   </p>
                 </div>

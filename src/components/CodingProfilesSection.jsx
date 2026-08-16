@@ -32,7 +32,7 @@ const profiles = [
     url: "https://github.com/Prynshumishra",
     color: "oklch(0.78 0.15 195)",
     badge: "Active",
-    stats: [{ label: "repositories", value: "20+" }, { label: "contributions", value: "150+" }],
+    stats: [{ label: "repositories", value: "30+" }, { label: "contributions", value: "550+" }],
     topics: ["MERN Stack", "Next.JS", "REST APIs", "PHP", "GraphQL", "JWT Auth", "Cloudinary", "CI/CD"],
     desc: "Building MERN projects, REST & GraphQL integrations, and collaborative development workflows.",
   },

@@ -108,17 +108,17 @@ export const HeroSection = () => {
             >
               <span className="text-[oklch(0.78_0.15_195/0.5)]">//</span>
               <span className="text-[oklch(0.93_0.01_240/0.7)]">
-                <TypeAnimation
-                  sequence={[
-                    "MERN Stack Developer",
-                    2000,
-                    "Backend API Developer",
-                    2000,
-                    "Full Stack Developer",
-                    2000,
-                    "Open Source Contributor",
-                    2000,
-                  ]}
+                  <TypeAnimation
+                    sequence={[
+                      "Full Stack Developer",
+                      2000,
+                      "MERN Stack Developer",
+                      2000,
+                      "Backend API Developer",
+                      2000,
+                      "AI Integration Specialist",
+                      2000,
+                    ]}
                   speed={55}
                   repeat={Infinity}
                   wrapper="span"
@@ -136,10 +136,10 @@ export const HeroSection = () => {
               className="text-sm leading-relaxed max-w-md text-[oklch(0.55_0.02_240)]"
             >
               Shipped{" "}
-              <span className="text-[oklch(0.93_0.01_240)]">5 production websites</span>{" "}
+              <span className="text-[oklch(0.93_0.01_240)]">10+ production websites & SaaS platforms</span>{" "}
               and{" "}
-              <span className="text-[oklch(0.78_0.15_195)]">10+ REST & GraphQL APIs</span>{" "}
-              across MERN, Next.js, PHP, PostgreSQL & Redis — from schema to deploy.
+              <span className="text-[oklch(0.78_0.15_195)]">15+ REST APIs & AI Integrations</span>{" "}
+              across MERN, Next.js, PostgreSQL & LLMs — from schema to deploy.
             </motion.p>
 
             {/* CTAs */}
@@ -237,13 +237,13 @@ export const HeroSection = () => {
                   <span>,</span>{"\n"}
                   {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>stack</span>
                   <span>: [</span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;React&quot;</span>
-                  <span>, </span>
                   <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Next.js&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;TypeScript&quot;</span>
                   <span>, </span>
                   <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Node&quot;</span>
                   <span>, </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;PostgreSQL&quot;</span>
+                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;LLMs&quot;</span>
                   <span>],</span>{"\n"}
                   {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>location</span>
                   <span>: </span>
@@ -267,22 +267,6 @@ export const HeroSection = () => {
                 }}
               />
             </div>
-
-            {/* Floating stat badges */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl border font-mono text-xs"
-              style={{
-                background: "oklch(0.1 0.025 250)",
-                borderColor: "oklch(0.72 0.18 165 / 0.3)",
-                boxShadow: "0 0 20px oklch(0.72 0.18 165 / 0.1)",
-              }}
-            >
-              <div className="text-[oklch(0.72_0.18_165)] font-bold text-lg leading-none">10+</div>
-              <div className="text-[oklch(0.55_0.02_240)] mt-0.5">REST APIs</div>
-            </motion.div>
-
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
@@ -293,7 +277,7 @@ export const HeroSection = () => {
                 boxShadow: "0 0 20px oklch(0.78 0.15 195 / 0.1)",
               }}
             >
-              <div className="text-[oklch(0.78_0.15_195)] font-bold text-lg leading-none">8+</div>
+              <div className="text-[oklch(0.78_0.15_195)] font-bold text-lg leading-none">9+</div>
               <div className="text-[oklch(0.55_0.02_240)] mt-0.5">Projects</div>
             </motion.div>
           </motion.div>
