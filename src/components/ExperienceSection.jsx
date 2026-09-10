@@ -6,8 +6,8 @@ import { SpotlightEffect } from "./ui/SpotlightEffect";
 const experiences = [
   {
     id: 1,
-    role: "Web Developer Intern",
-    company: "Techbaba Compare Ltd.",
+    role: "Software Developer Intern",
+    company: "Ongraph Technologies",
     duration: "Jun 2026 – Aug 2026",
     location: "Remote",
     current: true,
