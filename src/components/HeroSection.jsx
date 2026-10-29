@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 
-
 const socialLinks = [
   {
     icon: Github,
@@ -21,81 +20,61 @@ const socialLinks = [
   },
 ];
 
-const codeSnippet = `const developer = {
-  name: "Priyanshu Mishra",
-  role: "Full Stack Developer",
-  stack: ["React", "Next.js", "Node", "PostgreSQL", "Redis"],
-  available: true,
-};`;
-
 export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-28 pb-16 overflow-hidden"
     >
-      {/* Ambient orbs */}
+      {/* Subtle warm ambient light */}
       <div
         className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.08) 0%, transparent 70%)",
-          filter: "blur(40px)",
+          background: "radial-gradient(circle, rgba(242, 236, 228, 0.9) 0%, transparent 70%)",
+          filter: "blur(55px)",
         }}
       />
       <div
         className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, oklch(0.72 0.18 165 / 0.06) 0%, transparent 70%)",
-          filter: "blur(40px)",
+          background: "radial-gradient(circle, rgba(92, 64, 51, 0.05) 0%, transparent 70%)",
+          filter: "blur(55px)",
         }}
       />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-          {/* ── Left Column ── */}
-          <div className="text-left space-y-6">
+      <div className="container w-full mx-auto relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          {/* ── Left Column (7 cols) ── */}
+          <div className="lg:col-span-7 text-left space-y-6">
             {/* Status badge */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border font-mono text-xs tracking-wider"
-              style={{
-                background: "oklch(0.78 0.15 195 / 0.06)",
-                borderColor: "oklch(0.78 0.15 195 / 0.2)",
-                color: "oklch(0.78 0.15 195)",
-              }}
+              className="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full border font-mono text-xs tracking-wider bg-[#FFFFFF] border-[#E2D7C9] text-[#231915] shadow-2xs"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.72_0.18_165)] animate-pulse" />
-              available_for_hire
+              <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
+              <span className="font-semibold">available_for_hire</span>
+              <span className="text-[#D4C5B4]">|</span>
+              <span className="text-[#5A4D44]">full-time &amp; freelance</span>
             </motion.div>
 
-            {/* Name */}
+            {/* Name & Title */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <p className="font-mono text-sm text-[oklch(0.78_0.15_195/0.6)] mb-2">
-                ~/dev/portfolio $
+              <p className="font-mono text-xs sm:text-sm text-[#5A4D44] mb-2.5 flex items-center gap-2">
+                <span className="text-[#5C4033] font-semibold">~/dev/portfolio $</span>
+                <span>whoami --verbose</span>
               </p>
               <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight"
+                className="text-4xl sm:text-6xl xl:text-[4.25rem] font-bold leading-[1.06] tracking-tight"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                <span className="text-[oklch(0.93_0.01_240)]">Priyanshu</span>
-                <br />
-                <span
-                  style={{
-                    background: "linear-gradient(135deg, oklch(0.78 0.15 195), oklch(0.72 0.18 165))",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Mishra
-                </span>
+                <span className="text-[#231915]">Priyanshu </span>
+                <span className="text-[#5C4033]">Mishra</span>
               </h1>
             </motion.div>
 
@@ -103,26 +82,28 @@ export const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35 }}
-              className="flex items-center gap-2 font-mono text-sm"
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-[#FFFFFF] border border-[#E2D7C9] shadow-2xs font-mono text-sm"
             >
-              <span className="text-[oklch(0.78_0.15_195/0.5)]">//</span>
-              <span className="text-[oklch(0.93_0.01_240/0.7)]">
-                  <TypeAnimation
-                    sequence={[
-                      "Full Stack Developer",
-                      2000,
-                      "MERN Stack Developer",
-                      2000,
-                      "Backend API Developer",
-                      2000,
-                      "AI Integration Specialist",
-                      2000,
-                    ]}
+              <span className="text-[#5C4033] font-bold">//</span>
+              <span className="text-[#231915] font-semibold" style={{ color: "#231915" }}>
+                <TypeAnimation
+                  key="hero-role-v3"
+                  sequence={[
+                    "Full-Stack Developer",
+                    2000,
+                    "Multi-Tenant SaaS Architect",
+                    2000,
+                    "Backend & API Engineer",
+                    2000,
+                    "AI & LLM Integration Specialist",
+                    2000,
+                  ]}
                   speed={55}
                   repeat={Infinity}
                   wrapper="span"
-                  className="text-[oklch(0.78_0.15_195)]"
+                  className="text-[#231915]"
+                  style={{ color: "#231915" }}
                 />
               </span>
               <span className="terminal-cursor" />
@@ -132,171 +113,168 @@ export const HeroSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="text-sm leading-relaxed max-w-md text-[oklch(0.55_0.02_240)]"
+              transition={{ delay: 0.4 }}
+              className="text-sm sm:text-base leading-relaxed max-w-xl text-[#5A4D44]"
             >
-              Shipped{" "}
-              <span className="text-[oklch(0.93_0.01_240)]">10+ production websites & SaaS platforms</span>{" "}
-              and{" "}
-              <span className="text-[oklch(0.78_0.15_195)]">15+ REST APIs & AI Integrations</span>{" "}
-              across MERN, Next.js, PostgreSQL & LLMs — from schema to deploy.
+              Full-Stack Developer (
+              <span className="text-[#231915] font-semibold">B.Tech IT, MMMUT</span>) building fast,
+              scalable web platforms, resilient APIs, and AI-powered multi-tenant systems — from
+              architecture to deployment.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs & Social links */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap items-center gap-3.5 pt-1"
             >
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-mono text-sm font-semibold transition-all duration-300 bg-[oklch(0.78_0.15_195)] text-[oklch(0.1_0.02_240)] hover:shadow-[0_0_30px_oklch(0.78_0.15_195/0.4)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-sm font-semibold transition-all duration-300 bg-[#231915] text-[#FAF7F2] hover:bg-[#5C4033] shadow-[0_6px_20px_rgba(35,25,21,0.18)] hover:shadow-[0_10px_28px_rgba(92,64,51,0.25)] hover:-translate-y-0.5"
               >
                 <ExternalLink size={14} />
                 view_projects()
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-mono text-sm font-medium transition-all duration-300 border border-[oklch(1_0_0/0.1)] text-[oklch(0.93_0.01_240/0.7)] hover:border-[oklch(0.78_0.15_195/0.4)] hover:text-[oklch(0.78_0.15_195)] hover:bg-[oklch(0.78_0.15_195/0.05)]"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-sm font-medium transition-all duration-300 border border-[#E2D7C9] bg-[#FFFFFF] text-[#231915] hover:border-[#5C4033] hover:bg-[#F2ECE4]"
               >
                 contact_me()
               </a>
-            </motion.div>
 
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.65 }}
-              className="flex items-center gap-3"
-            >
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("mailto") ? undefined : "_blank"}
-                  rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-lg border border-[oklch(1_0_0/0.08)] flex items-center justify-center text-[oklch(0.55_0.02_240)] hover:text-[oklch(0.78_0.15_195)] hover:border-[oklch(0.78_0.15_195/0.3)] hover:bg-[oklch(0.78_0.15_195/0.06)] transition-all duration-300"
-                >
-                  <Icon size={15} />
-                </a>
-              ))}
-              <span className="text-[oklch(0.55_0.02_240/0.4)] font-mono text-xs ml-1">
-                — find me here
-              </span>
+              <div className="flex items-center gap-2 sm:ml-2">
+                {socialLinks.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    aria-label={label}
+                    className="w-10 h-10 rounded-xl border border-[#E2D7C9] bg-[#FFFFFF] flex items-center justify-center text-[#5A4D44] hover:text-[#FAF7F2] hover:border-[#231915] hover:bg-[#231915] transition-all duration-300"
+                  >
+                    <Icon size={15} />
+                  </a>
+                ))}
+              </div>
             </motion.div>
           </div>
 
-          {/* ── Right Column: Code card ── */}
+          {/* ── Right Column: Deep Espresso Engineering Terminal Card (5 cols) ── */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="relative hidden lg:block"
+            className="lg:col-span-5 relative hidden lg:block"
           >
-            {/* Terminal window */}
+            {/* Terminal window in Deep Executive Espresso (#1E1511) */}
             <div
               className="relative rounded-2xl overflow-hidden border"
               style={{
-                background: "oklch(0.09 0.025 250)",
-                borderColor: "oklch(1 0 0 / 0.1)",
-                boxShadow: "0 0 0 1px oklch(0.78 0.15 195 / 0.08), 0 40px 80px oklch(0 0 0 / 0.6)",
+                background: "#1E1511",
+                borderColor: "#3B2A22",
+                boxShadow: "0 28px 65px -15px rgba(35, 25, 21, 0.32), 0 0 0 1px rgba(255,255,255,0.06) inset",
               }}
             >
               {/* Window chrome */}
               <div
-                className="flex items-center gap-2 px-4 py-3 border-b"
-                style={{ borderColor: "oklch(1 0 0 / 0.07)", background: "oklch(0.11 0.025 250)" }}
+                className="flex items-center justify-between px-4 py-3 border-b"
+                style={{ borderColor: "rgba(226, 215, 201, 0.12)", background: "#160F0C" }}
               >
-                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-                <span className="ml-3 font-mono text-xs text-[oklch(0.55_0.02_240)]">
-                  developer.js
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                  <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+                  <span className="ml-2 font-mono text-xs text-[#D8C8B8]">
+                    engineer.config.ts
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-[#5C4033] text-[#FAF7F2]">
+                  v2026.1
                 </span>
               </div>
 
               {/* Code body */}
               <pre
-                className="p-6 font-mono text-sm leading-relaxed overflow-x-auto"
-                style={{ color: "oklch(0.75 0.01 240)" }}
+                className="p-6 font-mono text-xs xl:text-sm leading-relaxed overflow-x-auto text-left"
+                style={{ color: "#F2ECE4" }}
               >
                 <code>
-                  <span style={{ color: "oklch(0.72 0.18 165)" }}>const </span>
-                  <span style={{ color: "oklch(0.78 0.15 195)" }}>developer</span>
+                  <span style={{ color: "#C5A880" }}>const </span>
+                  <span style={{ color: "#FAF7F2", fontWeight: 600 }}>engineer</span>
                   <span> = {"{"}</span>{"\n"}
-                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>name</span>
+                  {"  "}<span style={{ color: "#D8C8B8" }}>name</span>
                   <span>: </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Priyanshu Mishra&quot;</span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Priyanshu Mishra&quot;</span>
                   <span>,</span>{"\n"}
-                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>role</span>
+                  {"  "}<span style={{ color: "#D8C8B8" }}>education</span>
                   <span>: </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Full Stack Developer&quot;</span>
+                  <span style={{ color: "#E6C79C" }}>&quot;B.Tech IT, MMMUT&quot;</span>
                   <span>,</span>{"\n"}
-                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>stack</span>
+                  {"  "}<span style={{ color: "#D8C8B8" }}>experience</span>
                   <span>: [</span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Next.js&quot;</span>
+                  <span style={{ color: "#E6C79C" }}>&quot;OnGraph&quot;</span>
                   <span>, </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;TypeScript&quot;</span>
-                  <span>, </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Node&quot;</span>
-                  <span>, </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;LLMs&quot;</span>
+                  <span style={{ color: "#E6C79C" }}>&quot;MarTech Union&quot;</span>
                   <span>],</span>{"\n"}
-                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>location</span>
-                  <span>: </span>
-                  <span style={{ color: "oklch(0.85 0.12 90)" }}>&quot;Prayagraj, India&quot;</span>
+                  {"  "}<span style={{ color: "#D8C8B8" }}>stack</span>
+                  <span>: [</span>{"\n"}
+                  {"    "}<span style={{ color: "#E6C79C" }}>&quot;React&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Next.js&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Angular&quot;</span>
                   <span>,</span>{"\n"}
-                  {"  "}<span style={{ color: "oklch(0.72 0.18 165/0.7)" }}>available</span>
-                  <span>: </span>
-                  <span style={{ color: "oklch(0.72 0.18 165)" }}>true</span>
+                  {"    "}<span style={{ color: "#E6C79C" }}>&quot;Node.js&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;TypeScript&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Spring Boot&quot;</span>
                   <span>,</span>{"\n"}
+                  {"    "}<span style={{ color: "#E6C79C" }}>&quot;PostgreSQL&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Redis&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Docker&quot;</span>{"\n"}
+                  {"  "}<span>],</span>{"\n"}
+                  {"  "}<span style={{ color: "#D8C8B8" }}>ai</span>
+                  <span>: [</span>
+                  <span style={{ color: "#E6C79C" }}>&quot;OpenAI&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;Gemini&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#E6C79C" }}>&quot;TensorFlow.js&quot;</span>
+                  <span>],</span>{"\n"}
+                  {"  "}<span style={{ color: "#D8C8B8" }}>metrics</span>
+                  <span>: {"{"} </span>
+                  <span style={{ color: "#D8C8B8" }}>apps: </span>
+                  <span style={{ color: "#86EFAC" }}>&quot;17+&quot;</span>
+                  <span>, </span>
+                  <span style={{ color: "#D8C8B8" }}>uptime: </span>
+                  <span style={{ color: "#86EFAC" }}>&quot;99.9%&quot;</span>
+                  <span> {"}"}</span>{"\n"}
                   {"}"}<span>;</span>{"\n"}{"\n"}
-                  <span style={{ color: "oklch(0.55 0.02 240)" }}>// ✓ open to full-time &amp; freelance</span>
+                  <span style={{ color: "#D8C8B8", opacity: 0.65 }}>
+                    // ✓ 780+ commits · ready to scale
+                  </span>
                 </code>
               </pre>
-
-              {/* Scan line effect */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(transparent 40%, oklch(0.78 0.15 195 / 0.02) 50%, transparent 60%)",
-                  animation: "scan 4s ease-in-out infinite",
-                }}
-              />
             </div>
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -top-4 -right-4 px-4 py-3 rounded-xl border font-mono text-xs"
-              style={{
-                background: "oklch(0.1 0.025 250)",
-                borderColor: "oklch(0.78 0.15 195 / 0.3)",
-                boxShadow: "0 0 20px oklch(0.78 0.15 195 / 0.1)",
-              }}
-            >
-              <div className="text-[oklch(0.78_0.15_195)] font-bold text-lg leading-none">9+</div>
-              <div className="text-[oklch(0.55_0.02_240)] mt-0.5">Projects</div>
-            </motion.div>
           </motion.div>
         </div>
-
-       
 
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="flex flex-col items-center gap-2 mt-16"
+          className="flex flex-col items-center gap-2 mt-14"
         >
-          <span className="font-mono text-[10px] tracking-widest text-[oklch(0.55_0.02_240/0.5)]">scroll_down</span>
+          <span className="font-mono text-[10px] tracking-widest text-[#5A4D44]">scroll_down</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-[oklch(0.78_0.15_195/0.4)]"
+            className="text-[#5C4033]"
           >
             <ArrowDown size={16} />
           </motion.div>

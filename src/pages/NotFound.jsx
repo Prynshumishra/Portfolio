@@ -2,7 +2,7 @@ import { ArrowLeft, Home } from "lucide-react";
 
 export const NotFound = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
+    <div className="min-h-screen text-foreground flex items-center justify-center px-4">
       <div className="text-center max-w-lg">
         {/* Glowing 404 */}
         <div className="relative mb-6">

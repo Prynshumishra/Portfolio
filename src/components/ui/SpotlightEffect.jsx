@@ -6,6 +6,7 @@ export const SpotlightEffect = ({ className = "" }) => {
   useEffect(() => {
     const el = spotRef.current;
     if (!el) return;
+    el.style.background = "";
     const parent = el.parentElement;
     if (!parent) return;
 
@@ -13,11 +14,14 @@ export const SpotlightEffect = ({ className = "" }) => {
       const rect = parent.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      el.style.background = `radial-gradient(600px circle at ${x}px ${y}px, oklch(0.78 0.15 195 / 0.06), transparent 70%)`;
+      el.style.background = `radial-gradient(500px circle at ${x}px ${y}px, rgba(92, 64, 51, 0.05), transparent 70%)`;
     };
 
     parent.addEventListener("mousemove", handleMove);
-    return () => parent.removeEventListener("mousemove", handleMove);
+    return () => {
+      parent.removeEventListener("mousemove", handleMove);
+      el.style.background = "";
+    };
   }, []);
 
   return (

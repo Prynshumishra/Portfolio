@@ -99,38 +99,46 @@
   }
 }
 
-/* ── Design Tokens ─────────────────────────── */
+/* ── Design Tokens (Refined Executive Alabaster, Bronze & Deep Espresso) ── */
 :root {
   --radius: 0.75rem;
 
-  /* Always dark — forcing dark theme */
-  --background: oklch(0.08 0.02 245);
-  --foreground: oklch(0.93 0.01 240);
+  /* Crisp Warm Alabaster / Light Cream Base */
+  --background: #FAF7F2;
+  /* Subtle Warm Stone Alternate Section Background */
+  --background-alt: #F2ECE4;
+  /* Authoritative Deep Espresso-Charcoal for Headings */
+  --foreground: #231915;
+  /* Rich Chocolate Bronze for Interactive Primary Elements */
+  --primary: #5C4033;
+  --primary-foreground: #FAF7F2;
 
-  --card: oklch(0.11 0.025 250);
-  --card-foreground: oklch(0.93 0.01 240);
+  /* Deep Espresso for Terminal / Footer */
+  --espresso: #1E1511;
+  /* High-legibility Warm Slate-Brown for Body Copy */
+  --body-text: #5A4D44;
+  /* Crisp Architectural Hairline Border */
+  --border-beige: #E2D7C9;
 
-  --popover: oklch(0.11 0.025 250);
-  --popover-foreground: oklch(0.93 0.01 240);
+  --card: #FFFFFF;
+  --card-foreground: #231915;
 
-  /* Cyan primary */
-  --primary: oklch(0.78 0.15 195);
-  --primary-foreground: oklch(0.1 0.02 240);
+  --popover: #FFFFFF;
+  --popover-foreground: #231915;
 
-  /* Emerald secondary */
-  --secondary: oklch(0.13 0.03 250);
-  --secondary-foreground: oklch(0.93 0.01 240);
+  --secondary: #F2ECE4;
+  --secondary-foreground: #231915;
 
-  --muted: oklch(0.13 0.02 250);
-  --muted-foreground: oklch(0.55 0.02 240);
+  --muted: #F2ECE4;
+  --muted-foreground: #5A4D44;
 
-  --accent: oklch(0.72 0.18 165);  /* emerald-400 */
-  --accent-foreground: oklch(0.1 0.02 240);
+  --accent: #5C4033;
+  --accent-foreground: #FAF7F2;
 
-  --destructive: oklch(0.65 0.22 25);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.78 0.15 195 / 50%);
+  --destructive: #B93829;
+  --border: #E2D7C9;
+  --input: #E2D7C9;
+  --ring: rgba(92, 64, 51, 0.3);
 }
 
 /* ── Base Styles ───────────────────────────── */
@@ -142,38 +150,45 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #FAF7F2;
   }
 
   body {
-    background-color: oklch(0.08 0.02 245);
-    color: oklch(0.93 0.01 240);
+    background-color: #FAF7F2;
+    color: #5A4D44;
     font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     overflow-x: hidden;
-    /* Animated dot grid background */
+    /* Subtle executive atmospheric lighting + ultra-fine architectural grid */
     background-image:
-      radial-gradient(circle at 20% 10%, oklch(0.78 0.15 195 / 0.07) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, oklch(0.72 0.18 165 / 0.05) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, oklch(0.5 0.15 285 / 0.03) 0%, transparent 60%),
-      radial-gradient(oklch(0.55 0.01 240) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
-    background-attachment: fixed, fixed, fixed, fixed;
+      radial-gradient(ellipse 90% 45% at 50% -5%, rgba(92, 64, 51, 0.055) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 90% 20%, rgba(226, 215, 201, 0.45) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 50% at 10% 80%, rgba(237, 227, 214, 0.4) 0%, transparent 65%),
+      linear-gradient(to right, rgba(216, 200, 184, 0.22) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(216, 200, 184, 0.22) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+    background-attachment: fixed, fixed, fixed, fixed, fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #231915;
+    letter-spacing: -0.02em;
   }
 
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #F2ECE4; }
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.78 0.15 195 / 0.3);
+    background: #D4C5B4;
     border-radius: 99px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.78 0.15 195 / 0.6);
+    background: #5C4033;
   }
 
   ::selection {
-    background: oklch(0.78 0.15 195 / 0.2);
-    color: oklch(0.93 0.01 240);
+    background: rgba(92, 64, 51, 0.14);
+    color: #231915;
   }
 
   section[id] { scroll-margin-top: 90px; }
@@ -182,8 +197,8 @@
   textarea:focus-visible,
   select:focus-visible {
     outline: none;
-    border-color: oklch(0.78 0.15 195 / 0.5);
-    box-shadow: 0 0 0 2px oklch(0.78 0.15 195 / 0.15);
+    border-color: #5C4033;
+    box-shadow: 0 0 0 3px rgba(92, 64, 51, 0.1);
   }
 
   #root {
@@ -196,13 +211,13 @@
 
 /* ── Utilities ─────────────────────────────── */
 @utility container {
+  width: 100%;
+  max-width: 100%;
   margin-inline: auto;
   padding-inline: 1.5rem;
-  @media (width >= 640px)  { max-width: 640px;  padding-inline: 2rem; }
-  @media (width >= 768px)  { max-width: 768px;  }
-  @media (width >= 1024px) { max-width: 1024px; }
-  @media (width >= 1280px) { max-width: 1280px; }
-  @media (width >= 1400px) { max-width: 1400px; }
+  @media (width >= 640px)  { padding-inline: 2.5rem; }
+  @media (width >= 1024px) { padding-inline: 4rem; }
+  @media (width >= 1280px) { padding-inline: 5rem; }
 }
 
 @utility font-display {
@@ -214,41 +229,43 @@
 }
 
 @utility text-cyan-glow {
-  text-shadow: 0 0 30px oklch(0.78 0.15 195 / 0.5), 0 0 60px oklch(0.78 0.15 195 / 0.15);
+  text-shadow: 0 2px 20px rgba(35, 25, 21, 0.12);
 }
 
 @utility text-gradient-cyan {
-  background: linear-gradient(135deg, oklch(0.78 0.15 195), oklch(0.72 0.18 165));
+  background-image: linear-gradient(135deg, #231915, #5C4033);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 @utility glass {
-  background: oklch(0.11 0.025 250 / 0.8);
-  backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid #E2D7C9;
+  box-shadow: 0 4px 20px -4px rgba(35, 25, 21, 0.06);
 }
 
 @utility glass-hover {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-hover:hover {
-  border-color: oklch(0.78 0.15 195 / 0.25);
-  box-shadow: 0 0 30px oklch(0.78 0.15 195 / 0.08), inset 0 0 30px oklch(0.78 0.15 195 / 0.03);
+  border-color: #B8A390;
+  box-shadow: 0 18px 38px -12px rgba(35, 25, 21, 0.11), 0 4px 12px -2px rgba(35, 25, 21, 0.04);
 }
 
 @utility cyan-button {
-  background: linear-gradient(135deg, oklch(0.78 0.15 195), oklch(0.7 0.15 200));
-  color: oklch(0.1 0.02 240);
+  background: #231915;
+  color: #FAF7F2;
   font-family: var(--font-mono);
   font-weight: 600;
   border-radius: var(--radius);
   transition: all 0.25s ease;
-  box-shadow: 0 0 20px oklch(0.78 0.15 195 / 0.2);
+  box-shadow: 0 4px 14px rgba(35, 25, 21, 0.18);
 }
 .cyan-button:hover {
-  box-shadow: 0 0 35px oklch(0.78 0.15 195 / 0.4);
+  background: #5C4033;
+  box-shadow: 0 8px 22px rgba(92, 64, 51, 0.26);
   transform: translateY(-2px);
 }
 .cyan-button:active { transform: translateY(0); }
@@ -256,41 +273,41 @@
 @utility section-label {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: oklch(0.78 0.15 195);
+  color: #5C4033;
 }
 
 @utility terminal-card {
-  background: oklch(0.1 0.02 250 / 0.85);
-  backdrop-filter: blur(24px) saturate(1.5);
-  border: 1px solid oklch(1 0 0 / 0.07);
+  background: #FFFFFF;
+  border: 1px solid #E2D7C9;
+  box-shadow: 0 8px 28px -10px rgba(35, 25, 21, 0.06), 0 2px 6px -1px rgba(35, 25, 21, 0.03);
   border-radius: calc(var(--radius) * 1.5);
   position: relative;
   overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 .terminal-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, oklch(0.78 0.15 195 / 0.03) 0%, transparent 60%);
+  background: linear-gradient(180deg, rgba(250, 247, 242, 0.5) 0%, transparent 45%);
   pointer-events: none;
 }
 
 @utility skill-bar {
   height: 3px;
   border-radius: 99px;
-  background: oklch(1 0 0 / 0.06);
+  background: #E2D7C9;
   overflow: hidden;
   position: relative;
 }
 
 /* Shimmer overlay */
 .shimmer-overlay {
-  background: linear-gradient(105deg, transparent 40%, oklch(1 0 0 / 0.06) 50%, transparent 60%);
+  background: linear-gradient(105deg, transparent 40%, rgba(92, 64, 51, 0.05) 50%, transparent 60%);
   background-size: 200% 100%;
   animation: shimmer 2.5s infinite;
 }
@@ -300,12 +317,11 @@
   display: inline-block;
   width: 2px;
   height: 1.1em;
-  background: oklch(0.78 0.15 195);
+  background: #5C4033;
   vertical-align: middle;
   margin-left: 2px;
   animation: blink 1s step-end infinite;
   border-radius: 1px;
-  box-shadow: 0 0 8px oklch(0.78 0.15 195);
 }
 
 /* Glowing border animation */
@@ -317,7 +333,7 @@
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, oklch(0.78 0.15 195 / 0.5), transparent, oklch(0.72 0.18 165 / 0.3), transparent);
+  background: linear-gradient(135deg, rgba(92, 64, 51, 0.35), transparent, rgba(35, 25, 21, 0.25), transparent);
   z-index: -1;
   animation: border-spin 4s linear infinite;
   opacity: 0;

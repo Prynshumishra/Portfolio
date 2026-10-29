@@ -1,27 +1,45 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { SectionHeader } from "./ui/SectionHeader";
 import { SpotlightEffect } from "./ui/SpotlightEffect";
 
 const experiences = [
   {
     id: 1,
-    role: "Web Developer Intern",
-    company: "Techbaba Compare Ltd.",
-    duration: "Jun 2026 – Aug 2026",
+    role: "Software Developer Intern",
+    company: "OnGraph Technologies",
+    duration: "Jul 2026 – Sept 2026",
     location: "Remote",
     current: true,
-    color: "oklch(0.70 0.18 220)",
     description: [
-      "Engineered a multi-tenant airport parking SaaS platform using Node.js, Next.js, and React.",
-      "Implemented secure data isolation and an RBAC system for hierarchical user permissions.",
-      "Integrated Stripe webhooks for secure payment processing and recurring SaaS subscriptions.",
-      "Designed automated background systems with node-cron for slot inventory and booking sync.",
-      "Set up automated email queues via Nodemailer for confirmations and marketing campaigns.",
-      "Built interactive dashboards using Tailwind CSS, Shadcn UI, and FullCalendar.",
-      "Engineered data pipelines for ApexCharts analytics and downloadable financial reports (CSV/PDF).",
+      "Spearheaded development of a multi-tenant airport parking SaaS and admin platform across 7+ websites and 2,500+ bookings using Node.js, Next.js, and React, increasing operational efficiency by 35% and lowering transactional overhead by 40%.",
+      "Built and maintained 50+ REST APIs in Node.js and Express.js, refactoring high-traffic endpoints and indexing MySQL query joins to cut average server response latency by 45%.",
+      "Architected secure tenant data isolation, hierarchical RBAC permissions, automated PDF invoice generation, and Stripe webhook pipelines for payment processing and recurring SaaS subscriptions.",
+      "Engineered real-time WebSocket notification channels, automated task scheduling (node-cron for slot inventory & booking sync), transactional emailing via Nodemailer, and post-booking customer feedback surveys for successful launches.",
+      "Diagnosed and resolved 10+ critical production incidents — fixing Stripe payment edge cases, SMTP timeouts, cron scheduling failures, and database deadlocks — raising system availability from 96.5% to 99.9%.",
+      "Built interactive management dashboards using Tailwind CSS, Shadcn UI, and FullCalendar with ApexCharts analytics pipelines and downloadable financial reports (CSV/PDF).",
+      "Implemented CI/CD pipelines and automated API validation checks in collaboration with a 4-member QA team, reducing post-release bug tickets by 30% over 3 release cycles.",
     ],
-    skills: ["React", "Next.js", "Node.js", "Express", "Vite", "Stripe", "Tailwind CSS", "Shadcn UI", "RBAC", "node-cron", "ApexCharts"],
+    skills: [
+      "React",
+      "Next.js",
+      "Angular",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "50+ REST APIs",
+      "WebSockets",
+      "Stripe",
+      "RBAC",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "FullCalendar",
+      "ApexCharts",
+      "node-cron",
+      "Nodemailer / SMTP",
+      "Invoice Generation",
+      "CI/CD Pipelines",
+    ],
   },
   {
     id: 2,
@@ -30,33 +48,47 @@ const experiences = [
     duration: "Aug 2025 – June 2026",
     location: "Remote",
     current: false,
-    color: "oklch(0.78 0.15 195)",
     description: [
       "Collaborated on 5+ full-stack projects using Next.js, React, Node.js, and MySQL, delivering production-ready applications with user-focused UI and improved accessibility.",
       "Boosted performance and SEO scores from 50 to 90+ through advanced optimizations.",
       "Pioneered the integration of a chatbot solution into 3 WordPress sites, slashing customer wait times by 20% and directly improving user satisfaction scores.",
       "Built and customized WordPress plugins using HTML, CSS, JS, and MySQL — integrated CF7, Amelia, ChatBot, and GTM4WP.",
     ],
-    skills: ["React", "Node.js", "Next.JS", "Express.js", "MongoDB", "REST APIs", "CI/CD", "WordPress", "JavaScript", "TypeScript", "MySQL"],
+    skills: [
+      "React",
+      "Node.js",
+      "Next.JS",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+      "CI/CD",
+      "WordPress",
+      "JavaScript",
+      "TypeScript",
+      "MySQL",
+    ],
   },
-  
 ];
 
 export const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-24 px-4 relative overflow-hidden">
-      <div className="absolute right-0 top-1/4 w-[500px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, oklch(0.78 0.15 195 / 0.05) 0%, transparent 70%)", filter: "blur(60px)" }} />
-
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <SectionHeader index="05" label="work_history" title="Professional" accent="Journey"
-          description="A timeline of my professional growth delivering full-stack applications for real-world impact." />
+    <section
+      id="experience"
+      className="py-24 px-4 relative overflow-hidden bg-[#F2ECE4]/80 border-y border-[#E2D7C9]"
+    >
+      <div className="container w-full mx-auto relative z-10">
+        <SectionHeader
+          index="05"
+          label="work_history"
+          title="Professional"
+          accent="Journey"
+          description="A timeline of my professional growth delivering full-stack applications for real-world impact."
+        />
 
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
-            style={{ background: "linear-gradient(to bottom, oklch(0.78 0.15 195 / 0.5), oklch(0.72 0.18 165 / 0.2), transparent)" }} />
+          <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px bg-[#D4C5B4]" />
 
           <div className="space-y-12">
             {experiences.map((exp, i) => {
@@ -64,12 +96,9 @@ export const ExperienceSection = () => {
               return (
                 <div key={exp.id} className="relative">
                   {/* Timeline dot */}
-                  <div
-                    className="absolute left-5 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 mt-7 z-10 shadow-[0_0_12px_currentColor]"
-                    style={{ background: exp.color, color: exp.color }}
-                  >
+                  <div className="absolute left-5 md:left-1/2 w-3.5 h-3.5 rounded-full -translate-x-1/2 mt-7 z-10 bg-[#231915] border-2 border-[#FAF7F2] shadow-[0_0_0_3px_#E2D7C9]">
                     {exp.current && (
-                      <span className="absolute inset-0 rounded-full animate-ping opacity-40" style={{ background: exp.color }} />
+                      <span className="absolute inset-0 rounded-full animate-ping opacity-40 bg-[#5C4033]" />
                     )}
                   </div>
 
@@ -116,28 +145,23 @@ export const ExperienceSection = () => {
 };
 
 const ExperienceCard = ({ exp }) => (
-  <div
-    className="group relative terminal-card p-6 md:p-8 w-full text-left glass-hover transition-all duration-300 hover:-translate-y-1"
-  >
+  <div className="group relative terminal-card p-6 md:p-8 w-full text-left glass-hover transition-all duration-300 hover:-translate-y-1">
     <SpotlightEffect />
-    <div className="absolute top-0 inset-x-0 h-px opacity-80"
-      style={{ background: `linear-gradient(90deg, transparent, ${exp.color}, transparent)` }} />
 
     {/* Header */}
-    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4 pb-4 border-b border-[#E2D7C9]">
       <div>
-        <h4 className="text-lg font-bold font-display" style={{ color: "oklch(0.93 0.01 240)" }}>{exp.role}</h4>
+        <h4 className="text-lg font-bold font-display text-[#231915]">{exp.role}</h4>
         <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-1">
-          <span className="text-sm font-medium" style={{ color: "oklch(0.75 0.01 240)" }}>{exp.company}</span>
-          <span className="hidden sm:block w-1 h-1 rounded-full" style={{ background: "oklch(1 0 0 / 0.2)" }} />
-          <span className="flex items-center gap-1 text-xs font-mono" style={{ color: "oklch(0.55 0.02 240)" }}>
+          <span className="text-sm font-semibold text-[#5C4033]">{exp.company}</span>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-[#D4C5B4]" />
+          <span className="flex items-center gap-1 text-xs font-mono text-[#5A4D44]">
             <MapPin size={10} /> {exp.location}
           </span>
         </div>
       </div>
-      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-xs shrink-0"
-        style={{ background: `${exp.color.replace(')', ' / 0.08)')}`, border: `1px solid ${exp.color.replace(')', ' / 0.2)')}`, color: exp.color }}>
-        <Calendar size={11} />
+      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-mono text-xs shrink-0 bg-[#FAF7F2] border border-[#E2D7C9] text-[#231915] font-medium">
+        <Calendar size={11} className="text-[#5C4033]" />
         {exp.duration}
       </div>
     </div>
@@ -146,17 +170,19 @@ const ExperienceCard = ({ exp }) => (
     <ul className="space-y-2.5 mb-5">
       {exp.description.map((point, i) => (
         <li key={i} className="flex items-start gap-3 text-sm leading-relaxed">
-          <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: exp.color }} />
-          <span style={{ color: "oklch(0.55 0.02 240)" }}>{point}</span>
+          <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0 bg-[#5C4033]" />
+          <span className="text-[#5A4D44]">{point}</span>
         </li>
       ))}
     </ul>
 
     {/* Skills */}
-    <div className="flex flex-wrap gap-1.5 pt-4" style={{ borderTop: "1px solid oklch(1 0 0 / 0.07)" }}>
+    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#E2D7C9]">
       {exp.skills.map((s) => (
-        <span key={s} className="font-mono text-[10px] px-2.5 py-1 rounded-lg border"
-          style={{ color: "oklch(0.75 0.01 240)", background: "oklch(1 0 0 / 0.03)", borderColor: "oklch(1 0 0 / 0.09)" }}>
+        <span
+          key={s}
+          className="font-mono text-[10px] px-2.5 py-1 rounded-lg border border-[#E2D7C9] bg-[#FAF7F2] text-[#231915] font-medium"
+        >
           {s}
         </span>
       ))}
