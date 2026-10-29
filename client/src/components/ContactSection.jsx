@@ -88,7 +88,9 @@ export const ContactSection = () => {
       let data = {};
       try {
         data = await res.json();
-      } catch {}
+      } catch {
+        // Ignore non-JSON response body
+      }
       if (res.ok && data?.success) {
         toast.success("Message sent! I'll reply within 24h.", { duration: 5000 });
         setForm(INITIAL);
