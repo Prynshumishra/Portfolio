@@ -7,8 +7,8 @@ const experiences = [
   {
     id: 1,
     role: "Software Developer Intern",
-    company: "OnGraph Technologies",
-    duration: "Jul 2026 – Sept 2026",
+    company: "Ongraph Technologies",
+    duration: "Jul 2026 – Sep 2026",
     location: "Remote",
     current: true,
     description: [
