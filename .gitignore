@@ -1,3 +1,13 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production builds
+dist/
+client/dist/
+dist-ssr/
+
 # Logs
 logs
 *.log
@@ -7,12 +17,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment variables
+.env
+.env.*
+!.env.example
+client/.env
+client/.env.*
+!client/.env.example
+server/.env
+server/.env.*
+!server/.env.example
 
-# Editor directories and files
+# Editor & OS files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,18 +38,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Claude Code internal config
 .claude/
-
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Screenshots / temp files
-*.png
-*.jpg
-*.jpeg
-!public/**
 .playwright-mcp/
